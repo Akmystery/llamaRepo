@@ -63,20 +63,40 @@ namespace TeamLLama
                 check = false;
             }
 
+            if (vc.isEmpty(txtEmail.Text))
+            {
+                lblEmail.Text = "Email cannot be empty";
+                check = false;
+            }
+
+            if (vc.isEmpty(txtAddress.Text))
+            {
+                lblAddress.Text = "Address cannot be empty";
+                check = false;
+            }
+
+            if (!vc.isEmpty(txtNric.Text) && vc.checkNricExist(txtNric.Text))
+            {
+                lblNric.Text = "This NRIC already got an account";
+                check = false;
+            }
+
             if (vc.ComparePassword(txtPassword.Text, txtConfirmPassword.Text) == false)
-                {
 
-                    lblPassword.Text = "Please re-enter password, Passwords are different";
-                    check = false;
-                }
-                else if (vc.CheckEmail(txtEmail.Text) == false)
-                {
-                    lblEmail.Text = "Invalid Email";
-                    check = false;
-                }
+            {
+                lblPassword.Text = "Please re-enter password, Passwords are different";
+                check = false;
+            }
 
-            
-            if(check == true)
+            if (vc.CheckEmail(txtEmail.Text) == false)
+            {
+                lblEmail.Text = "Invalid Email";
+                check = false;
+
+            }
+
+
+            if (check == true)
             {
                 Account a = new Account();
                 a.name = txtName.Text;
