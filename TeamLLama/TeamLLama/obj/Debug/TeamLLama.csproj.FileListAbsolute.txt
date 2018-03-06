@@ -20,3 +20,14 @@ C:\Users\aldo\Desktop\TeamLLama\TeamLLama\obj\Debug\TeamLLama.csprojResolveAssem
 C:\Users\aldo\Desktop\TeamLLama\TeamLLama\obj\Debug\TeamLLama.csproj.CoreCompileInputs.cache
 C:\Users\aldo\Desktop\TeamLLama\TeamLLama\obj\Debug\TeamLLama.dll
 C:\Users\aldo\Desktop\TeamLLama\TeamLLama\obj\Debug\TeamLLama.pdb
+C:\Users\Arkar\Desktop\SWEProject\TeamLLama\TeamLLama\bin\TeamLLama.dll.config
+C:\Users\Arkar\Desktop\SWEProject\TeamLLama\TeamLLama\bin\TeamLLama.dll
+C:\Users\Arkar\Desktop\SWEProject\TeamLLama\TeamLLama\bin\TeamLLama.pdb
+C:\Users\Arkar\Desktop\SWEProject\TeamLLama\TeamLLama\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Arkar\Desktop\SWEProject\TeamLLama\TeamLLama\bin\MySql.Data.dll
+C:\Users\Arkar\Desktop\SWEProject\TeamLLama\TeamLLama\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Arkar\Desktop\SWEProject\TeamLLama\TeamLLama\bin\MySql.Data.xml
+C:\Users\Arkar\Desktop\SWEProject\TeamLLama\TeamLLama\obj\Debug\TeamLLama.csprojResolveAssemblyReference.cache
+C:\Users\Arkar\Desktop\SWEProject\TeamLLama\TeamLLama\obj\Debug\TeamLLama.csproj.CoreCompileInputs.cache
+C:\Users\Arkar\Desktop\SWEProject\TeamLLama\TeamLLama\obj\Debug\TeamLLama.dll
+C:\Users\Arkar\Desktop\SWEProject\TeamLLama\TeamLLama\obj\Debug\TeamLLama.pdb
