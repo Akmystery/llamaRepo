@@ -59,6 +59,12 @@
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
+				<td></td>
+				<td>
+					<asp:Label ID="lblPassword" runat="server" ForeColor="Red"></asp:Label>
+				</td>
+			</tr>
+			<tr>
 				<td class="auto-style3">Confirm Password</td>
 				<td>
 					<asp:TextBox ID="txtConfirmPassword" TextMode="Password" runat="server"></asp:TextBox>
@@ -67,7 +73,7 @@
 			<tr>
 				<td></td>
 				<td>
-					<asp:Label ID="lblPassword" runat="server" ForeColor="Red"></asp:Label>
+					<asp:Label ID="lblConfirmPassword" runat="server" ForeColor="Red"></asp:Label>
 				</td>
 			</tr>
 
