@@ -57,6 +57,11 @@ namespace TeamLLama
                 lblPassword.Text = "Password cannot be empty";
                 check = false;
             }
+            if (vc.isEmpty(txtConfirmPassword.Text))
+            {
+                lblConfirmPassword.Text = "Password cannot be empty";
+                check = false;
+            }
 
             if (vc.ComparePassword(txtPassword.Text, txtConfirmPassword.Text) == false)
                 {
