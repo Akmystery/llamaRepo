@@ -14,7 +14,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="nav menu pb-5" style="background-color:#b3ffcc;">
+        <div class="nav menu" style="background-color:#b3ffcc;">
             <a class="navbar-brand ml-2 pl-5 black" href="#">
                 <img src="images/logo.png" height="60px" width="60px" alt="logo" style="border-radius:50%;" />
                 <span class="pr-1" style="font-family: 'Karma', serif; font-weight:500; font-size:28px;">DOCTOR LLAMA</span>

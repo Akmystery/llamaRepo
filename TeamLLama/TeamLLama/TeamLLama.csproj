@@ -91,6 +91,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Content\style.css" />
+    <Content Include="images\logo.png" />
     <Content Include="Master_Page.Master" />
     <Content Include="Ak_testing.aspx" />
     <None Include="packages.config" />
