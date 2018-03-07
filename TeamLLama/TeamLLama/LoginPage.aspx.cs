@@ -57,10 +57,27 @@ namespace TeamLLama
             if (check == true)
             {
                 AccountVerificationSystem app = new AccountVerificationSystem();
-                if (app.LoginAccount(txtNRIC.Text, txtPassword.Text))
+                Account a = app.LoginAccount(txtNRIC.Text, txtPassword.Text);
+                if (a!=null)
                 {
-                    //Session.
-                    Response.Redirect("LoginPage.aspx", false);
+                    Session["Account"] = a;
+
+                    switch(a.accountType)
+                    {
+                        case "patient":
+                            Response.Redirect("HomePage.aspx", false);
+                            break;
+                        case "Doctor":
+                            Response.Redirect("DoctorHomePage.aspx", false);
+                            break;
+                        case "Admin":
+                            Response.Redirect("AdminHomePage.aspx", false);
+                            break;
+                        default:
+                            Response.Redirect("LoginPage.aspx", false);
+                            break;
+
+                    };
                 }
                 else
                     lblPassword.Text = "Invalid NRIC or password";

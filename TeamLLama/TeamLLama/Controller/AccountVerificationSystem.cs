@@ -10,7 +10,7 @@ namespace TeamLLama.Controller
 {
     public class AccountVerificationSystem
     {
-        public bool LoginAccount(string nric, string password)
+        public Account LoginAccount(string nric, string password)
         {
             Account a = new Account();
 
@@ -40,12 +40,7 @@ namespace TeamLLama.Controller
             conn.Close();
 
 
-            if (a.nric == null)
-                return false;
-            else
-            { 
-            return true;
-            }
+            return a;
         }
     }
 }
