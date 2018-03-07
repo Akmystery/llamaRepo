@@ -6,6 +6,7 @@ using System.Web;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using TeamLLama.Entity;
+using System.IO;
 
 namespace TeamLLama.Controller
 {
@@ -89,10 +90,47 @@ namespace TeamLLama.Controller
             }
             conn.Close();
 
-            if (a.nric == null)
+            if (a.nric != null)
                 return true;
             else
                 return false;
         }
+
+
+        public bool ImageCheck(String files)
+
+        {
+
+            string[] validFileTypes = {"gif", "png", "jpg", "jpeg"};
+
+            bool isValidFile = false;
+
+            for (int i = 0; i < validFileTypes.Length; i++)
+
+            {
+
+                if (files == "." + validFileTypes[i])
+
+                {
+
+                    isValidFile = true;
+                    break;
+
+
+                }
+
+            }
+
+            if (!isValidFile)
+
+            {
+
+                return false;
+            }
+            else
+                return true;
+
+        }
+
     }
 }

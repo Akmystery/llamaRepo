@@ -10,6 +10,7 @@ using System.Configuration;
 using MySql.Data.MySqlClient;
 using TeamLLama.Controller;
 using TeamLLama.Entity;
+using System.IO;
 
 namespace TeamLLama
 {
@@ -17,6 +18,7 @@ namespace TeamLLama
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //lblimg.ImageUrl = "~/images/logo.png"; //to load image
             /*string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
@@ -36,12 +38,14 @@ namespace TeamLLama
             }*/
         }
 
+        
+
         protected void Button2_Click(object sender, EventArgs e)
         {
             Validation vc = new Validation();
             bool check = true;
 
-            lblPassword.Text = lblAddress.Text = lblEmail.Text = lblName.Text = lblPassword.Text = "";
+            lblPassword.Text = lblAddress.Text = lblEmail.Text = lblName.Text = lblPassword.Text = lblConfirmPassword.Text = lblNric.Text = "";
             if (vc.isEmpty(txtName.Text))
             {
                 lblName.Text = "Name cannot be empty";
@@ -95,6 +99,16 @@ namespace TeamLLama
 
             }
 
+            if(ImageUpload.HasFile)
+            {
+                string ext = System.IO.Path.GetExtension(ImageUpload.PostedFile.FileName);
+                if (!vc.ImageCheck(ext))
+                { 
+                    check = false;
+                    lblImage.Text = "Invalid image type";
+                }
+            }
+
 
             if (check == true)
             {
@@ -105,9 +119,18 @@ namespace TeamLLama
                 a.email = txtEmail.Text;
                 a.address = txtAddress.Text;
 
+                if (ImageUpload.HasFile)
+                {  
+                    a.photo = Path.GetFileName(ImageUpload.PostedFile.FileName);
+                    ImageUpload.PostedFile.SaveAs(Server.MapPath("~/images/") + a.photo);
+                };
+            
+
                 AccountManagementSystem app = new AccountManagementSystem();
 
                 app.createAccount(a);
+
+                Response.Redirect("LoginPage.aspx", false);
 
             }
 

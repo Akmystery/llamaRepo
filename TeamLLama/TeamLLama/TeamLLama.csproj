@@ -94,6 +94,7 @@
     <Content Include="images\logo.png" />
     <Content Include="Master_Page.Master" />
     <Content Include="Ak_testing.aspx" />
+    <Content Include="LoginPage.aspx" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -205,6 +206,13 @@
     </Compile>
     <Compile Include="Ak_testing.aspx.designer.cs">
       <DependentUpon>Ak_testing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

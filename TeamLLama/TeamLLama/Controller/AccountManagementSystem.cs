@@ -51,7 +51,7 @@ namespace TeamLLama.Controller
             cmd.Parameters.AddWithValue("@password", a.password);
             cmd.Parameters.AddWithValue("@email", a.email);
             cmd.Parameters.AddWithValue("@address", a.address);
-            cmd.Parameters.AddWithValue("@photo", "http:abc.com");
+            cmd.Parameters.AddWithValue("@photo", a.photo);
 
             conn.Open();
             result = cmd.ExecuteNonQuery();
