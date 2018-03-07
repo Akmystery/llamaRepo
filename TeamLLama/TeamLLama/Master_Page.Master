@@ -20,8 +20,15 @@
                 <span class="pr-1" style="font-family: 'Karma', serif; font-weight:500; font-size:28px;">DOCTOR LLAMA</span>
             </a>
             <div class="navbar justify-content-end" style="width:70vw;">
+				<%if(Session["Account"] == null){%>
+
                 <a class="nav-item nav-link black" href="CreateAccount.aspx"><i class="fa fa-user-plus" aria-hidden="true">&nbsp;Sign-up</i></a>
                 <a class="nav-item nav-link black" href="LoginPage.aspx"><i class="fa fa-sign-in" aria-hidden="true">&nbsp;Login</i></a>
+
+				<% }else{%>
+				<a class="nav-item nav-link black" href="LoginPage.aspx"><i class="fa fa-sign-in" aria-hidden="true">&nbsp;Sign Out</i></a>
+				<asp:Label ID="lblUsername" runat="server" Text=""></asp:Label>
+				<%}%>
             </div>
         </div>
         

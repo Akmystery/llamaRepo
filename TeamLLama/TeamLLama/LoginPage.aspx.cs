@@ -13,6 +13,7 @@ namespace TeamLLama
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Session.Clear();
             //lblimg.ImageUrl = "~/images/logo.png"; //to load image
             /*string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
@@ -58,7 +59,13 @@ namespace TeamLLama
             {
                 AccountVerificationSystem app = new AccountVerificationSystem();
                 Account a = app.LoginAccount(txtNRIC.Text, txtPassword.Text);
-                if (a!=null)
+
+                if(a.nric==null)
+                {
+                    lblPassword.Text = "Invalid NRIC or password";
+                }
+
+                else if (a!=null)
                 {
                     Session["Account"] = a;
 
@@ -79,8 +86,8 @@ namespace TeamLLama
 
                     };
                 }
-                else
-                    lblPassword.Text = "Invalid NRIC or password";
+ 
+                    
 
             }
         }
