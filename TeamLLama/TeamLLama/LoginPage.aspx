@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Page.Master" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="TeamLLama.LoginPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-	<style type="text/css">
+    <style type="text/css">
 		.auto-style1 {
 			height: 26px;
 		}
@@ -14,8 +14,12 @@
 	</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
-	<h1>Login Page</h1>
-	<table style="width:100%;">
+    <div class="container text-center mt-5">
+    <img src="images/logo.png" width="100px" height="100px" style="border-radius:50%" />
+    <h3 class="font_style_one mt-2">DOCTOR LLAMA</h3>
+    </div>
+    <div class="content-wrap">
+        <table style="width:100%;">
 		<tr>
 			<td class="auto-style2">&nbsp;</td>
 			<td>&nbsp;</td>
@@ -38,7 +42,7 @@
 		<tr>
 			<td class="auto-style2">Password:</td>
 			<td>
-				<asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+				<asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
 			</td>
 			<td>&nbsp;</td>
 		</tr>
@@ -57,4 +61,5 @@
 			<td>&nbsp;</td>
 		</tr>
 	</table>
+    </div>
 </asp:Content>
