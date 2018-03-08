@@ -14,5 +14,6 @@ namespace TeamLLama.Entity
         public string time { get; set; }
         public string date { get; set; }
         public bool taken { get; set; }
+        public string comments { get; set; }
     }
 }

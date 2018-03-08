@@ -36,8 +36,6 @@
  </asp:Content>
 <asp:Content ID="c_content" ContentPlaceHolderID="ContentBody" runat="server">
 
-      <asp:ScriptManager ID="ScriptManager1" runat="server">
-</asp:ScriptManager>
         <div>
             <asp:Label ID="lblUpcoming" runat="server" Text="Upcoming Appointments"></asp:Label>
             <asp:GridView ID="grdUpcomingAppointment" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="false" PageSize="2" OnPageIndexChanging="grdUpcomingAppointment_PageIndexChanging" AllowPaging="True">
@@ -111,6 +109,7 @@
                 </Columns>
             </asp:GridView>
             <br />
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <asp:HiddenField ID="HiddenField1" runat="server" />
             <cc1:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panel1" TargetControlID="HiddenField1" CancelControlID="btnClose" BackgroundCssClass="modalBackground"></cc1:ModalPopupExtender>
             <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup" align="center" style = "display:none">
