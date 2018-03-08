@@ -32,7 +32,12 @@ namespace TeamLLama
 
         protected void Delete_Click(object sender, EventArgs e)
         {
-
+            Account a = new Account();
+            a = (Account)Session["Account"];
+            AccountManagementSystem app = new AccountManagementSystem();
+            app.DeleteAccount(a.accountID);
+            Session["Account"] = null;
+            Response.Redirect("HomePage.aspx");
         }
     }
 }

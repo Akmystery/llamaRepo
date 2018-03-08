@@ -26,7 +26,62 @@ namespace TeamLLama
         {
             Account a = new Account();
             a = (Account)Session["Account"];
+
+            Account update = new Account();
             AccountManagementSystem app = new AccountManagementSystem();
+
+            if(string.IsNullOrEmpty(txtNric.Text))
+            {
+                update.nric = txtNric.Text = a.nric;
+            }
+            else
+            {
+                update.nric = txtNric.Text;
+            }
+
+           if(string.IsNullOrEmpty(txtName.Text))
+            {
+                update.name = txtName.Text = a.name;
+            }
+            else
+            {
+                update.name = txtName.Text;
+            }
+
+            if(string.IsNullOrEmpty(txtEmail.Text))
+            {
+                update.email = txtEmail.Text = a.email;
+            }
+            else
+            {
+                update.email = txtEmail.Text;
+            }
+            if(!string.Equals(txtPassword.Text, txtConfirmPassword.Text)){
+
+                Response.Redirect("UpdateAccount.aspx");
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(txtPassword.Text))
+                {
+                    update.password = txtPassword.Text = a.password;
+                }
+                else
+                {
+                    update.password = txtPassword.Text;
+                }
+            }
+            
+            if(string.IsNullOrEmpty(txtAddress.Text))
+            {
+                update.address = txtAddress.Text = a.address;
+            }
+            else
+            {
+                update.address = txtAddress.Text;
+            }
+
+            Session["Account"] = update;
             app.UpdateAccount(txtName.Text, txtPassword.Text, txtEmail.Text, txtAddress.Text, txtNric.Text, a.accountID);
             Response.Redirect("AccountInfoPage.aspx");
         }

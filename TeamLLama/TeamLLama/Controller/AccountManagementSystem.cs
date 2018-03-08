@@ -111,5 +111,21 @@ namespace TeamLLama.Controller
             cmd.ExecuteNonQuery();
             conn.Close();
         }
+
+        public void DeleteAccount(int id)
+        {
+
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "DELETE FROM account WHERE account_id=@id";
+
+            var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
     }
 }

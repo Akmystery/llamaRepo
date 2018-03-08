@@ -10,7 +10,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
     <div class="container text-center">
-	<h1 class="font_style_one mt-5 mb-4">Update Account Info</h1>
+	<p class="font_style_one mt-5 mb-2">Update Account Info</p>
+    <p class="font_style_one mb-4" style="font-size:20px;">Please fill the fields that you want to update.</p>
     </div>
     <div class="content-wrap" style="max-width:810px;">
 		<table style="width:100%;">
@@ -36,7 +37,7 @@
 				<td class="auto-style2">Password</td>
 				<td>
 					
-				    <asp:TextBox ID="txtPassword" runat="server" Width="280px"></asp:TextBox>
+				    <asp:TextBox ID="txtPassword" runat="server" Width="280px" TextMode="Password"></asp:TextBox>
 					
 				<td>&nbsp;</td>
 			</tr>
@@ -44,10 +45,19 @@
 				<td class="auto-style2">Confirm Password</td>
 				<td>
 					
-				    <asp:TextBox ID="txtConfirmPassword" runat="server" Width="280px"></asp:TextBox>
+				    <asp:TextBox ID="txtConfirmPassword" runat="server" Width="280px" TextMode="Password"></asp:TextBox>
 					
 				<td>&nbsp;</td>
 			</tr>
+            <tr>
+			<td></td>
+			<td>
+				
+			    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" ErrorMessage="Passwords do not match!" ForeColor="Red"></asp:CompareValidator>
+				
+			</td>
+			<td></td>
+		    </tr>
 						<tr>
 				<td class="auto-style2">Email</td>
 				<td>

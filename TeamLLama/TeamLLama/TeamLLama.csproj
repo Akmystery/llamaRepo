@@ -99,6 +99,7 @@
     <Content Include="Master_Page.Master" />
     <Content Include="Ak_testing.aspx" />
     <Content Include="LoginPage.aspx" />
+    <Content Include="SignOut.aspx" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -253,6 +254,13 @@
     </Compile>
     <Compile Include="UpdateAccount.aspx.designer.cs">
       <DependentUpon>UpdateAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SignOut.aspx.cs">
+      <DependentUpon>SignOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SignOut.aspx.designer.cs">
+      <DependentUpon>SignOut.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
