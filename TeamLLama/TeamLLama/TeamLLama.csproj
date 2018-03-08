@@ -78,6 +78,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AccountInfoPage.aspx" />
     <Content Include="AdminHomePage.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -163,9 +164,17 @@
     <Content Include="Global.asax" />
     <Content Include="CreateAccount.aspx" />
     <Content Include="test.aspx" />
+    <Content Include="UpdateAccount.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountInfoPage.aspx.cs">
+      <DependentUpon>AccountInfoPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccountInfoPage.aspx.designer.cs">
+      <DependentUpon>AccountInfoPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminHomePage.aspx.cs">
       <DependentUpon>AdminHomePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -237,6 +246,13 @@
     </Compile>
     <Compile Include="LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateAccount.aspx.cs">
+      <DependentUpon>UpdateAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateAccount.aspx.designer.cs">
+      <DependentUpon>UpdateAccount.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

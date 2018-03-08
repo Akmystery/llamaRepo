@@ -27,7 +27,7 @@
 
 				<% }else{%>
 				<a class="nav-item nav-link black" href="LoginPage.aspx"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;Sign Out</i></a>
-                <a class="nav-item nav-link black" href="#.aspx"><asp:Label ID="lblUsername" runat="server" Text=""></asp:Label></a>
+                <a class="nav-item nav-link black" href="AccountInfoPage.aspx"><asp:Label ID="lblUsername" runat="server" Text=""></asp:Label></a>
 				<%}%>
             </div>
         </div>

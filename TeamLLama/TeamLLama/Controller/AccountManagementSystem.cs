@@ -89,5 +89,27 @@ namespace TeamLLama.Controller
             conn.Close();
             return a;
         }
+
+
+        public void UpdateAccount(String name, String password, String email, String address, String nric, int id)
+        {
+           
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "UPDATE account SET name=@name,password=@password,email=@email,address=@address,nric=@nric WHERE account_id=@id";
+
+            var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@nric", nric);
+            cmd.Parameters.AddWithValue("@name",name);
+            cmd.Parameters.AddWithValue("@password",password);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@address", address);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
     }
 }
