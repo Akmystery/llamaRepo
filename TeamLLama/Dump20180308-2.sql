@@ -69,7 +69,7 @@ CREATE TABLE `appointment` (
   CONSTRAINT `accountID` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `departmentID` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `facilityID` FOREIGN KEY (`facility_id`) REFERENCES `facility` (`facility_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,7 +78,7 @@ CREATE TABLE `appointment` (
 
 LOCK TABLES `appointment` WRITE;
 /*!40000 ALTER TABLE `appointment` DISABLE KEYS */;
-INSERT INTO `appointment` VALUES (1,1,1,1,'3.30','2018-03-05',0,NULL),(2,1,1,2,'4.20','2018-03-05',0,NULL),(3,1,1,3,'5.30','2018-03-07',0,NULL),(6,1,1,2,'10.30','2018-04-10',1,NULL),(8,1,1,1,'11.30','2018-04-11',1,NULL);
+INSERT INTO `appointment` VALUES (1,1,1,1,'3.30','2018-03-05',1,NULL),(2,1,1,2,'4.20','2018-03-05',0,NULL),(3,1,1,3,'5.30','2018-03-07',0,NULL),(6,1,1,2,'10.30','2018-04-10',0,NULL),(8,1,1,1,'11.30','2018-04-11',0,NULL),(10,1,1,1,'6.30','2018-03-15',0,NULL),(11,1,1,1,'12.30','2018-04-01',0,NULL);
 /*!40000 ALTER TABLE `appointment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,11 +119,7 @@ DROP TABLE IF EXISTS `doctor_appointment`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `doctor_appointment` (
   `account_id` int(11) NOT NULL,
-  `appointment_id` int(11) NOT NULL,
-  KEY `accountIdd_idx` (`account_id`),
-  KEY `appointmentId_idx` (`appointment_id`),
-  CONSTRAINT `accountIdd` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `appointmentId` FOREIGN KEY (`appointment_id`) REFERENCES `appointment` (`appointment_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `appointment_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -133,7 +129,7 @@ CREATE TABLE `doctor_appointment` (
 
 LOCK TABLES `doctor_appointment` WRITE;
 /*!40000 ALTER TABLE `doctor_appointment` DISABLE KEYS */;
-INSERT INTO `doctor_appointment` VALUES (2,6),(2,8);
+INSERT INTO `doctor_appointment` VALUES (2,1);
 /*!40000 ALTER TABLE `doctor_appointment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,7 +152,7 @@ CREATE TABLE `facility` (
   `region` varchar(45) NOT NULL,
   `image` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`facility_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -165,30 +161,31 @@ CREATE TABLE `facility` (
 
 LOCK TABLES `facility` WRITE;
 /*!40000 ALTER TABLE `facility` DISABLE KEYS */;
-INSERT INTO `facility` VALUES (1,'Hospital','GW hospital','i open de',999,'00:00','23:59','NTU','West',NULL);
+INSERT INTO `facility` VALUES (1,'Hospital','JURONG COMMUNITY HOSPITAL','test',67162000,'test','test','1 JURONG EAST STREET 21\nSINGAPORE 609606','Jurong East',NULL),(2,'Hospital','NG TENG FONG GENERAL HOSPITAL','test',67162000,'test','test','1 JURONG EAST STREET 21\nSINGAPORE 609606','Jurong East',NULL),(3,'Hospital','WEST POINT HOSPITAL','test',62625858,'test','test','235 CORPORATION DRIVE\nSINGAPORE 619771','Jurong East',NULL),(4,'Hospital','ST. LUKE\'S HOSPITAL','test',65632281,'test','test','2 BUKIT BATOK STREET 11\nSINGAPORE 659674','Bukit Batok',NULL),(5,'Hospital','NATIONAL UNIVERSITY HOSPITAL','test',67795555,'test','test','5 LOWER KENT RIDGE ROAD\nSINGAPORE 119074','Clementi',NULL),(6,'Hospital','GLENEAGLES HOSPITAL','test',64737222,'test','test','6A NAPIER ROAD\nSINGAPORE 258500','Holland',NULL),(7,'Hospital','ALEXANDRA HOSPITAL','test',64722000,'test','test','378 ALEXANDRA ROAD\nSINGAPORE 159964','Bukit Merah',NULL),(8,'Hospital','NATIONAL HEART CENTRE OF SINGAPORE','test',67048000,'test','test','5 HOSPITAL DRIVE\nSINGAPORE 169609','Bukit Merah',NULL),(9,'Hospital','SINGAPORE GENERAL HOSPITAL','test',62223322,'test','test','- OUTRAM ROAD\nSINGAPORE 169608','Bukit Merah',NULL),(10,'Hospital','RAFFLES HOSPITAL','test',63111111,'test','test','585 NORTH BRIDGE ROAD\nSINGAPORE 188770','Central',NULL),(11,'Hospital','KK WOMEN\'S AND CHILDREN\'S HOSPITAL','test',62934044,'test','test','100 BUKIT TIMAH ROAD\nSINGAPORE 229899','Orchard',NULL),(12,'Hospital','MOUNT ELIZABETH HOSPITAL','test',67372666,'test','test','3 MOUNT ELIZABETH\nSINGAPORE 228510','Orchard',NULL),(13,'Hospital','CONCORD INTERNATIONAL HOSPITAL','test',69333733,'test','test','19 ADAM ROAD\nSINGAPORE 289891','Novena',NULL),(14,'Hospital','MOUNT ELIZABETH NOVENA HOSPITAL','test',69330000,'test','test','38 IRRAWADDY ROAD\nSINGAPORE 329563','Novena',NULL),(15,'Hospital','REN CI COMMUNITY HOSPITAL','test',63580777,'test','test','71 IRRAWADDY ROAD\nSINGAPORE 329562','Novena',NULL),(16,'Hospital','TAN TOCK SENG HOSPITAL','test',62566011,'test','test','11 JALAN TAN TOCK SENG\nSINGAPORE 308433','Novena',NULL),(17,'Hospital','THOMSON MEDICAL CENTRE','test',62569494,'test','test','339 THOMSON ROAD\nSINGAPORE 307677','Novena',NULL),(18,'Hospital','KHOO TECK PUAT HOSPITAL','test',65558000,'test','test','90 YISHUN CENTRAL\nSINGAPORE 768828','Yishun',NULL),(19,'Hospital','ANG MO KIO - THYE HUA KWAN HOSPITAL','test',64538033,'test','test','17 ANG MO KIO AVE 9\nSINGAPORE 569766','Ang Mo Kio',NULL),(20,'Hospital','MOUNT ALVERNIA HOSPITAL','test',63476688,'test','test','820 THOMSON ROAD\nSINGAPORE 574623','Bishan',NULL),(21,'Hospital','BRIGHT VISION HOSPITAL','test',62485755,'test','test','5 LORONG NAPIRI\nSINGAPORE 547530','Sengkang/ Punggol',NULL),(22,'Hospital','INSTITUTE OF MENTAL HEALTH','test',63892000,'test','test','10 BUANGKOK VIEW\nSINGAPORE 539747','Hougang',NULL),(23,'Hospital','CHANGI GENERAL HOSPITAL','test',67888833,'test','test','2 SIMEI STREET 3\nSINGAPORE 529889','Tampines',NULL),(24,'Hospital','ST ANDREW\'S COMMUNITY HOSPITAL','test',65861000,'test','test','8 SIMEI STREET 3\nSINGAPORE 529895','Tampines',NULL),(25,'Hospital','COMPLEX MEDICAL CENTRE','test',65467392,'test','test','982 UPPER CHANGI ROAD NORTH\nSINGAPORE 507709','Changi',NULL);
 /*!40000 ALTER TABLE `facility` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `request_pool`
+-- Table structure for table `facility_staff`
 --
 
-DROP TABLE IF EXISTS `request_pool`;
+DROP TABLE IF EXISTS `facility_staff`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `request_pool` (
-  `department_id` int(11) NOT NULL,
-  `appointment_id` int(11) NOT NULL
+CREATE TABLE `facility_staff` (
+  `account_id` int(11) NOT NULL,
+  `department_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `request_pool`
+-- Dumping data for table `facility_staff`
 --
 
-LOCK TABLES `request_pool` WRITE;
-/*!40000 ALTER TABLE `request_pool` DISABLE KEYS */;
-/*!40000 ALTER TABLE `request_pool` ENABLE KEYS */;
+LOCK TABLES `facility_staff` WRITE;
+/*!40000 ALTER TABLE `facility_staff` DISABLE KEYS */;
+INSERT INTO `facility_staff` VALUES (2,1);
+/*!40000 ALTER TABLE `facility_staff` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -230,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-08 12:46:03
+-- Dump completed on 2018-03-08 22:03:06

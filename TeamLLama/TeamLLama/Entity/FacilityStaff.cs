@@ -5,9 +5,9 @@ using System.Web;
 
 namespace TeamLLama.Entity
 {
-    public class RequestPool
+    public class FacilityStaff
     {
-        public int department_id { get; set; }
-        public int appointment_id { get; set; }
+        public int accountID { get; set; }
+        public int departmentID { get; set; }
     }
 }
