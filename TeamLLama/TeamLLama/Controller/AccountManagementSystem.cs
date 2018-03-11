@@ -60,6 +60,58 @@ namespace TeamLLama.Controller
             return result;
         }
 
+        public int createDocAccount(Account a,int dept_id)
+        {
+            int result = 0;
+
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+
+            //to insert doc account
+            string query = "INSERT into account (account_type,name,nric,password,email,address,photo) VALUES (@account_type,@name,@nric,@password,@email,@address,@photo)";
+
+            var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@account_type", "Doctor");
+            cmd.Parameters.AddWithValue("@name", a.name);
+            cmd.Parameters.AddWithValue("@nric", a.nric);
+            cmd.Parameters.AddWithValue("@password", a.password);
+            cmd.Parameters.AddWithValue("@email", a.email);
+            cmd.Parameters.AddWithValue("@address", a.address);
+            cmd.Parameters.AddWithValue("@photo", a.photo);
+
+            conn.Open();
+
+            result = cmd.ExecuteNonQuery();
+
+
+            //to get doc id
+            string query2 = "SELECT account_id FROM account where nric= @nric";
+
+            var cmd2 = new MySqlCommand(query2, conn);
+            cmd2.Parameters.AddWithValue("@nric", a.nric);
+
+            var reader = cmd2.ExecuteReader();
+            int acc_id=0;
+            while (reader.Read())
+            {
+                acc_id = Convert.ToInt32(reader["account_id"]);
+            }
+            conn.Close();
+
+            //insert into facility Staff table
+            string query3 = "INSERT into facility_staff (account_id,department_id) VALUES (@account_id,@department_id)";
+
+            conn.Open();
+            var cmd3 = new MySqlCommand(query3, conn);
+            cmd3.Parameters.AddWithValue("@account_id", acc_id);
+            cmd3.Parameters.AddWithValue("@department_id", dept_id);   
+            result = cmd3.ExecuteNonQuery();
+
+            conn.Close();
+            return result;
+        }
+
         public Account GetAccount()
         {
             Account a = new Account();
@@ -127,5 +179,6 @@ namespace TeamLLama.Controller
             cmd.ExecuteNonQuery();
             conn.Close();
         }
+
     }
 }

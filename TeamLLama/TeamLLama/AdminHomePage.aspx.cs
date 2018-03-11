@@ -13,5 +13,13 @@ namespace TeamLLama
         {
 
         }
+
+        protected void CreateDocAcc_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminCreateAccPage.aspx", false);
+        }
+
+        protected void CreateFAcility_Click(object sender, EventArgs e)
+        { }
     }
 }

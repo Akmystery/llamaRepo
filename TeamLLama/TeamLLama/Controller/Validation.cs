@@ -65,7 +65,7 @@ namespace TeamLLama.Controller
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
-            string query = "SELECT * FROM account where NRIC = @nric";
+            string query = "SELECT * FROM account where nric = @nric";
 
 
 
