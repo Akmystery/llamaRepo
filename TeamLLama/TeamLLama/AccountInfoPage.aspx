@@ -12,8 +12,15 @@
     <div class="container text-center">
 	<h1 class="font_style_one mt-5 mb-4">Account Info</h1>
     </div>
-    <div class="content-wrap" style="max-width:810px;">
+    <div class="content-wrap" style="max-width:550px;">
 		<table style="width:100%;">
+             <tr>
+				<td class="auto-style2">Profile Picture:</td>
+				<td>
+				    <asp:Image ID="profilePic" runat="server" Height="150px" Width="150px" />	
+				</td>
+				<td>&nbsp;</td>
+			</tr>
             <tr>
 				<td class="auto-style2">NRIC:</td>
 				<td>

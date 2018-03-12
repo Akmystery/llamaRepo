@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TeamLLama.Controller;
 using TeamLLama.Entity;
+using System.IO;
 
 namespace TeamLLama
 {
@@ -15,11 +16,11 @@ namespace TeamLLama
         {
             Account a = new Account();
             a = (Account)Session["Account"];
-            txtNric.Attributes.Add("placeholder", a.nric);
-            txtName.Attributes.Add("placeholder", a.name);
+            txtNric.Text = a.nric;
+            txtName.Text = a.name;
             txtPassword.Attributes.Add("placeholder", a.password);
-            txtEmail.Attributes.Add("placeholder", a.email);
-            txtAddress.Attributes.Add("placeholder", a.address);
+            txtEmail.Text = a.email;
+            txtAddress.Text = a.address;
         }
 
         protected void UpDate_Click(object sender, EventArgs e)
@@ -80,9 +81,29 @@ namespace TeamLLama
             {
                 update.address = txtAddress.Text;
             }
+            Validation vc = new Validation();
+            if (ImageUpload.HasFile)
+            {
+                string ext = System.IO.Path.GetExtension(ImageUpload.PostedFile.FileName);
+                if (!vc.ImageCheck(ext))
+                {
+                    lblImage.Text = "Invalid image type";
+                }
+                else
+                {
+                    update.photo = Path.GetFileName(ImageUpload.PostedFile.FileName);
+                    ImageUpload.PostedFile.SaveAs(Server.MapPath("~/upload/") + update.photo);
+                }
+
+            }
+            else
+            {
+                update.photo = a.photo;
+            }
 
             Session["Account"] = update;
-            app.UpdateAccount(txtName.Text, txtPassword.Text, txtEmail.Text, txtAddress.Text, txtNric.Text, a.accountID);
+            app.UpdateAccount(txtName.Text, txtPassword.Text, txtEmail.Text, txtAddress.Text, txtNric.Text, update.photo, a.accountID);
+            Response.Write("<script>alert('Data inserted successfully')</script>");
             Response.Redirect("AccountInfoPage.aspx");
         }
     }

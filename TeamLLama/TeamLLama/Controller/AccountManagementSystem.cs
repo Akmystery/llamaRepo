@@ -143,13 +143,13 @@ namespace TeamLLama.Controller
         }
 
 
-        public void UpdateAccount(String name, String password, String email, String address, String nric, int id)
+        public void UpdateAccount(String name, String password, String email, String address, String nric, String photo,int id)
         {
            
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
-            string query = "UPDATE account SET name=@name,password=@password,email=@email,address=@address,nric=@nric WHERE account_id=@id";
+            string query = "UPDATE account SET name=@name,password=@password,email=@email,address=@address,nric=@nric,photo=@photo WHERE account_id=@id";
 
             var cmd = new MySqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@nric", nric);
@@ -157,6 +157,7 @@ namespace TeamLLama.Controller
             cmd.Parameters.AddWithValue("@password",password);
             cmd.Parameters.AddWithValue("@email", email);
             cmd.Parameters.AddWithValue("@address", address);
+            cmd.Parameters.AddWithValue("@photo", photo);
             cmd.Parameters.AddWithValue("@id", id);
 
             conn.Open();

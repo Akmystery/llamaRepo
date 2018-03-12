@@ -1,6 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Page.Master" AutoEventWireup="true" CodeBehind="UpdateAccount.aspx.cs" Inherits="TeamLLama.UpdateAccount" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
+        .auto-style1 {
+			width: 152px;
+            height: 25px;
+		}
 		.auto-style2 {
 			width: 152px;
             height: 50px;
@@ -51,7 +55,7 @@
 			</tr>
             <tr>
 			<td></td>
-			<td>
+			<td class="auto-style1">
 				
 			    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" ErrorMessage="Passwords do not match!" ForeColor="Red"></asp:CompareValidator>
 				
@@ -76,7 +80,20 @@
 				</td>
 				<td>&nbsp;</td>
 			</tr>
-						<tr>
+            <tr>
+				<td class="auto-style2">Image</td>
+				<td>
+					<asp:FileUpload ID="ImageUpload" runat="server" Width="280px" />
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="auto-style1"></td>
+				<td>
+					<asp:Label ID="lblImage" runat="server" ForeColor="Red"></asp:Label>
+				</td>
+			</tr>
+						<tr class="mb-5">
 				<td>
 				    <asp:Button ID="updateButton" runat="server" OnClick="UpDate_Click" Text="Update" />
 				</td>

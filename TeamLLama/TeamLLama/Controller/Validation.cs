@@ -109,7 +109,7 @@ namespace TeamLLama.Controller
 
             {
 
-                if (files == "." + validFileTypes[i])
+                if (files.ToLower() == "." + validFileTypes[i])
 
                 {
 
