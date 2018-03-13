@@ -46,6 +46,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -81,6 +85,7 @@
     <Content Include="AccountInfoPage.aspx" />
     <Content Include="AdminCreateAccPage.aspx" />
     <Content Include="AdminHomePage.aspx" />
+    <Content Include="BookAppointmentPage.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -94,6 +99,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Content\style.css" />
+    <Content Include="DoctorAppointmentPage.aspx" />
     <Content Include="DoctorHomePage.aspx" />
     <Content Include="FacilityList.aspx" />
     <Content Include="HomePage.aspx" />
@@ -101,6 +107,9 @@
     <Content Include="Master_Page.Master" />
     <Content Include="Ak_testing.aspx" />
     <Content Include="LoginPage.aspx" />
+    <Content Include="PatientAppointmentPage.aspx" />
+    <Content Include="PickAppointmentPage.aspx" />
+    <Content Include="ReferPatient.aspx" />
     <Content Include="SignOut.aspx" />
     <Content Include="CreateFacility.aspx" />
     <None Include="packages.config" />
@@ -193,12 +202,26 @@
     <Compile Include="AdminHomePage.aspx.designer.cs">
       <DependentUpon>AdminHomePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BookAppointmentPage.aspx.cs">
+      <DependentUpon>BookAppointmentPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookAppointmentPage.aspx.designer.cs">
+      <DependentUpon>BookAppointmentPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controller\AccountManagementSystem.cs" />
     <Compile Include="Controller\AccountVerificationSystem.cs" />
     <Compile Include="Controller\AppointmentManagementSystem.cs" />
     <Compile Include="Controller\FacilityManagementSystem.cs" />
     <Compile Include="Controller\ReviewControlSystem.cs" />
     <Compile Include="Controller\Validation.cs" />
+    <Compile Include="DoctorAppointmentPage.aspx.cs">
+      <DependentUpon>DoctorAppointmentPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DoctorAppointmentPage.aspx.designer.cs">
+      <DependentUpon>DoctorAppointmentPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DoctorHomePage.aspx.cs">
       <DependentUpon>DoctorHomePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -236,6 +259,20 @@
     <Compile Include="Master_Page.Master.designer.cs">
       <DependentUpon>Master_Page.Master</DependentUpon>
     </Compile>
+    <Compile Include="PatientAppointmentPage.aspx.cs">
+      <DependentUpon>PatientAppointmentPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientAppointmentPage.aspx.designer.cs">
+      <DependentUpon>PatientAppointmentPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PickAppointmentPage.aspx.cs">
+      <DependentUpon>PickAppointmentPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PickAppointmentPage.aspx.designer.cs">
+      <DependentUpon>PickAppointmentPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CreateAccount.aspx.cs">
       <DependentUpon>CreateAccount.aspx</DependentUpon>
@@ -243,6 +280,13 @@
     </Compile>
     <Compile Include="CreateAccount.aspx.designer.cs">
       <DependentUpon>CreateAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReferPatient.aspx.cs">
+      <DependentUpon>ReferPatient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReferPatient.aspx.designer.cs">
+      <DependentUpon>ReferPatient.aspx</DependentUpon>
     </Compile>
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
