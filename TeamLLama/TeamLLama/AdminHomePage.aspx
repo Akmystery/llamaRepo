@@ -7,31 +7,26 @@
 	</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
-    <div class="container text-center mt-5">
-    <img src="images/logo.png" width="100px" height="100px" style="border-radius:50%" />
-    <h3 class="font_style_one mt-2">DOCTOR LLAMA</h3>
-    </div>
-    <div class="content-wrap">
+    <div class="container">
         
-		<h2>ADMIN HOME PAGE</h2>
-			<table style="width:100%;">
-			<tr>
-				<td class="auto-style1">
-					<asp:Button ID="CreateAcc" runat="server" Text="Create Account" OnClick="CreateDocAcc_Click"/>
-				</td>
-				<td>
-					<asp:Button ID="CreateFacility" runat="server" Text="Create Facility" OnClick="CreateFAcility_Click"/>
-				</td>
-			</tr>
-			<tr>
-				<td class="auto-style1">&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			</table>
-		
+		<h2 class="text-center pt-3 pb-2 font_style_one">ADMIN HOME PAGE</h2>
+            <div class="row">
+                <div class="col">
+                    <p class="text-center font_style_one" style="font-size:20px;">Account Management</p>
+                    <div class="text-center">
+                    <asp:Button ID="Button1" runat="server" Text="Create Account" OnClick="CreateDocAcc_Click"/>
+                    </div>
+                </div>
+                <div class="col">
+                    <p class="text-center font_style_one" style="font-size:20px;">Facility Management</p>
+                    <div class="text-center pb-3">
+                    <asp:Button ID="Button2" runat="server" Text="Create Facility" OnClick="CreateFacility_Click"/>
+                    </div>
+                    <div class="text-center pb-3">
+                    <asp:Button ID="Button3" runat="server" Text="Open Facility List" OnClick="OpenFacility_Click"/>
+                    </div>
+                </div>
 
-
-
-
+            </div>
     </div>
 </asp:Content>

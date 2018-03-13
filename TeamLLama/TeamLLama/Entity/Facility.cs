@@ -16,6 +16,6 @@ namespace TeamLLama.Entity
         public string closingHrs { get; set; }
         public string address { get; set; }
         public string region { get; set; }
-
+        public string image { get; set; }
     }
 }

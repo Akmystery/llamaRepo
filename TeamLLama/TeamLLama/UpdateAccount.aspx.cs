@@ -92,7 +92,7 @@ namespace TeamLLama
                 else
                 {
                     update.photo = Path.GetFileName(ImageUpload.PostedFile.FileName);
-                    ImageUpload.PostedFile.SaveAs(Server.MapPath("~/upload/") + update.photo);
+                    ImageUpload.PostedFile.SaveAs(Server.MapPath("~/upload/user/") + update.photo);
                 }
 
             }

@@ -22,7 +22,7 @@ namespace TeamLLama
                 lblPassword.Text = a.password;
                 lblEmail.Text = a.email;
                 lblAddress.Text = a.address;
-                profilePic.ImageUrl = "~/upload/" + a.photo;
+                profilePic.ImageUrl = "~/upload/user/" + a.photo;
             }
         }
 

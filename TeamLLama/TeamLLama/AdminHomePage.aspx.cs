@@ -19,7 +19,15 @@ namespace TeamLLama
             Response.Redirect("AdminCreateAccPage.aspx", false);
         }
 
-        protected void CreateFAcility_Click(object sender, EventArgs e)
-        { }
+        protected void CreateFacility_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CreateFacility.aspx", false);
+
+        }
+
+        protected void OpenFacility_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FacilityList.aspx", false);
+        }
     }
 }

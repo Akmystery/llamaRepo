@@ -95,12 +95,14 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Content\style.css" />
     <Content Include="DoctorHomePage.aspx" />
+    <Content Include="FacilityList.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="images\logo.png" />
     <Content Include="Master_Page.Master" />
     <Content Include="Ak_testing.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="SignOut.aspx" />
+    <Content Include="CreateFacility.aspx" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -205,6 +207,13 @@
       <DependentUpon>DoctorHomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entity\Account.cs" />
+    <Compile Include="FacilityList.aspx.cs">
+      <DependentUpon>FacilityList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FacilityList.aspx.designer.cs">
+      <DependentUpon>FacilityList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -270,11 +279,19 @@
     <Compile Include="SignOut.aspx.designer.cs">
       <DependentUpon>SignOut.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CreateFacility.aspx.cs">
+      <DependentUpon>CreateFacility.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateFacility.aspx.designer.cs">
+      <DependentUpon>CreateFacility.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="upload\" />
+    <Folder Include="upload\facility\" />
+    <Folder Include="upload\user\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

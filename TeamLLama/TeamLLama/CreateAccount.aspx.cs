@@ -122,7 +122,7 @@ namespace TeamLLama
                 if (ImageUpload.HasFile)
                 {  
                     a.photo = Path.GetFileName(ImageUpload.PostedFile.FileName);
-                    ImageUpload.PostedFile.SaveAs(Server.MapPath("~/upload/") + a.photo);
+                    ImageUpload.PostedFile.SaveAs(Server.MapPath("~/upload/user/") + a.photo);
                 }
             
 

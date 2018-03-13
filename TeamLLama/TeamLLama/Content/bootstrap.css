@@ -634,6 +634,8 @@ pre code {
   -ms-flex-positive: 1;
   flex-grow: 1;
   max-width: 100%;
+    top: 0px;
+    left: 0px;
 }
 
 .col-auto {
