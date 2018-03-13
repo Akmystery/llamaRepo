@@ -4,14 +4,61 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 using System.Configuration;
-using TeamLLama.Controller;
 using TeamLLama.Entity;
+using System.Data;
+using System.Globalization;
 
 namespace TeamLLama.Controller
 {
     public class FacilityManagementSystem
     {
-        public void createFacility(Facility f)
+        
+
+        public DataTable GetFacility()
+        {
+            Facility f = new Facility();
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "SELECT * FROM facility";
+
+            var cmd = new MySqlCommand(query, conn);
+
+            conn.Open();
+            var reader = cmd.ExecuteReader();
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Name");
+            dt.Columns.Add("Type");
+            dt.Columns.Add("GeneralInfo");
+            dt.Columns.Add("PhoneNumber");
+            dt.Columns.Add("OpeningHrs");
+            dt.Columns.Add("ClosingHrs");
+            dt.Columns.Add("Address");
+            dt.Columns.Add("Region");
+
+            int i = 0;
+
+            while (reader.Read())
+            {
+                dt.Rows.Add();
+                dt.Rows[i]["ID"] = Convert.ToInt32(reader["facility_id"]);
+                dt.Rows[i]["Name"] = reader["facility_name"].ToString();
+                dt.Rows[i]["Type"] = reader["facility_type"].ToString();
+                dt.Rows[i]["GeneralInfo"] = reader["generalInfo"].ToString();
+                dt.Rows[i]["PhoneNumber"] = Convert.ToInt32(reader["phoneNumber"]);
+                dt.Rows[i]["OpeningHrs"] = reader["openingHrs"].ToString();
+                dt.Rows[i]["ClosingHrs"] = reader["closingHrs"].ToString();
+                dt.Rows[i]["Address"] = reader["address"].ToString();
+                dt.Rows[i]["Region"] = reader["region"].ToString();
+                i++;
+            }
+            conn.Close();
+            return dt;
+        }
+
+        public void CreateFacility(Facility f)
         {
             int result = 0;
 

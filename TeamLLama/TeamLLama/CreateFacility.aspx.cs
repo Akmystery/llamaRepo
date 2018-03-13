@@ -88,7 +88,7 @@ namespace TeamLLama
 
                 FacilityManagementSystem app = new FacilityManagementSystem();
 
-                app.createFacility(f);
+                app.CreateFacility(f);
 
                 Response.Redirect("AdminHomePage.aspx", false);
 

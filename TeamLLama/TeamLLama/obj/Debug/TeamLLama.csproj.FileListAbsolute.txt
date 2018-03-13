@@ -42,3 +42,14 @@ D:\LlamaRepo\TeamLLama\TeamLLama\bin\MySql.Data.xml
 D:\LlamaRepo\TeamLLama\TeamLLama\obj\Debug\TeamLLama.csprojResolveAssemblyReference.cache
 D:\LlamaRepo\TeamLLama\TeamLLama\obj\Debug\TeamLLama.dll
 D:\LlamaRepo\TeamLLama\TeamLLama\obj\Debug\TeamLLama.pdb
+C:\Users\Arkar\Desktop\ProjectLLama\TeamLLama\TeamLLama\bin\TeamLLama.dll.config
+C:\Users\Arkar\Desktop\ProjectLLama\TeamLLama\TeamLLama\bin\TeamLLama.dll
+C:\Users\Arkar\Desktop\ProjectLLama\TeamLLama\TeamLLama\bin\TeamLLama.pdb
+C:\Users\Arkar\Desktop\ProjectLLama\TeamLLama\TeamLLama\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Arkar\Desktop\ProjectLLama\TeamLLama\TeamLLama\bin\MySql.Data.dll
+C:\Users\Arkar\Desktop\ProjectLLama\TeamLLama\TeamLLama\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Arkar\Desktop\ProjectLLama\TeamLLama\TeamLLama\bin\MySql.Data.xml
+C:\Users\Arkar\Desktop\ProjectLLama\TeamLLama\TeamLLama\obj\Debug\TeamLLama.csprojResolveAssemblyReference.cache
+C:\Users\Arkar\Desktop\ProjectLLama\TeamLLama\TeamLLama\obj\Debug\TeamLLama.csproj.CoreCompileInputs.cache
+C:\Users\Arkar\Desktop\ProjectLLama\TeamLLama\TeamLLama\obj\Debug\TeamLLama.dll
+C:\Users\Arkar\Desktop\ProjectLLama\TeamLLama\TeamLLama\obj\Debug\TeamLLama.pdb
