@@ -19,27 +19,27 @@ namespace TeamLLama
             FacilityManagementSystem app = new FacilityManagementSystem();
             Facility f = new Facility();
             f = app.GetFacility(id);
-            txtName.Text = f.facilityName;
-            txtType.Text = f.facilityType;
-            txtGeneralInfo.Text = f.generalInfo;
-            txtPhoneNumber.Text = f.phoneNumber.ToString();
-            txtOpeningHrs.Text = f.openingHrs;
-            txtClosingHrs.Text = f.closingHrs;
-            txtAddress.Text = f.address;
-            txtRegion.Text = f.region;
+            txtName.Attributes.Add("placeholder",f.facilityName);
+            txtType.Attributes.Add("placeholder",f.facilityType);
+            txtGeneralInfo.Attributes.Add("placeholder", f.generalInfo);
+            txtPhoneNumber.Attributes.Add("placeholder", f.phoneNumber.ToString());
+            txtOpeningHrs.Attributes.Add("placeholder", f.openingHrs);
+            txtClosingHrs.Attributes.Add("placeholder", f.closingHrs);
+            txtAddress.Attributes.Add("placeholder", f.address);
+            txtRegion.Attributes.Add("placeholder", f.region);
         }
 
         protected void UpDate_Click(object sender, EventArgs e)
         {
-            Validation vc = new Validation();
             String id = (String)Session["fac_id"];
+            Validation vc = new Validation();
             FacilityManagementSystem app = new FacilityManagementSystem();
             Facility f = new Facility();
             f = app.GetFacility(id);
 
             if (string.IsNullOrEmpty(txtName.Text))
             {
-                 txtName.Text = f.facilityName;
+                txtName.Text = f.facilityName;
             }
 
             if (string.IsNullOrEmpty(txtType.Text))
@@ -51,6 +51,7 @@ namespace TeamLLama
             {
                 txtGeneralInfo.Text = f.generalInfo;
             }
+
             if (string.IsNullOrEmpty(txtPhoneNumber.Text))
             {
                 txtPhoneNumber.Text = f.phoneNumber.ToString();
@@ -65,17 +66,19 @@ namespace TeamLLama
             {
                 txtClosingHrs.Text = f.closingHrs;
             }
- 
+
             if (string.IsNullOrEmpty(txtAddress.Text))
             {
                 txtAddress.Text = f.address;
             }
-        
+
             if (string.IsNullOrEmpty(txtRegion.Text))
             {
                 txtRegion.Text = f.region;
             }
+
             String image = f.image;
+
             if (ImageUpload.HasFile)
             {
                 string ext = System.IO.Path.GetExtension(ImageUpload.PostedFile.FileName);
@@ -90,7 +93,8 @@ namespace TeamLLama
                 }
 
             }
-            app.UpdateFacility(txtName.Text, txtType.Text, txtGeneralInfo.Text, txtPhoneNumber.Text, txtOpeningHrs.Text, txtClosingHrs.Text, txtAddress.Text, txtRegion.Text, image, id);
+
+            app.UpdateFacility(txtName.Text, txtType.Text, txtGeneralInfo.Text, Convert.ToInt32(txtPhoneNumber.Text), txtOpeningHrs.Text, txtClosingHrs.Text, txtAddress.Text, txtRegion.Text, image, f.facilityID);
 
 
             Response.Redirect("FacilityListPage.aspx", false);

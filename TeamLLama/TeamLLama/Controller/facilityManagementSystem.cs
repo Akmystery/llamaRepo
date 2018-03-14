@@ -114,8 +114,7 @@ namespace TeamLLama.Controller
             conn.Close();
         }
 
-        public void UpdateFacility(String name, String type, String generalinfo, String phoneNumber, String openingHrs, String closingHrs,
-            String Address, String Region, String image, String id)
+        public void UpdateFacility(String name, String type, String generalinfo, int phoneNumber, String openingHrs, String closingHrs, String Address, String Region, String image, int id)
         {
 
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
