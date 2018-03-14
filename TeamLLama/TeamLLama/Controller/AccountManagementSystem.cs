@@ -5,6 +5,7 @@ using System.Web;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using TeamLLama.Entity;
+using System.Data;
 
 namespace TeamLLama.Controller
 {
@@ -179,6 +180,47 @@ namespace TeamLLama.Controller
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
+        }
+
+        public DataTable getAllDoctorAcc()
+        {
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "SELECT account.account_id AS 'ID',photo,name,nric,facility_name,department_name FROM account,facility_staff,department,facility where account.account_id=facility_staff.account_id AND facility_staff.department_id = department.department_id AND department.facility_id = facility.facility_id";
+
+
+            var cmd = new MySqlCommand(query, conn);
+            conn.Open();
+            var reader = cmd.ExecuteReader();
+
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Photo");
+            dt.Columns.Add("Name");
+            dt.Columns.Add("NRIC");
+            dt.Columns.Add("Facility");
+            dt.Columns.Add("Department");
+
+            int i = 0;
+
+
+            while (reader.Read())
+            {
+
+                dt.Rows.Add();
+                dt.Rows[i]["ID"] = reader["ID"].ToString();
+                dt.Rows[i]["Photo"] = reader["photo"].ToString();
+                dt.Rows[i]["Name"] = reader["name"].ToString();
+                dt.Rows[i]["NRIC"] = reader["nric"].ToString();
+                dt.Rows[i]["Facility"] = reader["facility_name"].ToString();
+                dt.Rows[i]["Department"] = reader["department_name"].ToString();
+
+                i++;
+
+            }
+            return dt;
         }
 
     }

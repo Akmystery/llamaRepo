@@ -84,6 +84,7 @@
   <ItemGroup>
     <Content Include="AccountInfoPage.aspx" />
     <Content Include="AdminCreateAccPage.aspx" />
+    <Content Include="AdminDeleteAccPage.aspx" />
     <Content Include="AdminHomePage.aspx" />
     <Content Include="BookAppointmentPage.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -195,6 +196,13 @@
     </Compile>
     <Compile Include="AdminCreateAccPage.aspx.designer.cs">
       <DependentUpon>AdminCreateAccPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDeleteAccPage.aspx.cs">
+      <DependentUpon>AdminDeleteAccPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDeleteAccPage.aspx.designer.cs">
+      <DependentUpon>AdminDeleteAccPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminHomePage.aspx.cs">
       <DependentUpon>AdminHomePage.aspx</DependentUpon>
