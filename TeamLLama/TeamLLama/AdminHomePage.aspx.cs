@@ -27,7 +27,7 @@ namespace TeamLLama
 
         protected void OpenFacility_Click(object sender, EventArgs e)
         {
-            Response.Redirect("FacilityList.aspx", false);
+            Response.Redirect("FacilityListPage.aspx", false);
         }
     }
 }

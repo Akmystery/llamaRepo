@@ -101,7 +101,7 @@
     <Content Include="Content\style.css" />
     <Content Include="DoctorAppointmentPage.aspx" />
     <Content Include="DoctorHomePage.aspx" />
-    <Content Include="FacilityList.aspx" />
+    <Content Include="FacilityListPage.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="images\logo.png" />
     <Content Include="Master_Page.Master" />
@@ -178,6 +178,7 @@
     <Content Include="CreateAccount.aspx" />
     <Content Include="test.aspx" />
     <Content Include="UpdateAccount.aspx" />
+    <Content Include="UpdateFacilityPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -230,12 +231,12 @@
       <DependentUpon>DoctorHomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entity\Account.cs" />
-    <Compile Include="FacilityList.aspx.cs">
-      <DependentUpon>FacilityList.aspx</DependentUpon>
+    <Compile Include="FacilityListPage.aspx.cs">
+      <DependentUpon>FacilityListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FacilityList.aspx.designer.cs">
-      <DependentUpon>FacilityList.aspx</DependentUpon>
+    <Compile Include="FacilityListPage.aspx.designer.cs">
+      <DependentUpon>FacilityListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -329,6 +330,13 @@
     </Compile>
     <Compile Include="CreateFacility.aspx.designer.cs">
       <DependentUpon>CreateFacility.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateFacilityPage.aspx.cs">
+      <DependentUpon>UpdateFacilityPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateFacilityPage.aspx.designer.cs">
+      <DependentUpon>UpdateFacilityPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -58,6 +58,35 @@ namespace TeamLLama.Controller
             return dt;
         }
 
+        public Facility GetFacility(String id)
+        {
+            Facility f = new Facility();
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "SELECT * FROM facility WHERE facility_id=@id";
+
+            var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            conn.Open();
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                f.facilityID = Convert.ToInt32(reader["facility_id"]);
+                f.facilityName = reader["facility_name"].ToString();
+                f.facilityType = reader["facility_type"].ToString();
+                f.generalInfo = reader["generalInfo"].ToString();
+                f.phoneNumber = Convert.ToInt32(reader["phoneNumber"]);
+                f.openingHrs = reader["openingHrs"].ToString();
+                f.closingHrs = reader["closingHrs"].ToString();
+                f.address = reader["address"].ToString();
+                f.region = reader["region"].ToString();
+            }
+            conn.Close();
+            return f;
+        }
+
         public void CreateFacility(Facility f)
         {
             int result = 0;
@@ -82,6 +111,49 @@ namespace TeamLLama.Controller
             conn.Open();
             result = cmd.ExecuteNonQuery();
 
+            conn.Close();
+        }
+
+        public void UpdateFacility(String name, String type, String generalinfo, String phoneNumber, String openingHrs, String closingHrs,
+            String Address, String Region, String image, String id)
+        {
+
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "UPDATE facility SET facility_name=@name,facility_type=@type,generalInfo=@generalInfo,phoneNumber=@phoneNumber,openingHrs=@openingHrs,closingHrs=@closingHrs," +
+                "address=@address,region=@region,image=@image WHERE facility_id=@id";
+
+            var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@type", type);
+            cmd.Parameters.AddWithValue("@generalInfo", generalinfo);
+            cmd.Parameters.AddWithValue("@phoneNumber", phoneNumber);
+            cmd.Parameters.AddWithValue("@openingHrs", openingHrs);
+            cmd.Parameters.AddWithValue("@closingHrs", closingHrs);
+            cmd.Parameters.AddWithValue("@address", Address);
+            cmd.Parameters.AddWithValue("@region", Region);
+            cmd.Parameters.AddWithValue("@image", image);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void DeleteFacility(String id)
+        {
+
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "DELETE FROM facility WHERE facility_id=@id";
+
+            var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
             conn.Close();
         }
     }
