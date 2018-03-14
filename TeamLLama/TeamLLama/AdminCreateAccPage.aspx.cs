@@ -127,6 +127,7 @@ namespace TeamLLama
 
                 app.createDocAccount(a,deptID);
 
+                txtAddress.Text = txtEmail.Text = txtName.Text = txtNric.Text = "";
                 lblPassword.Text = lblAddress.Text = lblEmail.Text = lblName.Text = lblPassword.Text = lblConfirmPassword.Text = lblNric.Text = "";
                 lblResult.Text = "Created successfully";
 

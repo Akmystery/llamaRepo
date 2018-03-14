@@ -13,8 +13,11 @@
             <div class="row">
                 <div class="col">
                     <p class="text-center font_style_one" style="font-size:20px;">Account Management</p>
-                    <div class="text-center">
+                    <div class="text-center pb-3">
                     <asp:Button ID="Button1" runat="server" Text="Create Account" OnClick="CreateDocAcc_Click"/>
+                    </div>
+					<div class="text-center pb-3">
+                    <asp:Button ID="Button4" runat="server" Text="Delete Account" OnClick="DeleteDocAcc_Click"/>
                     </div>
                 </div>
                 <div class="col">

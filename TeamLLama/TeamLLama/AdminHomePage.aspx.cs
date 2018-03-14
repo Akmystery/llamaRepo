@@ -29,5 +29,11 @@ namespace TeamLLama
         {
             Response.Redirect("FacilityListPage.aspx", false);
         }
+
+        protected void DeleteDocAcc_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminDeleteAccPage.aspx", false);
+        }
+        
     }
 }
