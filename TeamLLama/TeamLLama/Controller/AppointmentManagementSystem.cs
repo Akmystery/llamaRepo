@@ -12,37 +12,48 @@ namespace TeamLLama.Controller
 {
     public class AppointmentManagementSystem
     {
-        public int bookAppointment()
+        static string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+
+        public int bookAppointment(Appointment a)
         {
             int result = 0;
+            
+            //insert values into database and redirect to patientappointment page
+            DateTime date = Convert.ToDateTime(a.date.Trim());
+            string dateString = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
 
-            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
-            var conn = new MySqlConnection(dbConnectionString);
+            MySqlConnection connection = new MySqlConnection(dbConnectionString);
 
-            string query = "INSERT into appointment (account_id,facility_id,department_id,time,date) VALUES (@accountID,@facilityID,@departmentID,@time,@date)";
+            string insertData = "insert into appointment(account_id, facility_id, department_id, time, date, taken, comments)" +
+                                  "values (@account_id, @facility_id, @department_id, @time, @date, @taken, @comments)";
 
-            var cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@accountID", 1);
-            cmd.Parameters.AddWithValue("@facilityID", 1);
-            cmd.Parameters.AddWithValue("@departmentID", 1);
-            cmd.Parameters.AddWithValue("@time", "3.30");
-            cmd.Parameters.AddWithValue("@date", "05/03/18");
+            MySqlCommand command = new MySqlCommand(insertData, connection);
 
-            conn.Open();
-            result = cmd.ExecuteNonQuery();
+            command.Parameters.AddWithValue("@account_id", a.accountID);
+            command.Parameters.AddWithValue("@facility_id", a.facilityID);
+            command.Parameters.AddWithValue("@department_id", a.departmentID);
+            command.Parameters.AddWithValue("@time", a.time);
+            command.Parameters.AddWithValue("@date", date);
+            command.Parameters.AddWithValue("@taken", "0");
+            command.Parameters.AddWithValue("@comments", " ");
 
-            conn.Close();
+            connection.Open();
+            var reader = command.ExecuteNonQuery();
+            connection.Close();
+
+            result = reader;
+
             return result;
         }
         public Appointment GetAppointment()
         {
             Appointment a = new Appointment();
 
-            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            //string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
             string query = "SELECT * FROM appointment";
-            
+
             var cmd = new MySqlCommand(query, conn);
             //cmd.Parameters.AddWithValue("@idTest", 1);
 
@@ -52,9 +63,9 @@ namespace TeamLLama.Controller
             while (reader.Read())
             {
                 a.appointmentID = Convert.ToInt32(reader["appointment_id"]);
-                a.accountID= Convert.ToInt32(reader["account_id"]);
-                a.facilityID= Convert.ToInt32(reader["facility_id"]);
-                a.departmentID= Convert.ToInt32(reader["department_id"]);
+                a.accountID = Convert.ToInt32(reader["account_id"]);
+                a.facilityID = Convert.ToInt32(reader["facility_id"]);
+                a.departmentID = Convert.ToInt32(reader["department_id"]);
                 a.time = reader["time"].ToString();
                 a.date = reader["date"].ToString();
                 a.taken = Convert.ToBoolean(reader["taken"]);
@@ -64,12 +75,12 @@ namespace TeamLLama.Controller
         }
         public DataTable getUpcomingAppointments(int accountID)
         {
-            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            //string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
-           string query= "SELECT appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', time As 'Time' from appointment, facility, department where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND account_id=@account AND date >=@date  ORDER BY date";
+            string query = "SELECT appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', TIME_FORMAT(time, '%h:%i%p') As 'Time' from appointment, facility, department where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND account_id=@account AND date >=@date  ORDER BY date";
 
-            
+
             var cmd = new MySqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@account", accountID);
             cmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("yyyy-MM-dd"));
@@ -100,16 +111,19 @@ namespace TeamLLama.Controller
                 i++;
 
             }
+            reader.Close();
+            conn.Close();
+
             return dt;
         }
         public DataTable getAppointmentHistory(int accountID)
         {
-            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            //string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
-            string query= "SELECT appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', time As 'Time' from appointment, facility, department where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND account_id=@account AND date <@date  ORDER BY date";
-            
-            
+            string query = "SELECT appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', TIME_FORMAT(time, '%h:%i%p') As 'Time' from appointment, facility, department where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND account_id=@account AND date <@date  ORDER BY date";
+
+
             var cmd = new MySqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@account", accountID);
             cmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("yyyy-MM-dd"));
@@ -140,16 +154,19 @@ namespace TeamLLama.Controller
                 i++;
 
             }
+            reader.Close();
+            conn.Close();
+
             return dt;
         }
         public Appointment getPatientAppointment(string appointmentID)
         {
             Appointment ap = new Appointment();
 
-            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            //string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
-            string query = "SELECT appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', time As 'Time' from appointment, facility, department where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND appointment_id=@appointmentID";
+            string query = "SELECT appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', TIME_FORMAT(time, '%h:%i%p') As 'Time' from appointment, facility, department where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND appointment_id=@appointmentID";
             var cmd = new MySqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
 
@@ -160,9 +177,9 @@ namespace TeamLLama.Controller
             {
                 ap.appointmentID = Convert.ToInt32(reader["ID"]);
                 ap.date = String.Format("{0:dd/MM/yyyy}", reader["date"]);
-                ap.facilityName= reader["Facility"].ToString();
+                ap.facilityName = reader["Facility"].ToString();
                 ap.departmentName = reader["Department"].ToString();
-                ap.time= reader["Time"].ToString();
+                ap.time = reader["Time"].ToString();
             }
 
             reader.Close();
@@ -174,7 +191,7 @@ namespace TeamLLama.Controller
         {
             int result = 0;
 
-            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            //string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
             string query = "SELECT taken from appointment WHERE appointment_id=@appointmentID";
@@ -207,9 +224,9 @@ namespace TeamLLama.Controller
 
             return result;
         }
-        public DataTable getRequestPool(int accountID, string dateFrom,string dateTo)
+        public DataTable getRequestPool(int accountID, string dateFrom, string dateTo)
         {
-            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            //string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
             string query1 = "SELECT department_id from facility_staff where account_id=@accountID";
@@ -228,7 +245,7 @@ namespace TeamLLama.Controller
 
             conn.Close();
 
-            string query = "SELECT appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', time As 'Time' from appointment, facility, department where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND taken=0 AND appointment.department_id=@departmentID AND date >=@dateFrom AND date <=@dateTo ORDER BY date";
+            string query = "SELECT appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', TIME_FORMAT(time, '%h:%i%p') As 'Time' from appointment, facility, department where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND taken=0 AND appointment.department_id=@departmentID AND date >=@dateFrom AND date <=@dateTo ORDER BY date";
 
 
             var cmd = new MySqlCommand(query, conn);
@@ -267,13 +284,16 @@ namespace TeamLLama.Controller
                 i++;
 
             }
+            reader.Close();
+            conn.Close();
+
             return dt;
         }
-        public int pickAppointment(string id,int accountID)
+        public int pickAppointment(string id, int accountID)
         {
             int result = 0;
 
-            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            //string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
             string query = "SELECT taken from appointment WHERE appointment_id=@appointmentID";
@@ -305,6 +325,179 @@ namespace TeamLLama.Controller
 
             result = reader1;
             return result;
+        }
+        public DataTable getDoctorAppointmentHistory(int accountID)
+        {
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "SELECT appointment.appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', TIME_FORMAT(time, '%h:%i%p') As 'Time' from appointment, facility, department,doctor_appointment where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND appointment.appointment_id=doctor_appointment.appointment_id AND doctor_appointment.account_id=@account AND date <@date";
+
+            var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@account", accountID);
+            cmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("yyyy-MM-dd"));
+            conn.Open();
+            var reader = cmd.ExecuteReader();
+
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Date");
+            dt.Columns.Add("Facility");
+            dt.Columns.Add("Department");
+            dt.Columns.Add("Time");
+
+            int i = 0;
+
+
+            while (reader.Read())
+            {
+
+                dt.Rows.Add();
+                dt.Rows[i]["ID"] = reader["ID"].ToString();
+                dt.Rows[i]["Date"] = String.Format("{0:dd/MM/yyyy}", reader["date"]);
+                dt.Rows[i]["Facility"] = reader["Facility"].ToString();
+                dt.Rows[i]["Department"] = reader["Department"].ToString();
+                dt.Rows[i]["Time"] = reader["Time"].ToString();
+
+                i++;
+
+            }
+            reader.Close();
+            conn.Close();
+
+            return dt;
+        }
+        public DataTable getDoctorUpcomingAppointment(int accountID)
+        {
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "SELECT appointment.appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', TIME_FORMAT(time, '%h:%i%p') As 'Time' from appointment, facility, department,doctor_appointment where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND appointment.appointment_id=doctor_appointment.appointment_id AND doctor_appointment.account_id=@account AND date >=@date";
+
+            var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@account", accountID);
+            cmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("yyyy-MM-dd"));
+            conn.Open();
+            var reader = cmd.ExecuteReader();
+
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Date");
+            dt.Columns.Add("Facility");
+            dt.Columns.Add("Department");
+            dt.Columns.Add("Time");
+
+            int i = 0;
+
+
+            while (reader.Read())
+            {
+
+                dt.Rows.Add();
+                dt.Rows[i]["ID"] = reader["ID"].ToString();
+                dt.Rows[i]["Date"] = String.Format("{0:dd/MM/yyyy}", reader["date"]);
+                dt.Rows[i]["Facility"] = reader["Facility"].ToString();
+                dt.Rows[i]["Department"] = reader["Department"].ToString();
+                dt.Rows[i]["Time"] = reader["Time"].ToString();
+
+                i++;
+
+            }
+            reader.Close();
+            conn.Close();
+
+            return dt;
+        }
+        public List<Facility> getFacilities()
+        {
+            List<Facility> f = new List<Facility>();
+            using (MySqlConnection conn = new MySqlConnection(dbConnectionString))
+            {
+                string FacQuery = "SELECT facility_id, facility_name from facility";
+                MySqlCommand FacCmd = new MySqlCommand(FacQuery, conn);
+                conn.Open();
+
+                MySqlDataReader dr;
+                dr = FacCmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Facility f1 = new Facility();
+                    f1.facilityID = Convert.ToInt32(dr["facility_id"]);
+                    f1.facilityName = dr["facility_name"].ToString();
+                    f.Add(f1);
+                }
+                conn.Close();
+
+            }
+            return f;
+        }
+        public List<Department> getDepartments(string hospitalSelected)
+        {
+            List<Department> d = new List<Department>();
+            using (MySqlConnection conn = new MySqlConnection(dbConnectionString))
+            {
+                string FacQuery = "Select department_id, department_name from department where facility_id = @s";
+                MySqlCommand FacCmd = new MySqlCommand(FacQuery, conn);
+                FacCmd.Parameters.AddWithValue("@s", hospitalSelected);
+                conn.Open();
+
+                MySqlDataReader dr;
+                dr = FacCmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Department d1 = new Department();
+                    d1.departmentID = Convert.ToInt32(dr["department_id"]);
+                    d1.departmentName = dr["department_name"].ToString();
+                    d.Add(d1);
+                }
+                conn.Close();
+                
+            }
+            return d;
+        }
+        public Facility getOpeningHrs(string hospitalSelected)
+        {
+            Facility f1 = new Facility();
+            using (MySqlConnection conn = new MySqlConnection(dbConnectionString))
+            {
+                string FacQuery = "SELECT TIME_FORMAT(openingHrs, '%H%i%p') openingHrs,TIME_FORMAT(closingHrs, '%H%i%p') closingHrs,TIME_FORMAT(openingHrs, '%h %i%p') opHrs,TIME_FORMAT(closingHrs, '%h %i%p') clHrs from facility where facility_id = @s";
+                MySqlCommand FacCmd = new MySqlCommand(FacQuery, conn);
+                FacCmd.Parameters.AddWithValue("@s", hospitalSelected);
+                conn.Open();
+
+                MySqlDataReader dr;
+                dr = FacCmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    
+                    f1.openingHrs = dr["openingHrs"].ToString();
+                    f1.closingHrs = dr["closingHrs"].ToString();
+                    f1.generalInfo = dr["opHrs"].ToString();
+                    f1.region = dr["clHrs"].ToString();
+                }
+                conn.Close();
+
+            }
+            return f1;
+        }
+        public Account getAccount(int id)
+        {
+            Account a = new Account();
+
+            MySqlConnection conn = new MySqlConnection(dbConnectionString);
+            string NameQuery = "SELECT account_id, name from account where account_type = 'patient' and account_id=@id";
+            MySqlCommand NameCmd = new MySqlCommand(NameQuery, conn);
+            NameCmd.Parameters.AddWithValue("@id", id);
+            conn.Open();
+            var reader = NameCmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                a.accountID = Convert.ToInt32(reader["account_id"]);
+                a.name = reader["name"].ToString();
+            }
+            conn.Close();
+            return a;
         }
     }
 }

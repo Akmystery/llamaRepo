@@ -19,7 +19,14 @@ namespace TeamLLama
         {
             if (!Page.IsPostBack)
             {
-                //bindAppointments();
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ID");
+                dt.Columns.Add("Date");
+                dt.Columns.Add("Facility");
+                dt.Columns.Add("Department");
+                dt.Columns.Add("Time");
+                grdPickAppointment.DataSource = dt;
+                grdPickAppointment.DataBind();
             }
         }
 
@@ -114,7 +121,18 @@ namespace TeamLLama
             {
                 lblActualFrom.Text = Request.Form[txtFromDate.UniqueID];
                 lblActualTo.Text = Request.Form[txtToDate.UniqueID];
-                bindAppointments();
+                DateTime d1 = DateTime.Parse(lblActualFrom.Text);
+                DateTime d2 = DateTime.Parse(lblActualTo.Text);
+                if (DateTime.Compare(d1, d2)>0)
+                {
+                    Response.Write("<script type=\"text/javascript\">alert('Please select Valid Date Range!')</script>");
+
+                }
+                else
+                {
+                    bindAppointments();
+                }
+                
             }
             
         }

@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Data;
+using TeamLLama.Entity;
+using TeamLLama.Controller;
 
 namespace TeamLLama
 {
@@ -22,66 +24,28 @@ namespace TeamLLama
         }
         private void bindAppointments(int c)
         {
-            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
-            var conn = new MySqlConnection(dbConnectionString);
+            Account a = new Account();
+            a = (Account)Session["Account"];
 
-            //string query = "SELECT date As 'Date', facility_name As 'Facility', department_name As 'Department', time As 'Time' from appointment, facility, department where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND account_id=1 AND date >=@date";
-            string query;
+            int accountID = 2;
+
+            if (a != null)
+            {
+                accountID = a.accountID;
+            }
+            AppointmentManagementSystem ams = new AppointmentManagementSystem();
 
             if (c == 1)
             {
-                query = "SELECT appointment.appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', time As 'Time' from appointment, facility, department,doctor_appointment where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND appointment.appointment_id=doctor_appointment.appointment_id AND doctor_appointment.account_id=@account AND date <@date";
-            }
-            else
-            {
-                query = "SELECT appointment.appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', time As 'Time' from appointment, facility, department,doctor_appointment where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND appointment.appointment_id=doctor_appointment.appointment_id AND doctor_appointment.account_id=@account AND date >=@date";
-
-            }
-            var cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@account", 2);
-            cmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("yyyy-MM-dd"));
-            conn.Open();
-            var reader = cmd.ExecuteReader();
-
-
-            DataTable dt = new DataTable();
-            dt.Columns.Add("ID");
-            dt.Columns.Add("Date");
-            dt.Columns.Add("Facility");
-            dt.Columns.Add("Department");
-            dt.Columns.Add("Time");
-
-            int i = 0;
-
-
-            while (reader.Read())
-            {
-
-                dt.Rows.Add();
-                dt.Rows[i]["ID"] = reader["ID"].ToString();
-                dt.Rows[i]["Date"] = String.Format("{0:dd/MM/yyyy}", reader["date"]);
-                dt.Rows[i]["Facility"] = reader["Facility"].ToString();
-                dt.Rows[i]["Department"] = reader["Department"].ToString();
-                dt.Rows[i]["Time"] = reader["Time"].ToString();
-
-                i++;
-
-            }
-
-            if (c == 1)
-            {
-                grdAppointmentHistory.DataSource = dt;
+                grdAppointmentHistory.DataSource = ams.getDoctorAppointmentHistory(accountID);
                 grdAppointmentHistory.DataBind();
             }
             else
             {
-                grdUpcomingAppointment.DataSource = dt;
+                grdUpcomingAppointment.DataSource = ams.getDoctorUpcomingAppointment(accountID);
                 grdUpcomingAppointment.DataBind();
             }
-
-
-            reader.Close();
-            conn.Close();
+            
         }
 
         protected void grdAppointmentHistory_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -104,27 +68,17 @@ namespace TeamLLama
             System.Web.UI.WebControls.Label lblAppointmentID = grdAppointmentHistory.Rows[i].FindControl("lblAppointmentID") as System.Web.UI.WebControls.Label;
             string appointmentID = lblAppointmentID.Text;
 
-            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
-            var conn = new MySqlConnection(dbConnectionString);
+            AppointmentManagementSystem ams = new AppointmentManagementSystem();
 
-            string query = "SELECT appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', time As 'Time' from appointment, facility, department where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND appointment_id=@appointmentID";
-            var cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
-
-            conn.Open();
-            var reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            Appointment ap = ams.getPatientAppointment(appointmentID);
+            if (ap != null)
             {
-                lbl_id.Text = reader["ID"].ToString();
-                lbl_DateDetail.Text = String.Format("{0:dd/MM/yyyy}", reader["date"]);
-                lbl_FacilityDetail.Text = reader["Facility"].ToString();
-                lbl_DepartmentDetail.Text = reader["Department"].ToString();
-                lbl_TimeDetail.Text = reader["Time"].ToString();
+                lbl_id.Text = ap.appointmentID.ToString();
+                lbl_DateDetail.Text = String.Format("{0:dd/MM/yyyy}", ap.date);
+                lbl_FacilityDetail.Text = ap.facilityName;
+                lbl_DepartmentDetail.Text = ap.departmentName;
+                lbl_TimeDetail.Text = ap.time;
             }
-
-            reader.Close();
-            conn.Close();
             btnRefer.Visible = false;
             mp1.Show();
         }
@@ -137,27 +91,17 @@ namespace TeamLLama
             System.Web.UI.WebControls.Label lblAppointmentID1 = grdUpcomingAppointment.Rows[i].FindControl("lblAppointmentID1") as System.Web.UI.WebControls.Label;
             string appointmentID = lblAppointmentID1.Text;
 
-            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
-            var conn = new MySqlConnection(dbConnectionString);
+            AppointmentManagementSystem ams = new AppointmentManagementSystem();
 
-            string query = "SELECT appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', time As 'Time' from appointment, facility, department where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND appointment_id=@appointmentID";
-            var cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
-
-            conn.Open();
-            var reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            Appointment ap = ams.getPatientAppointment(appointmentID);
+            if (ap != null)
             {
-                lbl_id.Text = reader["ID"].ToString();
-                lbl_DateDetail.Text = String.Format("{0:dd/MM/yyyy}", reader["date"]);
-                lbl_FacilityDetail.Text = reader["Facility"].ToString();
-                lbl_DepartmentDetail.Text = reader["Department"].ToString();
-                lbl_TimeDetail.Text = reader["Time"].ToString();
+                lbl_id.Text = ap.appointmentID.ToString();
+                lbl_DateDetail.Text = String.Format("{0:dd/MM/yyyy}", ap.date);
+                lbl_FacilityDetail.Text = ap.facilityName;
+                lbl_DepartmentDetail.Text = ap.departmentName;
+                lbl_TimeDetail.Text = ap.time;
             }
-
-            reader.Close();
-            conn.Close();
             btnRefer.Visible = true;
             mp1.Show();
         }
@@ -165,46 +109,10 @@ namespace TeamLLama
         protected void btnYes_Click(object sender, EventArgs e)
         {
             string id = lbl_id.Text;
-
-            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
-            var conn = new MySqlConnection(dbConnectionString);
-
-            string query = "SELECT taken from appointment WHERE appointment_id=@appointmentID";
-            string query1 = "DELETE from appointment WHERE appointment_id=@appointmentID";
-            string query2 = "DELETE from doctor_appointment WHERE appointment_id=@appointmentID";
-            var cmd = new MySqlCommand(query, conn);
-            var cmd1 = new MySqlCommand(query1, conn);
-            var cmd2 = new MySqlCommand(query2, conn);
-            cmd.Parameters.AddWithValue("@appointmentID", id);
-            cmd1.Parameters.AddWithValue("@appointmentID", id);
-            cmd2.Parameters.AddWithValue("@appointmentID", id);
-
-            conn.Open();
-            var reader = cmd.ExecuteReader();
-            int taken = 0;
-            while (reader.Read())
-            {
-                taken = Convert.ToInt32(reader["taken"]);
-            }
-            reader.Close();
-            if (taken == 1)
-            {
-                cmd2.ExecuteNonQuery();
-            }
-            var reader1 = cmd1.ExecuteNonQuery();
-
-            conn.Close();
-
-            if (reader1 == 1)
-            {
-                Response.Write("<script type=\"text/javascript\">alert('Appointment Cancelled!');location.href='PatientAppointmentPage.aspx'</script>");
-
-            }
-            else
-            {
-                Response.Write("<script type=\"text/javascript\">alert('Appointment Not Cancelled!');location.href='PatientAppointmentPage.aspx'</script>");
-            }
-
+            Session["id"] = id;
+            //Response.Write("<script type=\"text/javascript\">alert('Appointment Cancelled!');location.href='ReferPatient.aspx'</script>");
+            Response.Redirect("ReferPatient.aspx");
+            
 
         }
     }
