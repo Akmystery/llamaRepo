@@ -18,6 +18,7 @@ namespace TeamLLama
             if (!IsPostBack)
             { 
                 BindRatings();
+                BindComments();
             }
         }
 
@@ -27,16 +28,29 @@ namespace TeamLLama
             //a = (Account)Session["Account"];
             //int fac_id = (int)Session["fac_id"];
 
+            Validation v = new Validation();
             Review r = new Review();
             r.rating = Rating1.CurrentRating;
-            r.comment = "";
-            //r.accountId = a.accountID;
-            r.accountId = 1;
-            //r.facilityId = fac_id;
-            r.facilityId = 1;
-            ReviewControlSystem rcs = new ReviewControlSystem();
-            rcs.CreateReview(r);
-            BindRatings();
+            r.comment = txtComment.Text;
+            if (v.isEmpty(r.comment))
+            {
+                lblComment.Text = "Please write comment";
+            }
+            else
+            {
+                lblComment.Text = "";
+                Rating1.CurrentRating = 0;
+                txtComment.Text = "";
+                //r.accountId = a.accountID;
+                r.accountId = 1;
+                //r.facilityId = fac_id;
+                r.facilityId = 1;
+                ReviewControlSystem rcs = new ReviewControlSystem();
+                rcs.CreateReview(r);
+                BindRatings();
+                BindComments();
+            }
+            
 
         }
 
@@ -45,6 +59,15 @@ namespace TeamLLama
             ReviewControlSystem rc = new ReviewControlSystem();
             double i = rc.GetAverageRating("1");
             lblRating.Text = i.ToString();
+        }
+
+        private void BindComments()
+        {
+
+            ReviewControlSystem rcs = new ReviewControlSystem();
+            Comments.DataSource = rcs.GetAllReviews("1");
+            Comments.DataBind();
+
         }
     }
 }

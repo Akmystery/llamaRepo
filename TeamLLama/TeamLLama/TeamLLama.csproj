@@ -115,6 +115,7 @@
     <Content Include="PickAppointmentPage.aspx" />
     <Content Include="ReferPatient.aspx" />
     <Content Include="ReviewPage.aspx" />
+    <Content Include="ReviewTempaspx.aspx" />
     <Content Include="SignOut.aspx" />
     <Content Include="CreateFacility.aspx" />
     <None Include="packages.config" />
@@ -307,6 +308,13 @@
     </Compile>
     <Compile Include="ReviewPage.aspx.designer.cs">
       <DependentUpon>ReviewPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReviewTempaspx.aspx.cs">
+      <DependentUpon>ReviewTempaspx.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReviewTempaspx.aspx.designer.cs">
+      <DependentUpon>ReviewTempaspx.aspx</DependentUpon>
     </Compile>
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>

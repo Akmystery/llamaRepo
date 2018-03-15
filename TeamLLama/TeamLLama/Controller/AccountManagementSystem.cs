@@ -113,17 +113,17 @@ namespace TeamLLama.Controller
             return result;
         }
 
-        public Account GetAccount()
+        public Account GetAccount(int id)
         {
             Account a = new Account();
 
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
-            string query = "SELECT * FROM account";
+            string query = "SELECT * FROM account WHERE account_id=@id";
 
             var cmd = new MySqlCommand(query, conn);
-            //cmd.Parameters.AddWithValue("@idTest", 1);
+            cmd.Parameters.AddWithValue("@account_id", id);
 
             conn.Open();
             var reader = cmd.ExecuteReader();

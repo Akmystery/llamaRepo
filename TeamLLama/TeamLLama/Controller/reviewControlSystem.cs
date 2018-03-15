@@ -5,6 +5,8 @@ using System.Web;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using TeamLLama.Entity;
+using System.Data;
+using System.Globalization;
 
 namespace TeamLLama.Controller
 {
@@ -55,6 +57,21 @@ namespace TeamLLama.Controller
             conn.Close();
             return r;
         }
+        public DataSet GetAllReviews(String id)
+        {
+
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "SELECT * FROM review WHERE facility_id=";
+
+            conn.Open();
+            MySqlDataAdapter da = new MySqlDataAdapter(query+id, conn);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            conn.Close();
+            return ds;
+        }
 
         public void CreateReview(Review r)
         {
@@ -74,5 +91,7 @@ namespace TeamLLama.Controller
             conn.Close();
         }
     }
+
+    
 
 }

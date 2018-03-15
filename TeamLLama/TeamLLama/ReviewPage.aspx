@@ -4,7 +4,7 @@
 
         .starRating{
             width:20px;
-            height:30px;
+            height:17px;
             cursor:pointer;
             background-repeat:no-repeat;
             display:block;
@@ -22,7 +22,12 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
+    <asp:Label ID="Label1" runat="server" Text="Rating:"></asp:Label>
+    <asp:Label ID="lblRating" runat="server" Text="Label"></asp:Label>
+     <br />
+    <br />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:Label ID="Label2" runat="server" Text="Your Rating:"></asp:Label>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <ajaxToolkit:Rating ID="Rating1" runat="server"
@@ -35,9 +40,31 @@
         </ContentTemplate>
     </asp:UpdatePanel>
     <br />
+    <asp:TextBox ID="txtComment" TextMode="multiline" Columns="50" Rows="2"  runat="server"></asp:TextBox>
+    <br />
+    <asp:Label ID="lblComment" runat="server" ForeColor="Red"></asp:Label>
+    <br />
     <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" />
     <br />
+    <asp:Label ID="lblsth" runat="server" Text="Comments:"></asp:Label>
+    <asp:Repeater ID="Comments" runat="server">
+        <ItemTemplate>
+            <hr />
+            <asp:Label ID="Label3" runat="server" Text="Rating:"></asp:Label>
+            <ajaxToolkit:Rating ID="Rating2" runat="server"
+                StarCssClass="starRating"
+                FilledStarCssClass="FilledStars"
+                WaitingStarCssClass="WaitingStars"
+                EmptyStarCssClass="EmptyStars"
+                ReadOnly="true"
+                CurrentRating='<%# Eval("rating") %>'
+             >
+            </ajaxToolkit:Rating>
+             <br />
+            <asp:Label ID="lblComment" runat="server" Text='<%# Eval("comment") %>'></asp:Label>
+        </ItemTemplate>
+    </asp:Repeater>
     <br />
-    <asp:Label ID="Label1" runat="server" Text="Rating:"></asp:Label>
-    <asp:Label ID="lblRating" runat="server" Text="Label"></asp:Label>
+   
+    
 </asp:Content>
