@@ -15,7 +15,10 @@ namespace TeamLLama
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+            if (!IsPostBack)
+            { 
+                BindRatings();
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -33,7 +36,15 @@ namespace TeamLLama
             r.facilityId = 1;
             ReviewControlSystem rcs = new ReviewControlSystem();
             rcs.CreateReview(r);
+            BindRatings();
 
+        }
+
+        public void BindRatings()
+        {
+            ReviewControlSystem rc = new ReviewControlSystem();
+            double i = rc.GetAverageRating("1");
+            lblRating.Text = i.ToString();
         }
     }
 }
