@@ -54,5 +54,10 @@ namespace TeamLLama
             app.DeleteFacility(id);
             Response.Write("<script type=\"text/javascript\">alert('Facility Deleted!');location.href='FacilityListPage.aspx'</script>");
         }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminHomePage.aspx");
+        }
     }
 }

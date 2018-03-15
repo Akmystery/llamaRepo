@@ -151,6 +151,7 @@
 				<td class="auto-style2">&nbsp;</td>
 				<td>
 					<asp:Button ID="btnCreate" runat="server" OnClick="Create_Click" Text="Create" />
+				    <asp:Button ID="btnBack" runat="server" Text="Back to Home Page" OnClick="btnBack_Click" />
 				</td>
 				<td>&nbsp;</td>
 			</tr>

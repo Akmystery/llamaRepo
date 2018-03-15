@@ -104,13 +104,17 @@
     <Content Include="DoctorHomePage.aspx" />
     <Content Include="FacilityListPage.aspx" />
     <Content Include="HomePage.aspx" />
+    <Content Include="images\FilledStar.gif" />
     <Content Include="images\logo.png" />
+    <Content Include="images\Star.gif" />
+    <Content Include="images\WaitingStar.gif" />
     <Content Include="Master_Page.Master" />
     <Content Include="Ak_testing.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="PatientAppointmentPage.aspx" />
     <Content Include="PickAppointmentPage.aspx" />
     <Content Include="ReferPatient.aspx" />
+    <Content Include="ReviewPage.aspx" />
     <Content Include="SignOut.aspx" />
     <Content Include="CreateFacility.aspx" />
     <None Include="packages.config" />
@@ -296,6 +300,13 @@
     </Compile>
     <Compile Include="ReferPatient.aspx.designer.cs">
       <DependentUpon>ReferPatient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReviewPage.aspx.cs">
+      <DependentUpon>ReviewPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReviewPage.aspx.designer.cs">
+      <DependentUpon>ReviewPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>

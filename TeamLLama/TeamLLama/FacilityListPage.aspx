@@ -64,5 +64,8 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+         <div class="mb-5 mt-2"   style="float:right">
+             <asp:Button ID="btnBack" runat="server" Text="Back to Home Page" OnClick="btnBack_Click"/>
+             </div>
         </div>
 </asp:Content>

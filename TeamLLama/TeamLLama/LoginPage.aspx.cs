@@ -74,10 +74,10 @@ namespace TeamLLama
                         case "patient":
                             Response.Redirect("HomePage.aspx", false);
                             break;
-                        case "Doctor":
+                        case "doctor":
                             Response.Redirect("DoctorHomePage.aspx", false);
                             break;
-                        case "Admin":
+                        case "admin":
                             Response.Redirect("AdminHomePage.aspx", false);
                             break;
                         default:
