@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Page.Master" AutoEventWireup="true" CodeBehind="ReferPatient.aspx.cs" Inherits="TeamLLama.ReferPatient" %>
+﻿<%@ Page Title="" Language="C#" MaintainScrollPositionOnPostback ="true" MasterPageFile="~/Master_Page.Master" AutoEventWireup="true" CodeBehind="ReferPatient.aspx.cs" Inherits="TeamLLama.ReferPatient" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -62,38 +62,22 @@
     <p>
         <br />
         <asp:Label ID="Label1" runat="server" Text="Date: "></asp:Label>
-        <asp:TextBox ID="TextBox1" runat="server" ReadOnly="true"></asp:TextBox>
-        <cc1:CalendarExtender ID="TextBox1_CalendarExtender" runat="server" TargetControlID="TextBox1" Format="dd/MM/yyyy" />
-        <asp:Label ID="lblActualDate" runat="server" Text="" Visible="false"></asp:Label>
+        <asp:TextBox ID="DateTextBox" runat="server"></asp:TextBox>
+        <cc1:CalendarExtender ID="DateTextBox_CalendarExtender" runat="server" TargetControlID="DateTextBox" Format="dd/MM/yyyy" />
+        <asp:Label ID="lblActualDate" runat="server" Visible="False"></asp:Label>
         <br />
 
     </p>
 
     <p>
         <asp:Label ID="Label4" runat="server" Text="Time: "></asp:Label>
-        <asp:DropDownList ID="HourDropDownList" runat="server">
+        <asp:DropDownList ID="HourDropDownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="HourDropDownList_SelectedIndexChanged">
             <asp:ListItem Value="-1" Selected="True"> -Hr-</asp:ListItem>
-            <asp:ListItem>1</asp:ListItem>
-            <asp:ListItem>2</asp:ListItem>
-            <asp:ListItem>3</asp:ListItem>
-            <asp:ListItem>4</asp:ListItem>
-            <asp:ListItem>5</asp:ListItem>
-            <asp:ListItem>6</asp:ListItem>
-            <asp:ListItem>7</asp:ListItem>
-            <asp:ListItem>8</asp:ListItem>
-            <asp:ListItem>9</asp:ListItem>
-            <asp:ListItem>10</asp:ListItem>
-            <asp:ListItem>11</asp:ListItem>
-            <asp:ListItem>12</asp:ListItem>
         </asp:DropDownList>
         <asp:DropDownList ID="MinDropDownList" runat="server">
             <asp:ListItem Value="-1" Selected="True"> -Min-</asp:ListItem>
-            <asp:ListItem>00</asp:ListItem>
-            <asp:ListItem>15</asp:ListItem>
-            <asp:ListItem>30</asp:ListItem>
-            <asp:ListItem>45</asp:ListItem>
         </asp:DropDownList>
-        <asp:DropDownList ID="AMPMDropDownList" runat="server">
+        <asp:DropDownList ID="AMPMDropDownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="AMPMDropDownList_SelectedIndexChanged">
             <asp:ListItem Value="-1" Selected="True"> - AM/PM-</asp:ListItem>
             <asp:ListItem>AM</asp:ListItem>
             <asp:ListItem>PM</asp:ListItem>

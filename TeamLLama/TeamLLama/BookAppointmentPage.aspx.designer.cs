@@ -103,13 +103,13 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// TextBox1 control.
+        /// DateTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox DateTextBox;
         
         /// <summary>
         /// lblActualDate control.
@@ -121,13 +121,13 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.Label lblActualDate;
         
         /// <summary>
-        /// TextBox1_CalendarExtender control.
+        /// DateTextBox_CalendarExtender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender TextBox1_CalendarExtender;
+        protected global::AjaxControlToolkit.CalendarExtender DateTextBox_CalendarExtender;
         
         /// <summary>
         /// Label4 control.
