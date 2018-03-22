@@ -58,62 +58,27 @@ namespace TeamLLama
             grdUpcomingAppointment.PageIndex = e.NewPageIndex;
             bindAppointments(0);
         }
-
-        protected void lbn_view_Click(object sender, EventArgs e)
-        {
-            LinkButton button = (LinkButton)sender;
-            GridViewRow row = (GridViewRow)button.NamingContainer;
-            int i = Convert.ToInt32(row.RowIndex);
-
-            System.Web.UI.WebControls.Label lblAppointmentID = grdAppointmentHistory.Rows[i].FindControl("lblAppointmentID") as System.Web.UI.WebControls.Label;
-            string appointmentID = lblAppointmentID.Text;
-
-            AppointmentManagementSystem ams = new AppointmentManagementSystem();
-
-            Appointment ap = ams.getPatientAppointment(appointmentID);
-            if (ap != null)
-            {
-                lbl_id.Text = ap.appointmentID.ToString();
-                lbl_DateDetail.Text = String.Format("{0:dd/MM/yyyy}", ap.date);
-                lbl_FacilityDetail.Text = ap.facilityName;
-                lbl_DepartmentDetail.Text = ap.departmentName;
-                lbl_TimeDetail.Text = ap.time;
-            }
-            btnRefer.Visible = false;
-            mp1.Show();
-        }
-        protected void lbn_view1_Click(object sender, EventArgs e)
-        {
-            LinkButton button = (LinkButton)sender;
-            GridViewRow row = (GridViewRow)button.NamingContainer;
-            int i = Convert.ToInt32(row.RowIndex);
-
-            System.Web.UI.WebControls.Label lblAppointmentID1 = grdUpcomingAppointment.Rows[i].FindControl("lblAppointmentID1") as System.Web.UI.WebControls.Label;
-            string appointmentID = lblAppointmentID1.Text;
-
-            AppointmentManagementSystem ams = new AppointmentManagementSystem();
-
-            Appointment ap = ams.getPatientAppointment(appointmentID);
-            if (ap != null)
-            {
-                lbl_id.Text = ap.appointmentID.ToString();
-                lbl_DateDetail.Text = String.Format("{0:dd/MM/yyyy}", ap.date);
-                lbl_FacilityDetail.Text = ap.facilityName;
-                lbl_DepartmentDetail.Text = ap.departmentName;
-                lbl_TimeDetail.Text = ap.time;
-            }
-            btnRefer.Visible = true;
-            mp1.Show();
-        }
-
+        
         protected void btnYes_Click(object sender, EventArgs e)
         {
             string id = lbl_id.Text;
             Session["id"] = id;
-            //Response.Write("<script type=\"text/javascript\">alert('Appointment Cancelled!');location.href='ReferPatient.aspx'</script>");
+
             Response.Redirect("ReferPatient.aspx");
             
 
+        }
+
+        protected void btnRefer_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            GridViewRow row = (GridViewRow)button.NamingContainer;
+            int i = Convert.ToInt32(row.RowIndex);
+
+            System.Web.UI.WebControls.Label lblNRIC = grdUpcomingAppointment.Rows[i].FindControl("lblNRIC") as System.Web.UI.WebControls.Label;
+            lbl_id.Text = lblNRIC.Text;
+
+            confirmPopup.Show();
         }
     }
 }

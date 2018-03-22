@@ -245,7 +245,7 @@ namespace TeamLLama.Controller
 
             conn.Close();
 
-            string query = "SELECT appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', TIME_FORMAT(time, '%h:%i%p') As 'Time' from appointment, facility, department where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND taken=0 AND appointment.department_id=@departmentID AND date >=@dateFrom AND date <=@dateTo ORDER BY date";
+            string query = "SELECT appointment_id AS 'ID' ,date As 'Date', nric As 'NRIC', comments As 'Comments', TIME_FORMAT(time, '%h:%i%p') As 'Time' from appointment, facility, department,account where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND appointment.account_id=account.account_id AND taken=0 AND appointment.department_id=@departmentID AND date >=@dateFrom AND date <=@dateTo ORDER BY date";
 
 
             var cmd = new MySqlCommand(query, conn);
@@ -264,9 +264,10 @@ namespace TeamLLama.Controller
             DataTable dt = new DataTable();
             dt.Columns.Add("ID");
             dt.Columns.Add("Date");
-            dt.Columns.Add("Facility");
-            dt.Columns.Add("Department");
+            dt.Columns.Add("NRIC");
             dt.Columns.Add("Time");
+            dt.Columns.Add("Comments");
+            
 
             int i = 0;
 
@@ -277,9 +278,10 @@ namespace TeamLLama.Controller
                 dt.Rows.Add();
                 dt.Rows[i]["ID"] = reader["ID"].ToString();
                 dt.Rows[i]["Date"] = String.Format("{0:dd/MM/yyyy}", reader["date"]);
-                dt.Rows[i]["Facility"] = reader["Facility"].ToString();
-                dt.Rows[i]["Department"] = reader["Department"].ToString();
+                dt.Rows[i]["NRIC"] = reader["NRIC"].ToString();
                 dt.Rows[i]["Time"] = reader["Time"].ToString();
+                dt.Rows[i]["Comments"] = reader["Comments"].ToString();
+                
 
                 i++;
 
@@ -330,7 +332,7 @@ namespace TeamLLama.Controller
         {
             var conn = new MySqlConnection(dbConnectionString);
 
-            string query = "SELECT appointment.appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', TIME_FORMAT(time, '%h:%i%p') As 'Time' from appointment, facility, department,doctor_appointment where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND appointment.appointment_id=doctor_appointment.appointment_id AND doctor_appointment.account_id=@account AND date <@date";
+            string query = "SELECT appointment.appointment_id AS 'ID' ,date As 'Date', nric As 'NRIC', comments As 'Comments', TIME_FORMAT(time, '%h:%i%p') As 'Time' from appointment, facility, department,doctor_appointment, account where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND appointment.appointment_id=doctor_appointment.appointment_id AND appointment.account_id=account.account_id AND doctor_appointment.account_id=@account AND date <@date";
 
             var cmd = new MySqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@account", accountID);
@@ -342,9 +344,9 @@ namespace TeamLLama.Controller
             DataTable dt = new DataTable();
             dt.Columns.Add("ID");
             dt.Columns.Add("Date");
-            dt.Columns.Add("Facility");
-            dt.Columns.Add("Department");
+            dt.Columns.Add("NRIC");
             dt.Columns.Add("Time");
+            dt.Columns.Add("Comments");
 
             int i = 0;
 
@@ -355,9 +357,9 @@ namespace TeamLLama.Controller
                 dt.Rows.Add();
                 dt.Rows[i]["ID"] = reader["ID"].ToString();
                 dt.Rows[i]["Date"] = String.Format("{0:dd/MM/yyyy}", reader["date"]);
-                dt.Rows[i]["Facility"] = reader["Facility"].ToString();
-                dt.Rows[i]["Department"] = reader["Department"].ToString();
+                dt.Rows[i]["NRIC"] = reader["NRIC"].ToString();
                 dt.Rows[i]["Time"] = reader["Time"].ToString();
+                dt.Rows[i]["Comments"] = reader["Comments"].ToString();
 
                 i++;
 
@@ -371,7 +373,7 @@ namespace TeamLLama.Controller
         {
             var conn = new MySqlConnection(dbConnectionString);
 
-            string query = "SELECT appointment.appointment_id AS 'ID' ,date As 'Date', facility_name As 'Facility', department_name As 'Department', TIME_FORMAT(time, '%h:%i%p') As 'Time' from appointment, facility, department,doctor_appointment where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND appointment.appointment_id=doctor_appointment.appointment_id AND doctor_appointment.account_id=@account AND date >=@date";
+            string query = "SELECT appointment.appointment_id AS 'ID' ,date As 'Date', nric As 'NRIC', comments As 'Comments', TIME_FORMAT(time, '%h:%i%p') As 'Time' from appointment, facility, department,doctor_appointment, account where appointment.facility_id=facility.facility_id AND appointment.department_id=department.department_id AND appointment.appointment_id=doctor_appointment.appointment_id AND appointment.account_id=account.account_id AND doctor_appointment.account_id=@account AND date >=@date";
 
             var cmd = new MySqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@account", accountID);
@@ -383,9 +385,9 @@ namespace TeamLLama.Controller
             DataTable dt = new DataTable();
             dt.Columns.Add("ID");
             dt.Columns.Add("Date");
-            dt.Columns.Add("Facility");
-            dt.Columns.Add("Department");
+            dt.Columns.Add("NRIC");
             dt.Columns.Add("Time");
+            dt.Columns.Add("Comments");
 
             int i = 0;
 
@@ -396,9 +398,9 @@ namespace TeamLLama.Controller
                 dt.Rows.Add();
                 dt.Rows[i]["ID"] = reader["ID"].ToString();
                 dt.Rows[i]["Date"] = String.Format("{0:dd/MM/yyyy}", reader["date"]);
-                dt.Rows[i]["Facility"] = reader["Facility"].ToString();
-                dt.Rows[i]["Department"] = reader["Department"].ToString();
+                dt.Rows[i]["NRIC"] = reader["NRIC"].ToString();
                 dt.Rows[i]["Time"] = reader["Time"].ToString();
+                dt.Rows[i]["Comments"] = reader["Comments"].ToString();
 
                 i++;
 
@@ -480,7 +482,7 @@ namespace TeamLLama.Controller
             }
             return f1;
         }
-        public Account getAccount(int id)
+        public Account getAccountViaID(int id)
         {
             Account a = new Account();
 
@@ -488,6 +490,25 @@ namespace TeamLLama.Controller
             string NameQuery = "SELECT account_id, name from account where account_type = 'patient' and account_id=@id";
             MySqlCommand NameCmd = new MySqlCommand(NameQuery, conn);
             NameCmd.Parameters.AddWithValue("@id", id);
+            conn.Open();
+            var reader = NameCmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                a.accountID = Convert.ToInt32(reader["account_id"]);
+                a.name = reader["name"].ToString();
+            }
+            conn.Close();
+            return a;
+        }
+        public Account getAccountViaNRIC(string nric)
+        {
+            Account a = new Account();
+
+            MySqlConnection conn = new MySqlConnection(dbConnectionString);
+            string NameQuery = "SELECT account_id, name from account where account_type = 'patient' and nric=@nric";
+            MySqlCommand NameCmd = new MySqlCommand(NameQuery, conn);
+            NameCmd.Parameters.AddWithValue("@nric", nric);
             conn.Open();
             var reader = NameCmd.ExecuteReader();
 

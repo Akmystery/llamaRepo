@@ -13,5 +13,15 @@ namespace TeamLLama
         {
 
         }
+
+        protected void btnPick_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PickAppointmentPage.aspx");
+        }
+
+        protected void btnView_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DoctorAppointmentPage.aspx");
+        }
     }
 }

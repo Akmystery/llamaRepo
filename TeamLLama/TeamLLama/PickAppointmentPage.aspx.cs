@@ -17,14 +17,16 @@ namespace TeamLLama
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtFromDate.Attributes.Add("readonly", "readonly");
+            txtToDate.Attributes.Add("readonly", "readonly");
             if (!Page.IsPostBack)
             {
                 DataTable dt = new DataTable();
                 dt.Columns.Add("ID");
                 dt.Columns.Add("Date");
-                dt.Columns.Add("Facility");
-                dt.Columns.Add("Department");
+                dt.Columns.Add("NRIC");
                 dt.Columns.Add("Time");
+                dt.Columns.Add("Comments");
                 grdPickAppointment.DataSource = dt;
                 grdPickAppointment.DataBind();
             }
@@ -55,30 +57,6 @@ namespace TeamLLama
             bindAppointments();
         }
        
-        protected void lbn_view_Click(object sender, EventArgs e)
-        {
-            LinkButton button = (LinkButton)sender;
-            GridViewRow row = (GridViewRow)button.NamingContainer;
-            int i = Convert.ToInt32(row.RowIndex);
-
-            System.Web.UI.WebControls.Label lblAppointmentID = grdPickAppointment.Rows[i].FindControl("lblAppointmentID") as System.Web.UI.WebControls.Label;
-            string appointmentID = lblAppointmentID.Text;
-
-            AppointmentManagementSystem ams = new AppointmentManagementSystem();
-
-            Appointment ap = ams.getPatientAppointment(appointmentID);
-            if (ap != null)
-            {
-                lbl_id.Text = ap.appointmentID.ToString();
-                lbl_DateDetail.Text = String.Format("{0:dd/MM/yyyy}", ap.date);
-                lbl_FacilityDetail.Text = ap.facilityName;
-                lbl_DepartmentDetail.Text = ap.departmentName;
-                lbl_TimeDetail.Text = ap.time;
-            }
-
-            mp1.Show();
-        }
-        
         protected void btnYes_Click(object sender, EventArgs e)
         {
             Account a = new Account();
@@ -135,6 +113,18 @@ namespace TeamLLama
                 
             }
             
+        }
+
+        protected void btnPick_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            GridViewRow row = (GridViewRow)button.NamingContainer;
+            int i = Convert.ToInt32(row.RowIndex);
+
+            System.Web.UI.WebControls.Label lblAppointmentID = grdPickAppointment.Rows[i].FindControl("lblAppointmentID") as System.Web.UI.WebControls.Label;
+            lbl_id.Text = lblAppointmentID.Text;
+            
+            confirmPopup.Show();
         }
     }
 }

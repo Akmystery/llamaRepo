@@ -21,16 +21,11 @@ namespace TeamLLama
             {
                 //set namedropdownlist names
                 Account a = new Account();
-                a = (Account)Session["id"];
-
-                int accountID = 1;
-
-                if (a != null)
-                {
-                    accountID = a.accountID;
-                }
+                
+                string nric = Session["id"].ToString();
+                
                 AppointmentManagementSystem ams = new AppointmentManagementSystem();
-                a = ams.getAccount(accountID);
+                a = ams.getAccountViaNRIC(nric);
                 lb_name.Text = a.name;
                 lb_id.Text = a.accountID.ToString();
 
