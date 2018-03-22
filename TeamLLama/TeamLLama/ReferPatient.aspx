@@ -49,7 +49,7 @@
                 <asp:Label ID="lb_name" runat="server" Text=""></asp:Label>
             </td>
         </tr>
-         <tr>
+        <tr>
             <td>&nbsp;
             </td>
         </tr>
@@ -76,7 +76,7 @@
                 <asp:Label ID="lb_actualClosing" runat="server" Text="" Visible="false"></asp:Label>
             </td>
         </tr>
-         <tr>
+        <tr>
             <td>&nbsp;
             </td>
         </tr>
@@ -90,7 +90,7 @@
                 </asp:DropDownList>
             </td>
         </tr>
-         <tr>
+        <tr>
             <td>&nbsp;
             </td>
         </tr>
@@ -104,7 +104,7 @@
                 <asp:Label ID="lblActualDate" runat="server" Visible="False"></asp:Label>
             </td>
         </tr>
-         <tr>
+        <tr>
             <td>&nbsp;
             </td>
         </tr>
@@ -128,7 +128,7 @@
                 </asp:DropDownList>
             </td>
         </tr>
-         <tr>
+        <tr>
             <td>&nbsp;
             </td>
         </tr>
@@ -137,10 +137,10 @@
                 <asp:Label ID="Label7" runat="server" Text="Comments: "></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="CommentTextBox" runat="server" Height="118px" width="300px" TextMode="MultiLine"></asp:TextBox>
+                <asp:TextBox ID="CommentTextBox" runat="server" Height="118px" Width="300px" TextMode="MultiLine"></asp:TextBox>
             </td>
         </tr>
-         <tr>
+        <tr>
             <td>&nbsp;
             </td>
         </tr>
@@ -152,16 +152,16 @@
         </tr>
     </table>
 
-
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
     <asp:HiddenField ID="HiddenField1" runat="server" />
-    <cc1:ModalPopupExtender ID="ModalPopupExtender1" runat="server" BackgroundCssClass="modalBackground" PopupControlID="Panel1" TargetControlID="HiddenField1" CancelControlID="NoButton"></cc1:ModalPopupExtender>
-    <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup1" align="center" Style="display: none">
-        <asp:Label ID="lblMsg" runat="server" Text="Confirm Book?" Visible="true" Font-Size="Large"></asp:Label><br />
+    <cc1:ModalPopupExtender ID="confirmPopup" runat="server" PopupControlID="CfmPanel" TargetControlID="HiddenField1" CancelControlID="btnNo" BackgroundCssClass="modalBackground"></cc1:ModalPopupExtender>
+    <asp:Panel ID="CfmPanel" runat="server" CssClass="modalPopup1" align="center" Style="display: none">
+        <asp:Label ID="lbl_id" runat="server" Text="" Visible="false"></asp:Label>
+        <asp:Label ID="lblMsg" runat="server" Text="Confirm Refer?" Visible="true" Font-Size="Large"></asp:Label><br />
         <br />
-        <asp:Button ID="Button1" runat="server" OnClick="YesButton_Click" Text="Yes" />
-        <asp:Button ID="Button2" runat="server" Text="No" />
+        <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="YesButton_Click" />
+        <asp:Button ID="btnNo" runat="server" Text="No" />
     </asp:Panel>
 
 </asp:Content>

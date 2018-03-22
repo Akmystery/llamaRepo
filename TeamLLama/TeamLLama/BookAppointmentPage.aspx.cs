@@ -21,7 +21,7 @@ namespace TeamLLama
             {
                 //set namedropdownlist names
                 Account a = new Account();
-                a = (Account)Session["id"];
+                a = (Account)Session["Account"];
 
                 int accountID = 1;
 
@@ -30,7 +30,7 @@ namespace TeamLLama
                     accountID = a.accountID;
                 }
                 AppointmentManagementSystem ams = new AppointmentManagementSystem();
-                a = ams.getAccount(accountID);
+                a = ams.getAccountViaID(accountID);
 
                 //set hospitaldropdownlist
                 HospitalDropDownList.DataSource = ams.getFacilities();
@@ -139,18 +139,16 @@ namespace TeamLLama
             //good to go. show modalpopupextender
             else
             {
-                Panel1.Visible = true;
-                ModalPopupExtender1.Show();
+                confirmPopup.Show();
             }
-
-
+            
         }
 
         protected void YesButton_Click(object sender, EventArgs e)
         {
             //get account id
             Account a = new Account();
-            a = (Account)Session["id"];
+            a = (Account)Session["Account"];
 
             int accountID = 1;
 

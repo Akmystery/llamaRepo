@@ -21,9 +21,9 @@ namespace TeamLLama
             {
                 //set namedropdownlist names
                 Account a = new Account();
-                
+
                 string nric = Session["id"].ToString();
-                
+               
                 AppointmentManagementSystem ams = new AppointmentManagementSystem();
                 a = ams.getAccountViaNRIC(nric);
                 lb_name.Text = a.name;
@@ -136,8 +136,8 @@ namespace TeamLLama
             //good to go. show modalpopupextender
             else
             {
-                Panel1.Visible = true;
-                ModalPopupExtender1.Show();
+                //Panel1.Visible = true;
+                confirmPopup.Show();
             }
 
 
@@ -145,9 +145,12 @@ namespace TeamLLama
 
         protected void YesButton_Click(object sender, EventArgs e)
         {
+            AppointmentManagementSystem ams = new AppointmentManagementSystem();
+
             //get account id
+            string nric = Session["id"].ToString();
             Account a = new Account();
-            a = (Account)Session["id"];
+            a = ams.getAccountViaNRIC(nric);
 
             int accountID = 1;
 
@@ -166,7 +169,6 @@ namespace TeamLLama
             }
 
             //insert values into database and redirect to patientappointment page
-            AppointmentManagementSystem ams = new AppointmentManagementSystem();
             Appointment ap = new Appointment();
 
             ap.accountID = accountID;
