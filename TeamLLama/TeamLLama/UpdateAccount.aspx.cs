@@ -16,11 +16,11 @@ namespace TeamLLama
         {
             Account a = new Account();
             a = (Account)Session["Account"];
-            txtNric.Text = a.nric;
-            txtName.Text = a.name;
+            txtNric.Attributes.Add("placeholder",a.nric);
+            txtName.Attributes.Add("placeholder",a.name);
             txtPassword.Attributes.Add("placeholder", a.password);
-            txtEmail.Text = a.email;
-            txtAddress.Text = a.address;
+            txtEmail.Attributes.Add("placeholder",a.email);
+            txtAddress.Attributes.Add("placeholder",a.address);
         }
 
         protected void UpDate_Click(object sender, EventArgs e)
@@ -103,8 +103,7 @@ namespace TeamLLama
 
             Session["Account"] = update;
             app.UpdateAccount(txtName.Text, txtPassword.Text, txtEmail.Text, txtAddress.Text, txtNric.Text, update.photo, a.accountID);
-            Response.Write("<script>alert('Data inserted successfully')</script>");
-            Response.Redirect("AccountInfoPage.aspx");
+            Response.Write("<script type=\"text/javascript\">alert('Account Info is successfully updated!');location.href='AccountInfoPage.aspx'</script>");
         }
     }
 }

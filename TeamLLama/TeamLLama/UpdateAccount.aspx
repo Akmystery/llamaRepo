@@ -20,6 +20,19 @@
     <div class="content-wrap" style="max-width:810px;">
 		<table style="width:100%;">
             <tr>
+				<td class="auto-style2">Profile Picture</td>
+				<td>
+					<asp:FileUpload ID="ImageUpload" runat="server" Width="280px" />
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="auto-style1"></td>
+				<td>
+					<asp:Label ID="lblImage" runat="server" ForeColor="Red"></asp:Label>
+				</td>
+			</tr>
+            <tr>
 				<td class="auto-style2">NRIC</td>
 				<td>
 					
@@ -79,19 +92,6 @@
 					
 				</td>
 				<td>&nbsp;</td>
-			</tr>
-            <tr>
-				<td class="auto-style2">Image</td>
-				<td>
-					<asp:FileUpload ID="ImageUpload" runat="server" Width="280px" />
-				</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td class="auto-style1"></td>
-				<td>
-					<asp:Label ID="lblImage" runat="server" ForeColor="Red"></asp:Label>
-				</td>
 			</tr>
 						<tr class="mb-5">
 				<td>

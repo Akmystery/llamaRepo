@@ -15,7 +15,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
     <div class="container text-center mt-5">
-    <img src="images/logo.png" width="100px" height="100px" style="border-radius:50%" />
+    <img src="images/logo.png"  style="border-radius:50%;width:100px;height:100px;" />
     <h3 class="font_style_one mt-2">DOCTOR LLAMA</h3>
     </div>
     <div class="content-wrap">
@@ -23,7 +23,7 @@
 		<tr>
 			<td class="auto-style2">&nbsp;</td>
 			<td>&nbsp;</td>
-			<td>&nbsp;</td>
+			<%--<td>&nbsp;</td>--%>
 		</tr>
 		<tr>
 			<td class="auto-style3">NRIC:</td>

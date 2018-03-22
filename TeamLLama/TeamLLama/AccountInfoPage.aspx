@@ -39,14 +39,6 @@
 				</td>
 				<td>&nbsp;</td>
 			</tr>
-			<tr>
-				<td class="auto-style2">Password:</td>
-				<td>
-					
-				    <asp:Label ID="lblPassword" runat="server"></asp:Label>
-					
-				<td>&nbsp;</td>
-			</tr>
 						<tr>
 				<td class="auto-style2">Email:</td>
 				<td>

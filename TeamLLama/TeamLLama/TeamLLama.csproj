@@ -182,7 +182,6 @@
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Global.asax" />
     <Content Include="CreateAccount.aspx" />
-    <Content Include="test.aspx" />
     <Content Include="UpdateAccount.aspx" />
     <Content Include="UpdateFacilityPage.aspx" />
     <Content Include="Web.config" />
@@ -315,13 +314,6 @@
     </Compile>
     <Compile Include="ReviewTempaspx.aspx.designer.cs">
       <DependentUpon>ReviewTempaspx.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ak_testing.aspx.cs">
       <DependentUpon>Ak_testing.aspx</DependentUpon>

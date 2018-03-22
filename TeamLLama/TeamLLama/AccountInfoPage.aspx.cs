@@ -19,7 +19,6 @@ namespace TeamLLama
             {
                 lblName.Text = a.name;
                 lblNric.Text = a.nric;
-                lblPassword.Text = a.password;
                 lblEmail.Text = a.email;
                 lblAddress.Text = a.address;
                 profilePic.ImageUrl = "~/upload/user/" + a.photo;

@@ -18,24 +18,7 @@ namespace TeamLLama
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //lblimg.ImageUrl = "~/images/logo.png"; //to load image
-            /*string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
-            var conn = new MySqlConnection(dbConnectionString);
 
-            string query = "SELECT testName FROM test WHERE idTest=@idTest";
-            
-            var cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@idTest", 1);
-
-            conn.Open();
-            var reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                var someValue = reader["testName"];
-                Label1.Text = someValue.ToString();
-                // Do something with someValue
-            }*/
         }
 
         

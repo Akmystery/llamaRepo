@@ -16,10 +16,10 @@
     <form id="form1" runat="server">
         <div class="nav menu" style="background-color:#b3ffcc;">
             <a class="navbar-brand ml-2 pl-5 black" href="HomePage.aspx">
-                <img src="images/logo.png" height="60px" width="60px" alt="logo" style="border-radius:50%;" />
+                <img src="images/logo.png" alt="logo" style="border-radius:50%; height:60px; width:60px" />
                 <span class="pr-1 font_style_one">DOCTOR LLAMA</span>
             </a>
-            <div class="navbar justify-content-end" style="width:70vw;">
+            <div class="navbar justify-content-end d-none d-xl-inline-flex" style="width:70vw;">
 				<%if(Session["Account"] == null){%>
 
                 <a class="nav-item nav-link black" href="CreateAccount.aspx"><i class="fa fa-user-plus" aria-hidden="true">&nbsp;Sign-up</i></a>
@@ -30,6 +30,21 @@
                 <a class="nav-item nav-link black" href="AccountInfoPage.aspx"><asp:Label ID="lblUsername" runat="server" Text=""></asp:Label></a>
 				<%}%>
             </div>
+
+            <div class="navbar justify-content-center d-xl-none ml-1" style="width:70vw;">
+				<%if(Session["Account"] == null){%>
+
+                <a class="nav-item nav-link black" href="CreateAccount.aspx"><i class="fa fa-user-plus" aria-hidden="true">&nbsp;Sign-up</i></a>
+                <a class="nav-item nav-link black" href="LoginPage.aspx"><i class="fa fa-sign-in" aria-hidden="true">&nbsp;Login</i></a>
+
+				<% }else{%>
+				<a class="nav-item nav-link black" href="SignOut.aspx"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;Sign Out</i></a>
+                <a class="nav-item nav-link black" href="AccountInfoPage.aspx"><asp:Label ID="Label1" runat="server" Text=""></asp:Label></a>
+				<%}%>
+            </div>
+        
+        
+        
         </div>
         
         <div>
