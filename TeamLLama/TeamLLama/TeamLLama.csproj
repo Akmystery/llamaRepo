@@ -113,6 +113,7 @@
     <Content Include="LoginPage.aspx" />
     <Content Include="PatientAppointmentPage.aspx" />
     <Content Include="PickAppointmentPage.aspx" />
+    <Content Include="PlanTransportation.aspx" />
     <Content Include="ReferPatient.aspx" />
     <Content Include="ReviewPage.aspx" />
     <Content Include="ReviewTempaspx.aspx" />
@@ -285,6 +286,13 @@
     </Compile>
     <Compile Include="PickAppointmentPage.aspx.designer.cs">
       <DependentUpon>PickAppointmentPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlanTransportation.aspx.cs">
+      <DependentUpon>PlanTransportation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlanTransportation.aspx.designer.cs">
+      <DependentUpon>PlanTransportation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CreateAccount.aspx.cs">
