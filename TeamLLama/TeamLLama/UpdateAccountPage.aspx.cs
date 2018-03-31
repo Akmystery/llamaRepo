@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TeamLLama.Controller;
 using TeamLLama.Entity;
 using System.IO;
+using System.Drawing;
 
 namespace TeamLLama
 {
@@ -26,6 +27,7 @@ namespace TeamLLama
         protected void UpDate_Click(object sender, EventArgs e)
         {
             Account a = new Account();
+            Boolean check = true;
             a = (Account)Session["Account"];
 
             Account update = new Account();
@@ -57,21 +59,16 @@ namespace TeamLLama
             {
                 update.email = txtEmail.Text;
             }
-            if(!string.Equals(txtPassword.Text, txtConfirmPassword.Text)){
-
-                Response.Redirect("UpdateAccount.aspx");
+            
+            if (string.IsNullOrEmpty(txtPassword.Text))
+            {
+                    update.password = txtPassword.Text = a.password;
             }
             else
             {
-                if (string.IsNullOrEmpty(txtPassword.Text))
-                {
-                    update.password = txtPassword.Text = a.password;
-                }
-                else
-                {
                     update.password = txtPassword.Text;
-                }
             }
+            
             
             if(string.IsNullOrEmpty(txtAddress.Text))
             {
@@ -85,9 +82,26 @@ namespace TeamLLama
             if (ImageUpload.HasFile)
             {
                 string ext = System.IO.Path.GetExtension(ImageUpload.PostedFile.FileName);
+
+                byte[] bytes = ImageUpload.FileBytes;
+                int width;
+                int height;
+                
+                using (Stream memStream = new MemoryStream(bytes))
+                {
+                    using (System.Drawing.Image img = System.Drawing.Image.FromStream(memStream))
+                    {
+                        width = img.Width;
+                        height = img.Height;
+                    }
+                }
                 if (!vc.ImageCheck(ext))
                 {
-                    lblImage.Text = "Invalid image type";
+                    lblImage.Text = "Invalid image format";
+                    check = false;
+                }else if(width > 170 || height > 170){
+                    lblImage.Text = "Image size does not meet specified requirements 170x170 pixels";
+                    check = false;
                 }
                 else
                 {
@@ -101,9 +115,12 @@ namespace TeamLLama
                 update.photo = a.photo;
             }
 
-            Session["Account"] = update;
-            app.UpdateAccount(txtName.Text, txtPassword.Text, txtEmail.Text, txtAddress.Text, txtNric.Text, update.photo, a.accountID);
-            Response.Write("<script type=\"text/javascript\">alert('Account Info is successfully updated!');location.href='AccountInfoPage.aspx'</script>");
+            if (check == true)
+            {
+                Session["Account"] = update;
+                app.UpdateAccount(txtName.Text, txtPassword.Text, txtEmail.Text, txtAddress.Text, txtNric.Text, update.photo, a.accountID);
+                Response.Write("<script type=\"text/javascript\">alert('Account Info is successfully updated!');location.href='AccountInfoPage.aspx'</script>");
+            }
         }
     }
 }

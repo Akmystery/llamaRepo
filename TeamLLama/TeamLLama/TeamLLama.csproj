@@ -183,7 +183,7 @@
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Global.asax" />
     <Content Include="CreateAccount.aspx" />
-    <Content Include="UpdateAccount.aspx" />
+    <Content Include="UpdateAccountPage.aspx" />
     <Content Include="UpdateFacilityPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -337,12 +337,12 @@
     <Compile Include="LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UpdateAccount.aspx.cs">
-      <DependentUpon>UpdateAccount.aspx</DependentUpon>
+    <Compile Include="UpdateAccountPage.aspx.cs">
+      <DependentUpon>UpdateAccountPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UpdateAccount.aspx.designer.cs">
-      <DependentUpon>UpdateAccount.aspx</DependentUpon>
+    <Compile Include="UpdateAccountPage.aspx.designer.cs">
+      <DependentUpon>UpdateAccountPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="SignOut.aspx.cs">
       <DependentUpon>SignOut.aspx</DependentUpon>

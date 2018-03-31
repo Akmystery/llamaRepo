@@ -27,17 +27,41 @@ namespace TeamLLama
 
         protected void UpDate_Click(object sender, EventArgs e)
         {
-            Response.Redirect("UpdateAccount.aspx");
+            Response.Redirect("UpdateAccountPage.aspx");
         }
 
         protected void Delete_Click(object sender, EventArgs e)
+        {
+            passwordPopup.Show();
+            /*Account a = new Account();
+            a = (Account)Session["Account"];
+            AccountManagementSystem app = new AccountManagementSystem();
+            app.DeleteAccount(a.accountID);
+            Session["Account"] = null;
+            Response.Redirect("HomePage.aspx");*/
+
+        }
+        protected void btnYes_Click(object sender, EventArgs e)
+        {
+            Account a = new Account();
+            a = (Account)Session["Account"];
+            if (txtPassword.Text == a.password)
+            {
+                deletePopup.Show();
+            }
+            else
+            {
+                confirmPopup.Show();
+            }
+        }
+        protected void btnConfirm_Click(object sender, EventArgs e)
         {
             Account a = new Account();
             a = (Account)Session["Account"];
             AccountManagementSystem app = new AccountManagementSystem();
             app.DeleteAccount(a.accountID);
             Session["Account"] = null;
-            Response.Redirect("HomePage.aspx");
+            Response.Write("<script type=\"text/javascript\">alert('Account Deactivated!');location.href='LoginPage.aspx'</script>");
         }
     }
 }
