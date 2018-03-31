@@ -58,6 +58,9 @@
       <HintPath>..\packages\MySql.Data.6.10.6\lib\net452\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Drawing.Design" />
@@ -244,6 +247,8 @@
       <DependentUpon>DoctorHomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entity\Account.cs" />
+    <Compile Include="Entity\JsonData.cs" />
+    <Compile Include="Entity\SearchResults.cs" />
     <Compile Include="FacilityListPage.aspx.cs">
       <DependentUpon>FacilityListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

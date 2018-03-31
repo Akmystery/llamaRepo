@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TeamLLama.Controller;
 using TeamLLama.Entity;
 using System.IO;
+using System.Data;
 
 namespace TeamLLama
 {
@@ -99,6 +100,52 @@ namespace TeamLLama
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("AdminHomePage.aspx");
+        }
+
+        protected void bn_search_Click(object sender, EventArgs e)
+        {
+            bindData();
+        }
+        private void bindData()
+        {
+            FacilityManagementSystem app = new FacilityManagementSystem();
+            List<SearchResults> results = app.getAPIData(txtName.Text);
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Building");
+            dt.Columns.Add("Address");
+            dt.Columns.Add("Postal");
+
+            for (int i = 0; i < results.Count; i++)
+            {
+                dt.Rows.Add();
+                dt.Rows[i]["Building"] = results.ElementAt(i).building;
+                dt.Rows[i]["Address"] = results.ElementAt(i).address;
+                dt.Rows[i]["Postal"] = results.ElementAt(i).postal;
+            }
+            grdFacilities.DataSource = dt;
+            grdFacilities.DataBind();
+
+            confirmPopup.Show();
+        }
+
+        protected void btnSelect_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            GridViewRow row = (GridViewRow)button.NamingContainer;
+            int i = Convert.ToInt32(row.RowIndex);
+
+            System.Web.UI.WebControls.Label lblAddress = grdFacilities.Rows[i].FindControl("lblAddress") as System.Web.UI.WebControls.Label;
+            System.Web.UI.WebControls.Label lblBuilding = grdFacilities.Rows[i].FindControl("lblBuilding") as System.Web.UI.WebControls.Label;
+
+            txtAddress.Text = lblAddress.Text;
+            txtName.Text = lblBuilding.Text;
+            confirmPopup.Hide();
+        }
+
+        protected void grdFacilities_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdFacilities.PageIndex = e.NewPageIndex;
+            bindData();
         }
     }
 }
