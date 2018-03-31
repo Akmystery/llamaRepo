@@ -89,6 +89,29 @@ namespace TeamLLama.Controller
             return f;
         }
 
+        public bool CheckFacilityName(String name)
+        {
+            Facility f = new Facility();
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "SELECT * FROM facility WHERE facility_name=@name";
+
+            var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@name", name);
+
+            conn.Open();
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                conn.Close();
+                return true;
+            }
+            conn.Close();
+            return false;
+
+        }
+
         public void CreateFacility(Facility f)
         {
             int result = 0;

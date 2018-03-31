@@ -89,9 +89,21 @@ namespace TeamLLama
 
                 FacilityManagementSystem app = new FacilityManagementSystem();
 
+                if(app.CheckFacilityName(f.facilityName))
+                { 
+
                 app.CreateFacility(f);
 
-                Response.Redirect("AdminHomePage.aspx", false);
+
+                txtName.Text = txtInfo.Text = txtPhoneNumber.Text = txtOpening.Text = = txtClosing.Text= txtAddress.Text= txtRegion.Text="";
+                lblName.Text = lblInfo.Text = lblPhoneNumber.Text = lblOpening.Text = lblClosing.Text = lblAddress.Text = lblRegion.Text = "";
+                lblImage.Text = "Created successfully";
+
+                    //Response.Redirect("AdminHomePage.aspx", false);
+                }
+                else
+                    lblImage.Text = "This hospital already exist in the database";
+
 
             }
 
