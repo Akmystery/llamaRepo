@@ -95,7 +95,7 @@ namespace TeamLLama
                 app.CreateFacility(f);
 
 
-                txtName.Text = txtInfo.Text = txtPhoneNumber.Text = txtOpening.Text = = txtClosing.Text= txtAddress.Text= txtRegion.Text="";
+                txtName.Text = txtInfo.Text = txtPhoneNumber.Text = txtOpening.Text = txtClosing.Text= txtAddress.Text= txtRegion.Text="";
                 lblName.Text = lblInfo.Text = lblPhoneNumber.Text = lblOpening.Text = lblClosing.Text = lblAddress.Text = lblRegion.Text = "";
                 lblImage.Text = "Created successfully";
 
