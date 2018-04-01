@@ -13,6 +13,17 @@ namespace TeamLLama
         {
 
         }
+
+        protected void btnSearchFacility_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSearchNearby_Click(object sender, EventArgs e)
+        {
+
+        }
+
         protected void btnPick_Click(object sender, EventArgs e)
         {
             Response.Redirect("BookAppointmentPage.aspx");
