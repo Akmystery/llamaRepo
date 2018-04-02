@@ -118,6 +118,7 @@
     <Content Include="PickAppointmentPage.aspx" />
     <Content Include="PlanTransportation.aspx" />
     <Content Include="ReferPatient.aspx" />
+    <Content Include="SearchByName.aspx" />
     <Content Include="ReviewPage.aspx" />
     <Content Include="ReviewTempaspx.aspx" />
     <Content Include="SignOut.aspx" />
@@ -313,6 +314,13 @@
     </Compile>
     <Compile Include="ReferPatient.aspx.designer.cs">
       <DependentUpon>ReferPatient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchByName.aspx.cs">
+      <DependentUpon>SearchByName.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchByName.aspx.designer.cs">
+      <DependentUpon>SearchByName.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReviewPage.aspx.cs">
       <DependentUpon>ReviewPage.aspx</DependentUpon>

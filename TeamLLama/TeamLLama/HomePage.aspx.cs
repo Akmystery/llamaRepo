@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace TeamLLama
 {
@@ -16,7 +11,7 @@ namespace TeamLLama
 
         protected void btnSearchFacility_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect(string.Format("SearchByName.aspx?q={0}", Uri.EscapeDataString(tbSearchFacility.Text)));
         }
 
         protected void btnSearchNearby_Click(object sender, EventArgs e)

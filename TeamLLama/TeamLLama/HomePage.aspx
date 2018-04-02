@@ -6,11 +6,11 @@
         <h2> HOME PAGE</h2>
         <div class="row">
             <div class="col">
-                <div class="text-center pb-5">
+                <div class="text-center pb-3">
                     <asp:TextBox ID="tbSearchFacility" runat="server" ></asp:TextBox>
                     <asp:Button ID="btnSearchFacility" runat="server" Text="Search Facility" OnClick="btnSearchFacility_Click" />
                 </div>
-                <div class="text-center pb-5">
+                <div class="text-center pb-3">
                     <asp:TextBox ID="tbSearchNearby" runat="server"></asp:TextBox>
                     <asp:Button ID="btnSearchNearby" runat="server" Text="Search Nearby" OnClick="btnSearchNearby_Click"/>
                 </div>
