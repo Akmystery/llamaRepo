@@ -119,8 +119,9 @@ namespace TeamLLama.Controller
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
-            string query = "INSERT into facility (facility_type,facility_name,generalInfo,phoneNumber,openingHrs,closingHrs,address,region,image) " +
-                "VALUES (@type,@name,@info,@number,@open,@close,@address,@region,@image)";
+
+            string query = "INSERT into facility (facility_type,facility_name,generalInfo,phoneNumber,openingHrs,closingHrs,address,region,image,x,y) " +
+                            "VALUES (@type,@name,@info,@number,@open,@close,@address,@region,@image,@x,@y)";
 
             var cmd = new MySqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@type", f.facilityType);
@@ -132,6 +133,8 @@ namespace TeamLLama.Controller
             cmd.Parameters.AddWithValue("@address", f.address);
             cmd.Parameters.AddWithValue("@region", f.region);
             cmd.Parameters.AddWithValue("@image", f.image);
+            cmd.Parameters.AddWithValue("@x", f.x);
+            cmd.Parameters.AddWithValue("@y", f.y);
 
             conn.Open();
             result = cmd.ExecuteNonQuery();

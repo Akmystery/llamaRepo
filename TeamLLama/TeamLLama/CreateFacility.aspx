@@ -132,6 +132,8 @@
                 <td class="auto-style2">Address</td>
                 <td>
                     <asp:TextBox ID="txtAddress" runat="server" Width="280px" TextMode="MultiLine"></asp:TextBox>
+                    <asp:Label ID="lblSelectedX" runat="server" Text="" Visible="false"></asp:Label>
+                    <asp:Label ID="lblSelectedY" runat="server" Text="" Visible="false"></asp:Label>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -203,6 +205,16 @@
                             <asp:TemplateField HeaderText="Postal" ItemStyle-Width="80px">
                                 <ItemTemplate>
                                     <asp:Label ID="lblPostal" runat="server" Text='<%# Eval("Postal") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="x" visible="false">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblX" runat="server" Text='<%# Eval("x") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="y" visible="false">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblY" runat="server" Text='<%# Eval("y") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="" ItemStyle-HorizontalAlign="Center">

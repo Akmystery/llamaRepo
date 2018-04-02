@@ -13,5 +13,10 @@ namespace TeamLLama.Entity
         public string building { get; set; }
         public string address { get; set; }
         public string postal { get; set; }
+        public string x { get; set; }
+        public string y { get; set; }
+        public string latitude { get; set; }
+        public string longitude { get; set; }
+        public string longtitude { get; set; }
     }
 }

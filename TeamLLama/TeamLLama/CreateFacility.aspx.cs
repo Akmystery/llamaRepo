@@ -79,6 +79,8 @@ namespace TeamLLama
                 f.closingHrs = txtClosing.Text;
                 f.address = txtAddress.Text;
                 f.region = txtRegion.Text;
+                f.x = lblSelectedX.Text;
+                f.y = lblSelectedY.Text;
 
 
                 if (ImageUpload.HasFile)
@@ -126,6 +128,8 @@ namespace TeamLLama
             dt.Columns.Add("Building");
             dt.Columns.Add("Address");
             dt.Columns.Add("Postal");
+            dt.Columns.Add("x");
+            dt.Columns.Add("y");
 
             for (int i = 0; i < results.Count; i++)
             {
@@ -133,6 +137,8 @@ namespace TeamLLama
                 dt.Rows[i]["Building"] = results.ElementAt(i).building;
                 dt.Rows[i]["Address"] = results.ElementAt(i).address;
                 dt.Rows[i]["Postal"] = results.ElementAt(i).postal;
+                dt.Rows[i]["x"] = results.ElementAt(i).x;
+                dt.Rows[i]["y"] = results.ElementAt(i).y;
             }
             grdFacilities.DataSource = dt;
             grdFacilities.DataBind();
@@ -148,9 +154,14 @@ namespace TeamLLama
 
             System.Web.UI.WebControls.Label lblAddress = grdFacilities.Rows[i].FindControl("lblAddress") as System.Web.UI.WebControls.Label;
             System.Web.UI.WebControls.Label lblBuilding = grdFacilities.Rows[i].FindControl("lblBuilding") as System.Web.UI.WebControls.Label;
+            System.Web.UI.WebControls.Label lblX = grdFacilities.Rows[i].FindControl("lblX") as System.Web.UI.WebControls.Label;
+            System.Web.UI.WebControls.Label lblY = grdFacilities.Rows[i].FindControl("lblY") as System.Web.UI.WebControls.Label;
 
             txtAddress.Text = lblAddress.Text;
             txtName.Text = lblBuilding.Text;
+            lblSelectedX.Text = lblX.Text;
+            lblSelectedY.Text = lblY.Text;
+
             confirmPopup.Hide();
         }
 
