@@ -67,6 +67,15 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.DropDownList HospitalDropDownList;
         
         /// <summary>
+        /// lblHospital control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHospital;
+        
+        /// <summary>
         /// lb_openingHrs control.
         /// </summary>
         /// <remarks>
@@ -121,6 +130,15 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.DropDownList DepartmentDropDownList;
         
         /// <summary>
+        /// lblDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDepartment;
+        
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -157,6 +175,15 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.Label lblActualDate;
         
         /// <summary>
+        /// lblDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDate;
+        
+        /// <summary>
         /// Label4 control.
         /// </summary>
         /// <remarks>
@@ -191,6 +218,15 @@ namespace TeamLLama {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList AMPMDropDownList;
+        
+        /// <summary>
+        /// lblTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTime;
         
         /// <summary>
         /// Label7 control.

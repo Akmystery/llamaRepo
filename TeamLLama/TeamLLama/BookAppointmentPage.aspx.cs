@@ -45,6 +45,22 @@ namespace TeamLLama
 
         protected void HospitalDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //set opening and closing label to visible
+            if (HospitalDropDownList.SelectedItem.ToString() != "-Select a Hospital-")
+            {
+                lb_openingHrs.Visible = true;
+                lb_closingHrs.Visible = true;
+                lblHospital.Visible = false;
+            }
+            else
+            {
+                lb_openingHrs.Visible = false;
+                lb_closingHrs.Visible = false;
+            }
+            lblTime.Text = "";
+
+
+
             AppointmentManagementSystem ams = new AppointmentManagementSystem();
 
             DepartmentDropDownList.DataSource = ams.getDepartments(HospitalDropDownList.SelectedValue.ToString());
@@ -89,59 +105,25 @@ namespace TeamLLama
         protected void BookButton_Click(object sender, EventArgs e)
         {
             //check if any value is missing
-            if (HospitalDropDownList.SelectedValue.ToString() == "-1" ||
-                Request.Form[DateTextBox.UniqueID] == "" ||//date
-                HourDropDownList.SelectedValue.ToString() == "-1" ||
-                MinDropDownList.SelectedValue.ToString() == "-1" ||
-                AMPMDropDownList.SelectedValue.ToString() == "-1" ||
-                DepartmentDropDownList.SelectedValue.ToString() == "-1")
+            if (checkForEmptyField())
             {
-
-                if (HospitalDropDownList.SelectedValue.ToString() == "-1")
-                {
-                    Response.Write("<script type=\"text/javascript\">alert('Hospital Missing!');</script>");
-                }
-                else if (DepartmentDropDownList.SelectedValue.ToString() == "-1")
-                {
-                    Response.Write("<script type=\"text/javascript\">alert('Department Missing');</script>");
-                }
-                else if (Request.Form[DateTextBox.UniqueID] == "")
-                {
-                    Response.Write("<script type=\"text/javascript\">alert('Date Missing!');</script>");
-                }
-                else if (HourDropDownList.SelectedValue.ToString() == "-1")
-                {
-                    Response.Write("<script type=\"text/javascript\">alert('Hour Missing!');</script>");
-                }
-                else if (MinDropDownList.SelectedValue.ToString() == "-1")
-                {
-                    Response.Write("<script type=\"text/javascript\">alert('Min Missing!');</script>");
-                }
-                else if (AMPMDropDownList.SelectedValue.ToString() == "-1")
-                {
-                    Response.Write("<script type=\"text/javascript\">alert('AM/ PM Missing!');</script>");
-                }
                 return;
             }
 
-            //convert datetextbox + time to DateTime
+            DateTime myDate = DateTime.ParseExact(DateTextBox.Text.ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
             string time = HourDropDownList.SelectedValue.ToString() + ":" + MinDropDownList.SelectedItem.ToString() + ":00";
-            DateTime myDate = DateTime.ParseExact(DateTextBox.Text.ToString() + " " + time, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+            TimeSpan mytime = TimeSpan.ParseExact(time, "hh\\:mm\\:ss", System.Globalization.CultureInfo.InvariantCulture);
 
-
-            //check if selected date and time is before today
-            if (myDate < DateTime.Now)
+            if (myDate < DateTime.Now && mytime < DateTime.Now.TimeOfDay)
             {
-                DateTextBox.Text = "";
-                Response.Write("<script type=\"text/javascript\">alert('Select a date after " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "!');</script>");
-
+                lblTime.Text = "Select a date and time after " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + "!";
+                return;
             }
+
             //good to go. show modalpopupextender
-            else
-            {
-                confirmPopup.Show();
-            }
-            
+            confirmPopup.Show();
+
         }
 
         protected void YesButton_Click(object sender, EventArgs e)
@@ -187,6 +169,7 @@ namespace TeamLLama
         }
         protected void AMPMDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lblTime.Text = "";
             if (HospitalDropDownList.SelectedItem.ToString() != "-Select a Hospital-")
             {
                 if (AMPMDropDownList.SelectedValue.ToString() == "AM")
@@ -214,6 +197,7 @@ namespace TeamLLama
         protected void HourDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             MinChange(Convert.ToInt32(HourDropDownList.SelectedValue));
+            lblTime.Text = "";
         }
 
         void MinChange(int hour)
@@ -348,5 +332,103 @@ namespace TeamLLama
 
             MinChange(openHours);//set mins
         }
+
+        Boolean checkForEmptyField()
+        {
+            Boolean empty = false;
+            if (HospitalDropDownList.SelectedValue.ToString() == "-1")
+            {
+                lblHospital.Visible = true;
+                empty = true;
+            }
+
+            if (DepartmentDropDownList.SelectedValue.ToString() == "-1")
+            {
+                lblDepartment.Visible = true;
+                empty = true;
+            }
+
+            if (Request.Form[DateTextBox.UniqueID] == "")
+            {
+                lblDate.Visible = true;
+                empty = true;
+            }
+
+            String timeText = "";
+
+            if (HourDropDownList.SelectedValue.ToString() == "-1")
+            {
+                timeText += "Hour";
+            }
+            if (MinDropDownList.SelectedValue.ToString() == "-1")
+            {
+                if (timeText != "")
+                {
+                    timeText += ", Min";
+                }
+                else
+                {
+                    timeText += "Min";
+                }
+
+            }
+            if (AMPMDropDownList.SelectedValue.ToString() == "-1")
+            {
+                if (timeText != "")
+                {
+                    timeText += ", AM/PM";
+                }
+                else
+                {
+                    timeText += "AM/PM";
+                }
+
+            }
+            if (timeText != "")
+            {
+                timeText += " cannot be empty";
+                empty = true;
+            }
+
+            lblTime.Text = timeText;
+            return empty;
+        }
+
+        protected void DepartmentDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DepartmentDropDownList.SelectedItem.ToString() != "")
+            {
+                lblDepartment.Visible = false;
+            }
+
+        }
+
+        protected void DateTextBox_TextChanged(object sender, EventArgs e)
+        {
+            //convert datetextbox + time to DateTime
+            //string time = HourDropDownList.SelectedValue.ToString() + ":" + MinDropDownList.SelectedItem.ToString() + ":00";
+            DateTime myDate = DateTime.ParseExact(DateTextBox.Text.ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+            //check if selected date and time is before today
+            if (myDate < DateTime.Now && myDate.Day != DateTime.Now.Day)
+            {
+
+                DateTextBox.Text = "";
+                lblDate.Text = "Select a date after " + DateTime.Now.ToString("yyyy-MM-dd") + "!";
+                lblDate.Visible = true;
+
+            }
+            else
+            {
+                lblDate.Text = "";
+                lblDate.Visible = false;
+            }
+        }
+
+        protected void MinDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblTime.Text = "";
+        }
     }
+
 }

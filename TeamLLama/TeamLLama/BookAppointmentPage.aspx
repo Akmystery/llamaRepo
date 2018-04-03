@@ -48,16 +48,17 @@
             </td>
         </tr>
         <tr>
-            <td></td>
+            <td>&nbsp;</td>
             <td>
-                <asp:Label ID="lb_openingHrs" runat="server" Text="Opening Hours: " Visible="true"></asp:Label>
+                <asp:Label ID="lblHospital" runat="server" ForeColor="Red" Visible="False">Hospital cannot be empty</asp:Label>
+                <asp:Label ID="lb_openingHrs" runat="server" Text="Opening Hours: " Visible="False"></asp:Label>
                 <asp:Label ID="lb_actualOpening" runat="server" Text="" Visible="false"></asp:Label>
             </td>
         </tr>
         <tr>
-            <td></td>
+            <td>&nbsp;</td>
             <td>
-                <asp:Label ID="lb_closingHrs" runat="server" Text="Closing Hours: " Visible="true"></asp:Label>
+                <asp:Label ID="lb_closingHrs" runat="server" Text="Closing Hours: " Visible="False"></asp:Label>
                 <asp:Label ID="lb_actualClosing" runat="server" Text="" Visible="false"></asp:Label>
             </td>
         </tr>
@@ -70,13 +71,15 @@
                 <asp:Label ID="Label2" runat="server" Text="Department: "></asp:Label>
             </td>
             <td>
-                <asp:DropDownList ID="DepartmentDropDownList" runat="server">
+                <asp:DropDownList ID="DepartmentDropDownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DepartmentDropDownList_SelectedIndexChanged">
                     <asp:ListItem Selected="True" Value="-1">(Select a Department)</asp:ListItem>
                 </asp:DropDownList>
             </td>
         </tr>
-         <tr>
-            <td>&nbsp;
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <asp:Label ID="lblDepartment" runat="server" ForeColor="Red" Visible="False">Department cannot be empty</asp:Label>
             </td>
         </tr>
         <tr>
@@ -84,13 +87,15 @@
                 <asp:Label ID="Label1" runat="server" Text="Date: "></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="DateTextBox" runat="server"></asp:TextBox>
+                <asp:TextBox ID="DateTextBox" runat="server" AutoPostBack="True" OnTextChanged="DateTextBox_TextChanged"></asp:TextBox>
                 <cc1:CalendarExtender ID="DateTextBox_CalendarExtender" runat="server" TargetControlID="DateTextBox" Format="dd/MM/yyyy" />
                 <asp:Label ID="lblActualDate" runat="server" Visible="False"></asp:Label>
             </td>
         </tr>
-         <tr>
-            <td>&nbsp;
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <asp:Label ID="lblDate" runat="server" ForeColor="Red" Visible="False">Date cannot be empty</asp:Label>
             </td>
         </tr>
         <tr>
@@ -102,7 +107,7 @@
                     <asp:ListItem Value="-1" Selected="True"> -Hr-</asp:ListItem>
                 </asp:DropDownList>
 
-                <asp:DropDownList ID="MinDropDownList" runat="server">
+                <asp:DropDownList ID="MinDropDownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="MinDropDownList_SelectedIndexChanged">
                     <asp:ListItem Value="-1" Selected="True"> -Min-</asp:ListItem>
                 </asp:DropDownList>
 
@@ -113,8 +118,10 @@
                 </asp:DropDownList>
             </td>
         </tr>
-         <tr>
-            <td>&nbsp;
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <asp:Label ID="lblTime" runat="server" ForeColor="Red"></asp:Label>
             </td>
         </tr>
         <tr>
