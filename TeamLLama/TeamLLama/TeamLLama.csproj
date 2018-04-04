@@ -232,6 +232,7 @@
     <Compile Include="Controller\AppointmentManagementSystem.cs" />
     <Compile Include="Controller\FacilityManagementSystem.cs" />
     <Compile Include="Controller\ReviewControlSystem.cs" />
+    <Compile Include="Controller\Svy21.cs" />
     <Compile Include="Controller\Validation.cs" />
     <Compile Include="DoctorAppointmentPage.aspx.cs">
       <DependentUpon>DoctorAppointmentPage.aspx</DependentUpon>
