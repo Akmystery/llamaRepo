@@ -16,7 +16,9 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Name">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblFacilityName" runat="server" Text='<%# Item.facilityName %>'></asp:Label>
+                                    <a href="#<%#Item.facilityID%>">
+                                        <asp:Label ID="lblFacilityName" runat="server" Text='<%# Item.facilityName %>'></asp:Label>
+                                    </a>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Type">
