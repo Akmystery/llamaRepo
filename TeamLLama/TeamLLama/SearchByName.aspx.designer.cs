@@ -10,7 +10,7 @@
 namespace TeamLLama {
     
     
-    public partial class ResultPage {
+    public partial class SearchByName {
         
         /// <summary>
         /// grdFacility control.
