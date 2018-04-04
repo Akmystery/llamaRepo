@@ -216,7 +216,7 @@ namespace TeamLLama.Controller
         }
         public List<SearchResults> getAPIData(string query)
         {
-            var url = "https://developers.onemap.sg/commonapi/search?searchVal=" +query +" &returnGeom=N&getAddrDetails=Y&pageNum=1";
+            var url = "https://developers.onemap.sg/commonapi/search?searchVal=" +query +" &returnGeom=Y&getAddrDetails=Y&pageNum=1";
             var hospital = _download_serialized_json_data<JsonData>(url);
             List<SearchResults> results = hospital.results;
             return results;
