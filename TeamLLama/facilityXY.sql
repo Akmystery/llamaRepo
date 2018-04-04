@@ -33,8 +33,8 @@ CREATE TABLE `facility` (
   `address` varchar(100) NOT NULL,
   `region` varchar(45) NOT NULL,
   `image` varchar(45) DEFAULT NULL,
-  `x` varchar(45) DEFAULT NULL,
-  `y` varchar(45) DEFAULT NULL,
+  `x` decimal(15,10) DEFAULT NULL,
+  `y` decimal(15,10) DEFAULT NULL,
   PRIMARY KEY (`facility_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
