@@ -16,7 +16,7 @@ namespace TeamLLama
 
         protected void btnSearchNearby_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect(string.Format("SearchNearby.aspx?q={0}", Uri.EscapeDataString(tbSearchNearby.Text)));
         }
 
         protected void btnPick_Click(object sender, EventArgs e)
