@@ -120,6 +120,40 @@ namespace TeamLLama.Controller
             return searchResults;
         }
 
+        public List<Facility> SearchNearby(decimal x, decimal y)
+        {
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "select *, abs(pow(x - @x,2) + pow(y - @y,2)) AS distance FROM facility ORDER BY distance ASC limit 5";
+
+            var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@x", x);
+            cmd.Parameters.AddWithValue("@y", y);
+
+            conn.Open();
+            var reader = cmd.ExecuteReader();
+            List<Facility> searchResults = new List<Facility>();
+            while (reader.Read())
+            {
+                Facility f = new Facility();
+                f.facilityID = Convert.ToInt32(reader["facility_id"]);
+                f.facilityName = reader["facility_name"].ToString();
+                f.facilityType = reader["facility_type"].ToString();
+                f.generalInfo = reader["generalInfo"].ToString();
+                f.phoneNumber = Convert.ToInt32(reader["phoneNumber"]);
+                f.openingHrs = reader["openingHrs"].ToString();
+                f.closingHrs = reader["closingHrs"].ToString();
+                f.address = reader["address"].ToString();
+                f.region = reader["region"].ToString();
+                f.x = (decimal) reader["x"];
+                f.y = (decimal)reader["y"];
+                searchResults.Add(f);
+            }
+            conn.Close();
+            return searchResults;
+        }
+
         public bool CheckFacilityName(String name)
         {
             Facility f = new Facility();
