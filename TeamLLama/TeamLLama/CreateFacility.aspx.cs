@@ -79,8 +79,8 @@ namespace TeamLLama
                 f.closingHrs = txtClosing.Text;
                 f.address = txtAddress.Text;
                 f.region = txtRegion.Text;
-                f.x = lblSelectedX.Text;
-                f.y = lblSelectedY.Text;
+                f.x = Decimal.Parse(lblSelectedX.Text);
+                f.y = Decimal.Parse(lblSelectedY.Text);
 
 
                 if (ImageUpload.HasFile)
