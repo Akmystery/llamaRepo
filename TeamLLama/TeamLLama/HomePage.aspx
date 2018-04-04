@@ -6,14 +6,14 @@
         <h2> HOME PAGE</h2>
         <div class="row">
             <div class="col">
-                <div class="text-center pb-3">
+                <asp:Panel CssClass="text-center pb-3" ID="panelSearchFacility" runat="server" DefaultButton="btnSearchFacility">
                     <asp:TextBox ID="tbSearchFacility" runat="server" ></asp:TextBox>
                     <asp:Button ID="btnSearchFacility" runat="server" Text="Search Facility" OnClick="btnSearchFacility_Click" />
-                </div>
-                <div class="text-center pb-3">
+                </asp:Panel>
+                <asp:Panel CssClass="text-center pb-3" ID="panelSearchNearby" runat="server" DefaultButton="btnSearchNearby">
                     <asp:TextBox ID="tbSearchNearby" runat="server"></asp:TextBox>
                     <asp:Button ID="btnSearchNearby" runat="server" Text="Search Nearby" OnClick="btnSearchNearby_Click"/>
-                </div>
+                </asp:Panel>
                 <p class="text-center font_style_one" style="font-size: 20px;">Appointment Management</p>
                 
                 <div class="text-center pb-3">
