@@ -47,8 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
+      <HintPath>..\packages\AjaxControlToolkit.18.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -121,6 +120,7 @@
     <Content Include="SearchByName.aspx" />
     <Content Include="ReviewPage.aspx" />
     <Content Include="ReviewTempaspx.aspx" />
+    <Content Include="SearchNearby.aspx" />
     <Content Include="SignOut.aspx" />
     <Content Include="CreateFacility.aspx" />
     <None Include="packages.config" />
@@ -349,6 +349,13 @@
     </Compile>
     <Compile Include="LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchNearby.aspx.cs">
+      <DependentUpon>SearchNearby.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchNearby.aspx.designer.cs">
+      <DependentUpon>SearchNearby.aspx</DependentUpon>
     </Compile>
     <Compile Include="UpdateAccountPage.aspx.cs">
       <DependentUpon>UpdateAccountPage.aspx</DependentUpon>
