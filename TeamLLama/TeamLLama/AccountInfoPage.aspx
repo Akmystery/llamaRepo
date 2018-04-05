@@ -9,6 +9,15 @@
             margin-top: 10px;
 		}
 
+        body{
+            background-image:url(images/update_bg.jpg);
+        }
+        .font_style_two {
+            font-family: 'Karma', serif;
+            font-weight: 500;
+            font-size: 20px;
+        }
+
         .modalBackground {
             background-color: Black;
             filter: alpha(opacity=90);
@@ -25,65 +34,59 @@
             width: auto;
             height: auto;
         }
+
+
 	</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
-    <div class="container text-center">
-	<h1 class="font_style_one mt-5 mb-4">Account Info</h1>
-    </div>
-    <div class="content-wrap" style="max-width:550px;">
+    <div class="content-wrap mt-5" style="max-width:650px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5); background-color:white;">
+        <h1 class="font_style_one mt-2 mb-4 text-center">Account Information</h1>
 		<table style="width:100%;">
              <tr>
-				<td class="auto-style2">Profile Picture:</td>
 				<td>
-				    <asp:Image ID="profilePic" runat="server" Height="170px" Width="170px" />	
+				    	<asp:Image ID="profilePic" runat="server" Height="170px" Width="170px"  CssClass="justify-content-center"/>
 				</td>
-				<td>&nbsp;</td>
+                 <td class="auto-style2 font_style_two">Name:</td>
+				<td>
+					
+				    <asp:Label ID="lblName" runat="server" CssClass="font_style_two"></asp:Label>
+					
+				</td>
 			</tr>
             <tr>
-				<td class="auto-style2">NRIC:</td>
+                <td></td>
+				<td class="auto-style2 font_style_two">NRIC:</td>
 				<td>
 					
-				    <asp:Label ID="lblNric" runat="server"></asp:Label>
+				    <asp:Label ID="lblNric" runat="server" CssClass="font_style_two"></asp:Label>
 					
 				</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td class="auto-style2">Name:</td>
-				<td>
-					
-				    <asp:Label ID="lblName" runat="server"></asp:Label>
-					
-				</td>
-				<td>&nbsp;</td>
 			</tr>
 						<tr>
-				<td class="auto-style2">Email:</td>
+                            <td></td>
+				<td class="auto-style2 font_style_two">Email:</td>
 				<td>
 					
-				    <asp:Label ID="lblEmail" runat="server"></asp:Label>
+				    <asp:Label ID="lblEmail" runat="server" CssClass="font_style_two"></asp:Label>
 					
 				</td>
-				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td class="auto-style2">Address:</td>
+                <td></td>
+				<td class="auto-style2 font_style_two">Address:</td>
 				<td>
-					
-				    <asp:Label ID="lblAddress" runat="server"></asp:Label>
-					
+				    <asp:Label ID="lblAddress" runat="server" CssClass="font_style_two"></asp:Label>
 				</td>
-				<td>&nbsp;</td>
 			</tr>
             <tr>
-            <td>&nbsp;</td>
-			</tr>
+                <td></td>
+                <td><asp:Button ID="Button1" runat="server" OnClick="UpDate_Click" CssClass="btn btn-primary mb-3" Text="Update Account" /></td>
+                <td>
+                    
+                    <asp:Button ID="deleteButton" runat="server" OnClick="Delete_Click" CssClass="btn btn-primary mb-3" Text="Deactivate Account"/>
+                </td>
+            </tr>
 		</table>
-        <div class="float-right">
-        <asp:Button ID="Button1" runat="server" OnClick="UpDate_Click" Text="Update Account" />
-        <asp:Button ID="deleteButton" runat="server" OnClick="Delete_Click" Text="Deactivate Account"/>
-        </div>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:HiddenField ID="HiddenField1" runat="server" />
         <cc1:modalpopupextender ID="passwordPopup" runat="server" PopupControlID="CfmPanel" TargetControlID="HiddenField1" CancelControlID="btnNo" BackgroundCssClass="modalBackground"></cc1:modalpopupextender>

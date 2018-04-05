@@ -22,15 +22,6 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.Image profilePic;
         
         /// <summary>
-        /// lblNric control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNric;
-        
-        /// <summary>
         /// lblName control.
         /// </summary>
         /// <remarks>
@@ -38,6 +29,15 @@ namespace TeamLLama {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblName;
+        
+        /// <summary>
+        /// lblNric control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNric;
         
         /// <summary>
         /// lblEmail control.

@@ -1,65 +1,23 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Page.Master" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="TeamLLama.LoginPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-		.auto-style1 {
-			height: 26px;
-		}
-		.auto-style2 {
-			width: 89px;
-		}
-		.auto-style3 {
-			height: 26px;
-			width: 89px;
-		}
-	</style>
+    <style>
+        body {
+         background-image:url(images/login_bg.jpg);
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
-    <div class="container text-center mt-5">
-    <img src="images/logo.png"  style="border-radius:50%;width:100px;height:100px;" />
-    <h3 class="font_style_one mt-2">DOCTOR LLAMA</h3>
-    </div>
-    <div class="content-wrap">
-        <table style="width:100%;">
-		<tr>
-			<td class="auto-style2">&nbsp;</td>
-			<td>&nbsp;</td>
-			<%--<td>&nbsp;</td>--%>
-		</tr>
-		<tr>
-			<td class="auto-style3">NRIC:</td>
-			<td class="auto-style1">
-				<asp:TextBox ID="txtNRIC" runat="server"></asp:TextBox>
-			</td>
-			<td class="auto-style1"></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td class="auto-style1">
-				<asp:Label ID="lblNRIC" runat="server" ForeColor="Red"></asp:Label>
-			</td>
-			<td class="auto-style1"></td>
-		</tr>
-		<tr>
-			<td class="auto-style2">Password:</td>
-			<td>
-				<asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
-			</td>
-			<td>&nbsp;</td>
-		</tr>
-				<tr>
-			<td></td>
-			<td class="auto-style1">
-				<asp:Label ID="lblPassword" runat="server" ForeColor="Red"></asp:Label>
-			</td>
-			<td class="auto-style1"></td>
-		</tr>
-		<tr>
-			<td class="auto-style2">&nbsp;</td>
-			<td>
-				<asp:Button ID="BtnLogin" runat="server" OnClick="BtnLogin_Click" Text="Login" />
-			</td>
-			<td>&nbsp;</td>
-		</tr>
-	</table>
-    </div>
+    <div class="container">
+        <div class="content-wrap" style="margin-top:80px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5); background-color:white;">
+            <div class="row justify-content-center">
+            <img src="images/Login.png" style="width:100px; height:100px;" class="mt-2" />
+             </div>
+            <h1 class="font_style_one mt-3 text-center">Login to your Account</h1>
+            <asp:TextBox ID="txtNRIC" runat="server" CssClass="form-control mt-1" placeholder="NRIC Number" Width="300px"></asp:TextBox>
+            <asp:Label ID="lblNRIC" runat="server" ForeColor="Red" CssClass="ml-1 mb-1" ></asp:Label>
+            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Password" Width="300px"></asp:TextBox>
+            <asp:Label ID="lblPassword" runat="server" ForeColor="Red" CssClass="ml-1 mb-1"></asp:Label>
+            <asp:Button ID="BtnLogin" runat="server" OnClick="BtnLogin_Click" Text="Login" CssClass="btn btn-primary mb-2" Width="300px" />
+            </div>
+        </div>
 </asp:Content>

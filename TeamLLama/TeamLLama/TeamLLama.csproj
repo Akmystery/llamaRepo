@@ -107,8 +107,11 @@
     <Content Include="FacilityListPage.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="images\FilledStar.gif" />
+    <Content Include="images\Login.png" />
+    <Content Include="images\login_bg.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\Star.gif" />
+    <Content Include="images\update_bg.jpg" />
     <Content Include="images\WaitingStar.gif" />
     <Content Include="Master_Page.Master" />
     <Content Include="Ak_testing.aspx" />
