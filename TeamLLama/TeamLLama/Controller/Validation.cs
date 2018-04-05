@@ -72,7 +72,7 @@ namespace TeamLLama.Controller
             var cmd = new MySqlCommand(query, conn);
             //cmd.Parameters.AddWithValue("@idTest", 1);
 
-            cmd.Parameters.AddWithValue("@nric", a);
+            cmd.Parameters.AddWithValue("@nric", nric);
 
             conn.Open();
             var reader = cmd.ExecuteReader();

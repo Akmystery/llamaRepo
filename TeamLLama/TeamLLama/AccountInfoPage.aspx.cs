@@ -51,7 +51,7 @@ namespace TeamLLama
             }
             else
             {
-                confirmPopup.Show();
+                wrongPopup.Show();
             }
         }
         protected void btnConfirm_Click(object sender, EventArgs e)

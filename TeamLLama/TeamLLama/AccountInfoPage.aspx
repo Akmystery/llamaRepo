@@ -96,7 +96,7 @@
             <div class="m-2"></div>
         </asp:Panel>
         <asp:HiddenField ID="HiddenField2" runat="server" />
-        <cc1:modalpopupextender ID="confirmPopup" runat="server" PopupControlID="Panel1" TargetControlID="HiddenField2" CancelControlID="btnNo" BackgroundCssClass="modalBackground"></cc1:modalpopupextender>
+        <cc1:modalpopupextender ID="wrongPopup" runat="server" PopupControlID="Panel1" TargetControlID="HiddenField2" CancelControlID="btnNo" BackgroundCssClass="modalBackground"></cc1:modalpopupextender>
         <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup1" align="center" Style="display: none">
             <asp:Label ID="Label1" runat="server" Text="Wrong Password!" Visible="true" ForeColor="Red" CssClass="pl-3 pr-3"></asp:Label>
             <div class="m-2"></div>

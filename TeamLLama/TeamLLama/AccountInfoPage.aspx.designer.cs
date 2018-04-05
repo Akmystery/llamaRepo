@@ -157,13 +157,13 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.HiddenField HiddenField2;
         
         /// <summary>
-        /// confirmPopup control.
+        /// wrongPopup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender confirmPopup;
+        protected global::AjaxControlToolkit.ModalPopupExtender wrongPopup;
         
         /// <summary>
         /// Panel1 control.

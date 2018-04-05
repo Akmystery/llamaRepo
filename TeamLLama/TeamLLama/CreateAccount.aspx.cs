@@ -23,7 +23,7 @@ namespace TeamLLama
 
         
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void create_Click(object sender, EventArgs e)
         {
             Validation vc = new Validation();
             bool check = true;
@@ -64,20 +64,20 @@ namespace TeamLLama
 
             if (!vc.isEmpty(txtNric.Text) && vc.checkNricExist(txtNric.Text))
             {
-                lblNric.Text = "This NRIC already got an account";
+                lblNric.Text = "There is already an account with this nric number";
                 check = false;
             }
 
             if (vc.ComparePassword(txtPassword.Text, txtConfirmPassword.Text) == false)
 
             {
-                lblPassword.Text = "Please re-enter password, Passwords are different";
+                lblPassword.Text = "Confirmed password does not match";
                 check = false;
             }
 
             if (vc.CheckEmail(txtEmail.Text) == false)
             {
-                lblEmail.Text = "Invalid Email";
+                lblEmail.Text = "Invalid Email Address format";
                 check = false;
 
             }
@@ -85,10 +85,28 @@ namespace TeamLLama
             if(ImageUpload.HasFile)
             {
                 string ext = System.IO.Path.GetExtension(ImageUpload.PostedFile.FileName);
+
+                byte[] bytes = ImageUpload.FileBytes;
+                int width;
+                int height;
+
+                using (Stream memStream = new MemoryStream(bytes))
+                {
+                    using (System.Drawing.Image img = System.Drawing.Image.FromStream(memStream))
+                    {
+                        width = img.Width;
+                        height = img.Height;
+                    }
+                }
                 if (!vc.ImageCheck(ext))
                 { 
                     check = false;
-                    lblImage.Text = "Invalid image type";
+                    lblImage.Text = "This Picture format is not supported by the system";
+                }
+                else if (width > 170 || height > 170)
+                {
+                    lblImage.Text = "Profile Picture size does not meet specified requirements 170x170 pixels";
+                    check = false;
                 }
             }
 
@@ -113,7 +131,7 @@ namespace TeamLLama
 
                 app.createAccount(a);
 
-                Response.Redirect("LoginPage.aspx", false);
+                Response.Write("<script type=\"text/javascript\">alert('Account is created successfully!');location.href='LoginPage.aspx'</script>");
 
             }
 

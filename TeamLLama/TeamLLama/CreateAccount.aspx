@@ -9,6 +9,23 @@
             height: 10px;
 		}
 	</style>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function showpreview(input) {
+
+            if (input.files && input.files[0]) {
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imgpreview').css('visibility', 'visible');
+                    $('#imgpreview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+
+        }
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
     <div class="container text-center">
@@ -16,6 +33,14 @@
     </div>
     <div class="content-wrap" style="max-width:810px;">
 		<table style="width:100%;">
+            	<tr>
+				<td class="auto-style2">Image</td>
+				<td>
+                    <img id="imgpreview" height="170" width="170" src="" style="border-width:0px; margin-bottom:10px; visibility: hidden;" />
+					<asp:FileUpload ID="ImageUpload" runat="server" Width="280px" onchange="showpreview(this);" />
+				</td>
+				<td>&nbsp;</td>
+			</tr>
 			<tr>
 				<td class="auto-style2">Name</td>
 				<td>
@@ -93,13 +118,7 @@
 					<asp:Label ID="lblAddress" runat="server" ForeColor="Red"></asp:Label>
 				</td>
 			</tr>
-						<tr>
-				<td class="auto-style2">Image</td>
-				<td>
-					<asp:FileUpload ID="ImageUpload" runat="server" Width="280px" />
-				</td>
-				<td>&nbsp;</td>
-			</tr>
+					
 			<tr>
 				<td class="auto-style2"></td>
 				<td>
@@ -110,7 +129,7 @@
 						<tr>
 				<td class="auto-style2">&nbsp;</td>
 				<td>
-					<asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Create" />
+					<asp:Button ID="Button2" runat="server" OnClick="create_Click" Text="Register" />
 				</td>
 				<td>&nbsp;</td>
 			</tr>
