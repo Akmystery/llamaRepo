@@ -9,34 +9,27 @@
 			width: 152px;
             height: 10px;
 		}
-		.modalBackground
-    {
-        background-color: Black;
-        filter: alpha(opacity=90);
-        opacity: 0.8;
-    }
-    .modalPopup
-    {
-        background-color: #FFFFFF;
-        border-width: 3px;
-        border-style: solid;
-        border-color: black;
-        padding-top: 10px;
-        padding-left: 10px;
-        width: 500px;
-        height: 540px;
-    }
-    .modalPopup1
-    {
-        background-color: #FFFFFF;
-        border-width: 3px;
-        border-style: solid;
-        border-color: black;
-        padding-top: 10px;
-        padding-left: 10px;
-        width: 300px;
-        height: 240px;
-    }
+
+        .modalBackground {
+            background-color: Black;
+            filter: alpha(opacity=90);
+            opacity: 0.8;
+        }
+
+        .modalPopup1 {
+            background-color: #FFFFFF;
+            border-width: 3px;
+            border-style: solid;
+            border-color: black;
+            padding-top: 10px;
+            padding-left: 10px;
+            width: auto;
+            height: auto;
+        }
+
+          body{
+            background-image:url(images/ad_bg.jpg);
+        }
 	</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
@@ -44,10 +37,8 @@
 	<h1 class="font_style_one mt-5 mb-4">Delete Doctor Account</h1>
     </div>
     <div class="content-wrap" style="max-width:810px;">
-	
-            <br />
-            <asp:Label ID="lblHistory" runat="server" Text="Account List"></asp:Label>
-            <asp:GridView ID="grdAllDocAcc" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="false" PageSize="2" OnPageIndexChanging="grdAllDocAcc_PageIndexChanging" AllowPaging="True">
+            <h4><asp:Label ID="lblHistory" runat="server" Text="Account List"></asp:Label></h4>
+            <asp:GridView ID="grdAllDocAcc" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="false" PageSize="2" OnPageIndexChanging="grdAllDocAcc_PageIndexChanging" AllowPaging="True" PagerStyle-HorizontalAlign="Center" RowStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" EmptyDataRowStyle-HorizontalAlign="Center" BorderStyle="Solid" CellPadding="10">
                 <Columns>
                     <asp:TemplateField HeaderText="ID" Visible="false">
                         <ItemTemplate>
@@ -81,11 +72,22 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_click" OnClientClick="return confirm('Are you sure?')"/>
+                            <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_click" CssClass="btn btn-danger"/>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:HiddenField ID="HiddenField1" runat="server" />
+        <cc1:modalpopupextender ID="deletePopup" runat="server" PopupControlID="Panel2" TargetControlID="HiddenField1" CancelControlID="btnNo" BackgroundCssClass="modalBackground"></cc1:modalpopupextender>
+        <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup1" align="center" Style="display: none">
+             <asp:Label ID="Label3" runat="server" Text="Are you sure you want to delete your account?" Visible="true"></asp:Label><br />
+            <br />
+            <asp:Button ID="Button4" runat="server" Text="Confirm" OnClick="btnConfirm_Click" />
+            <asp:Button ID="btnNo" runat="server" Text="Cancel"/>
+            <div class="m-2"></div>
+        </asp:Panel>
         </div>
+       
 
 		</asp:Content>

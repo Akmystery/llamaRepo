@@ -63,5 +63,6 @@ namespace TeamLLama
             Session["Account"] = null;
             Response.Write("<script type=\"text/javascript\">alert('Account Deactivated!');location.href='LoginPage.aspx'</script>");
         }
+
     }
 }

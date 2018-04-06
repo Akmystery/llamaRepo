@@ -15,15 +15,19 @@
             opacity: 0.8;
         }
 
-        .modalPopup1 {
+         .modalPopup1 {
             background-color: #FFFFFF;
             border-width: 3px;
             border-style: solid;
             border-color: black;
             padding-top: 10px;
             padding-left: 10px;
-            width: 200px;
-            height: 140px;
+            width: auto;
+            height: auto;
+        }
+
+        body{
+            background-image:url(images/ap_bg.jpg);
         }
     </style>
 
@@ -34,12 +38,11 @@
         <table class="tableStyle">
             <tr>
                 <td>
-                    <asp:Label ID="lblUpcoming" runat="server" Text="Upcoming Appointments" Font-Size="Larger"></asp:Label>
+                    <h3 class="mt-3"><asp:Label ID="lblUpcoming" runat="server" Text="Upcoming Appointments" Font-Size="Larger"></asp:Label></h3>
                 </td>
             </tr>
             <tr>
-                <td>&nbsp;
-                </td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>
@@ -72,7 +75,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="" ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
-                                    <asp:Button ID="btn_Delete1" runat="server" Text="Delete" OnClick="btn_Delete1_Click" />
+                                    <asp:Button ID="btn_Delete1" runat="server" Text="Delete" OnClick="btn_Delete1_Click" CssClass="btn btn-danger" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -83,17 +86,15 @@
                 </td>
             </tr>
             <tr>
-                <td>&nbsp;
-                </td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblHistory" runat="server" Text="Past Appointments" Font-Size="Larger"></asp:Label>
+                    <h3><asp:Label ID="lblHistory" runat="server" Text="Past Appointments" Font-Size="Larger"></asp:Label></h3>
                 </td>
             </tr>
             <tr>
-                <td>&nbsp;
-                </td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>
@@ -138,10 +139,11 @@
         <cc1:ModalPopupExtender ID="confirmPopup" runat="server" PopupControlID="CfmPanel" TargetControlID="HiddenField1" CancelControlID="btnNo" BackgroundCssClass="modalBackground"></cc1:ModalPopupExtender>
         <asp:Panel ID="CfmPanel" runat="server" CssClass="modalPopup1" align="center" Style="display: none">
             <asp:Label ID="lbl_id" runat="server" Text="" Visible="false"></asp:Label>
-            <asp:Label ID="lblMsg" runat="server" Text="Confirm Delete?" Visible="true"></asp:Label><br />
+            <asp:Label ID="Label3" runat="server" Text="Are you sure you want to delete this appointment?" Visible="true"></asp:Label><br />
             <br />
-            <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="btnYes_Click" />
-            <asp:Button ID="btnNo" runat="server" Text="No" />
+            <asp:Button ID="Button4" runat="server" Text="Confirm" OnClick="btnYes_Click" />
+            <asp:Button ID="btnNo" runat="server" Text="Cancel"/>
+            <div class="m-2"></div>
         </asp:Panel>
     </div>
 

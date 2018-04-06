@@ -67,6 +67,12 @@ namespace TeamLLama
         protected void btnDelete_click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            deletePopup.Show();
+        }
+
+        protected void btnConfirm_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
             GridViewRow row = (GridViewRow)button.NamingContainer;
             int i = Convert.ToInt32(row.RowIndex);
 

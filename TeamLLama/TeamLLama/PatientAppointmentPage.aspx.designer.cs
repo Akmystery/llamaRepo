@@ -94,22 +94,22 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.Label lbl_id;
         
         /// <summary>
-        /// lblMsg control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMsg;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// btnYes control.
+        /// Button4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnYes;
+        protected global::System.Web.UI.WebControls.Button Button4;
         
         /// <summary>
         /// btnNo control.

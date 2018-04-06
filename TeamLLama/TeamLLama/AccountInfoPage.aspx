@@ -10,7 +10,7 @@
 		}
 
         body{
-            background-image:url(images/update_bg.jpg);
+            background-image:url(images/login_bg.jpg);
         }
         .font_style_two {
             font-family: 'Karma', serif;

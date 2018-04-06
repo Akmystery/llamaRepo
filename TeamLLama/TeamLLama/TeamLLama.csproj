@@ -106,6 +106,9 @@
     <Content Include="DoctorHomePage.aspx" />
     <Content Include="FacilityListPage.aspx" />
     <Content Include="HomePage.aspx" />
+    <Content Include="images\ad_bg.jpg" />
+    <Content Include="images\ap_bg.jpg" />
+    <Content Include="images\bo_bg.jpg" />
     <Content Include="images\FilledStar.gif" />
     <Content Include="images\Login.png" />
     <Content Include="images\login_bg.jpg" />

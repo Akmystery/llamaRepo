@@ -18,15 +18,5 @@ namespace TeamLLama
         {
             Response.Redirect(string.Format("SearchNearby.aspx?q={0}", Uri.EscapeDataString(tbSearchNearby.Text)));
         }
-
-        protected void btnPick_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("BookAppointmentPage.aspx");
-        }
-
-        protected void btnView_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("PatientAppointmentPage.aspx");
-        }
     }
 }

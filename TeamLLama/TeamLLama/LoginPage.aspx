@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
     <div class="container">
-        <div class="content-wrap" style="margin-top:80px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5); background-color:white;">
+        <div class="content-wrap" style="margin-top:50px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5); background-color:white;">
             <div class="row justify-content-center">
             <img src="images/Login.png" style="width:100px; height:100px;" class="mt-2" />
              </div>

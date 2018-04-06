@@ -14,14 +14,6 @@
                     <asp:TextBox ID="tbSearchNearby" runat="server"></asp:TextBox>
                     <asp:Button ID="btnSearchNearby" runat="server" Text="Search Nearby" OnClick="btnSearchNearby_Click"/>
                 </asp:Panel>
-                <p class="text-center font_style_one" style="font-size: 20px;">Appointment Management</p>
-                
-                <div class="text-center pb-3">
-                    <asp:Button ID="btnPick" runat="server" Text="Book Appointment" OnClick="btnPick_Click" />
-                </div>
-                <div class="text-center pb-3">
-                    <asp:Button ID="btnView" runat="server" Text="View Appointment" OnClick="btnView_Click" />
-                </div>
             </div>
         </div>
     </div>

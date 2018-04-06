@@ -14,11 +14,13 @@ namespace TeamLLama
         {
                 Account a = new Account();
                 a = (Account)Session["Account"];
+                
 
 
                 if(a != null)
             {
-                lblUsername.Text = "Welcome " + a.name;
+                Session["Type"] = a.accountType;
+                lblUsername.Text = a.name;
             }
         
         }
