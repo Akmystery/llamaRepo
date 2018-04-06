@@ -2,7 +2,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
+	<style type="text/css">
         .auto-style2 {
             width: 152px;
             height: 10px;
@@ -38,6 +38,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
+
+
     <div class="container text-center">
         <h1 class="font_style_one mt-5 mb-4">Add New Facility</h1>
     </div>
@@ -105,7 +107,8 @@
             <tr>
                 <td class="auto-style2">Opening Hour</td>
                 <td>
-                    <asp:TextBox ID="txtOpening" runat="server" Width="280px"></asp:TextBox>
+                    <asp:TextBox ID="txtOpeninghr" runat="server" Width="56px"></asp:TextBox> hr
+					<asp:TextBox ID="txtOpeningmin" runat="server" Width="56px"></asp:TextBox> min
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -118,7 +121,8 @@
             <tr>
                 <td class="auto-style2">Closing Hour</td>
                 <td>
-                    <asp:TextBox ID="txtClosing" runat="server" Width="280px"></asp:TextBox>
+                    <asp:TextBox ID="txtClosinghr" runat="server" Width="56px"></asp:TextBox>
+					<asp:TextBox ID="txtClosingmin" runat="server" Width="56px"></asp:TextBox> min
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -156,6 +160,31 @@
                     <asp:Label ID="lblRegion" runat="server" ForeColor="Red"></asp:Label>
                 </td>
             </tr>
+			<tr>
+                <td class="auto-style2">Departments Available</td>
+                <td>
+                    <asp:ListBox runat="server" ID="CreateDepartmentList" SelectionMode="multiple" Width="278px" Height="220px">
+						<asp:ListItem Text="Anaesthesiology" Value="Anaesthesiology" />
+						<asp:ListItem Text="Cardiology" Value="Cardiology" />
+						<asp:ListItem Text="Colorectal" Value="Colorectal" />
+						<asp:ListItem Text="Dermatology" Value="Dermatology" />
+						<asp:ListItem Text="ER" Value="ER" />
+						<asp:ListItem Text="Neuro" Value="Neuro" />
+						<asp:ListItem Text="Orthopaedic" Value="Colorectal" />
+						<asp:ListItem Text="Psychiatry" Value="Dermatology" />
+						<asp:ListItem Text="Urology" Value="Urology" />
+						<asp:ListItem Text="X Ray" Value="X Ray" />
+
+					</asp:ListBox> 
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style2"></td>
+                <td>
+                    <asp:Label ID="lblDepartmentList" runat="server" ForeColor="Red"></asp:Label>
+                </td>
+            </tr>
             <tr>
                 <td class="auto-style2">Facility Image</td>
                 <td>
@@ -184,6 +213,7 @@
         </table>
     </div>
     <asp:ScriptManager ID="ScriptManager1" runat="server">
+
     </asp:ScriptManager>
     <asp:HiddenField ID="HiddenField1" runat="server" />
     <cc1:modalpopupextender id="confirmPopup" runat="server" popupcontrolid="CfmPanel" targetcontrolid="HiddenField1" cancelcontrolid="btnClose" backgroundcssclass="modalBackground"></cc1:modalpopupextender>

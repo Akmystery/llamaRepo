@@ -8,11 +8,14 @@ using TeamLLama.Controller;
 using TeamLLama.Entity;
 using System.IO;
 using System.Data;
+using System.Collections;
 
 namespace TeamLLama
 {
     public partial class WebForm3 : System.Web.UI.Page
     {
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -38,12 +41,12 @@ namespace TeamLLama
                 lblPhoneNumber.Text = "PhoneNumber cannot be empty";
                 check = false;
             }
-            if (vc.isEmpty(txtOpening.Text))
+            if (vc.isEmpty(txtOpeninghr.Text))
             {
                 lblOpening.Text = "Opening Hours cannot be empty";
                 check = false;
             }
-            if (vc.isEmpty(txtClosing.Text))
+            if (vc.isEmpty(txtClosinghr.Text))
             {
                 lblClosing.Text = "Closing Hours cannot be empty";
                 check = false;
@@ -68,6 +71,22 @@ namespace TeamLLama
                 }
             }
 
+            if (vc.isEmpty(txtOpeningmin.Text))
+            {
+                txtOpeningmin.Text = "00";
+            }
+
+            if (vc.isEmpty(txtClosingmin.Text))
+            {
+                txtClosingmin.Text = "00";
+            }
+
+            if (CreateDepartmentList.GetSelectedIndices().Count() == 0)
+            {
+                check = false;
+                lblDepartmentList.Text = "Please select at least 1 department";
+            }
+
             if (check == true)
             {
                 Facility f = new Facility();
@@ -75,8 +94,8 @@ namespace TeamLLama
                 f.facilityType = listFacility.SelectedItem.Text;
                 f.generalInfo = txtInfo.Text;
                 f.phoneNumber = Int32.Parse(txtPhoneNumber.Text);
-                f.openingHrs = txtOpening.Text;
-                f.closingHrs = txtClosing.Text;
+                f.openingHrs = txtOpeninghr.Text+":"+ txtOpeninghr.Text+":"+"00";
+                f.closingHrs = txtClosinghr.Text + ":" + txtClosingmin.Text + ":" + "00";
                 f.address = txtAddress.Text;
                 f.region = txtRegion.Text;
                 f.x = Decimal.Parse(lblSelectedX.Text);
@@ -90,16 +109,46 @@ namespace TeamLLama
                 }
 
                 FacilityManagementSystem app = new FacilityManagementSystem();
+                DepartmentManagementSystem dpp = new DepartmentManagementSystem();
 
-                if(app.CheckFacilityName(f.facilityName))
-                { 
+                if (!app.CheckFacilityName(f.facilityName))
+                {
 
-                app.CreateFacility(f);
+                    app.CreateFacility(f);
 
 
-                txtName.Text = txtInfo.Text = txtPhoneNumber.Text = txtOpening.Text = txtClosing.Text= txtAddress.Text= txtRegion.Text="";
-                lblName.Text = lblInfo.Text = lblPhoneNumber.Text = lblOpening.Text = lblClosing.Text = lblAddress.Text = lblRegion.Text = "";
-                lblImage.Text = "Created successfully";
+                    /////////////////////////To add data department table///////////////////////////
+                    int facility_id = app.GetFacilityId(f.facilityName); //only after facility is created will there be facility id
+
+                    Department[] dp = new Department[12];
+                    int index = 0;
+                    foreach (ListItem listItem in CreateDepartmentList.Items)
+                    {
+                        if (listItem.Selected)
+                        {
+                            dp[index] = new Department();
+                            dp[index].facilityId = facility_id;
+                            dp[index].departmentName = listItem.Value;
+
+                            index++;
+                        }
+                    }
+
+                    dpp.AddDepartment(dp);
+
+
+                    txtName.Text = txtInfo.Text = txtPhoneNumber.Text = txtOpeninghr.Text = txtOpeningmin.Text = txtClosinghr.Text = txtClosingmin.Text = txtAddress.Text = txtRegion.Text = "";
+                    lblName.Text = lblInfo.Text = lblPhoneNumber.Text = lblOpening.Text = lblClosing.Text = lblAddress.Text = lblRegion.Text = "";
+
+                    foreach (ListItem listItem in CreateDepartmentList.Items)
+                    {
+                        if (listItem.Selected)
+                        {
+                            listItem.Selected = false;
+                        }
+                    }
+
+                    lblImage.Text = "Created successfully";
 
                     //Response.Redirect("AdminHomePage.aspx", false);
                 }
@@ -131,14 +180,17 @@ namespace TeamLLama
             dt.Columns.Add("x");
             dt.Columns.Add("y");
 
-            for (int i = 0; i < results.Count; i++)
+            if (results != null)
             {
-                dt.Rows.Add();
-                dt.Rows[i]["Building"] = results.ElementAt(i).building;
-                dt.Rows[i]["Address"] = results.ElementAt(i).address;
-                dt.Rows[i]["Postal"] = results.ElementAt(i).postal;
-                dt.Rows[i]["x"] = results.ElementAt(i).x;
-                dt.Rows[i]["y"] = results.ElementAt(i).y;
+                for (int i = 0; i < results.Count; i++)
+                {
+                    dt.Rows.Add();
+                    dt.Rows[i]["Building"] = results.ElementAt(i).building;
+                    dt.Rows[i]["Address"] = results.ElementAt(i).address;
+                    dt.Rows[i]["Postal"] = results.ElementAt(i).postal;
+                    dt.Rows[i]["x"] = results.ElementAt(i).x;
+                    dt.Rows[i]["y"] = results.ElementAt(i).y;
+                }
             }
             grdFacilities.DataSource = dt;
             grdFacilities.DataBind();
@@ -163,6 +215,15 @@ namespace TeamLLama
             lblSelectedY.Text = lblY.Text;
 
             confirmPopup.Hide();
+
+
+
+            IEnumerator ie = CreateDepartmentList.Items.GetEnumerator();
+            while (ie.MoveNext())
+            {
+                ListItem li = (ListItem)ie.Current;
+                li.Selected = true;
+            }
         }
 
         protected void grdFacilities_PageIndexChanging(object sender, GridViewPageEventArgs e)

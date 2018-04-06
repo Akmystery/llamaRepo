@@ -94,13 +94,22 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.Label lblPhoneNumber;
         
         /// <summary>
-        /// txtOpening control.
+        /// txtOpeninghr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOpening;
+        protected global::System.Web.UI.WebControls.TextBox txtOpeninghr;
+        
+        /// <summary>
+        /// txtOpeningmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOpeningmin;
         
         /// <summary>
         /// lblOpening control.
@@ -112,13 +121,22 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.Label lblOpening;
         
         /// <summary>
-        /// txtClosing control.
+        /// txtClosinghr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtClosing;
+        protected global::System.Web.UI.WebControls.TextBox txtClosinghr;
+        
+        /// <summary>
+        /// txtClosingmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtClosingmin;
         
         /// <summary>
         /// lblClosing control.
@@ -182,6 +200,24 @@ namespace TeamLLama {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblRegion;
+        
+        /// <summary>
+        /// CreateDepartmentList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox CreateDepartmentList;
+        
+        /// <summary>
+        /// lblDepartmentList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDepartmentList;
         
         /// <summary>
         /// ImageUpload control.
