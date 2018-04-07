@@ -105,6 +105,7 @@
     <Content Include="DoctorAppointmentPage.aspx" />
     <Content Include="DoctorHomePage.aspx" />
     <Content Include="FacilityListPage.aspx" />
+    <Content Include="FacilityPage.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="images\ad_bg.jpg" />
     <Content Include="images\ap_bg.jpg" />
@@ -265,6 +266,13 @@
     </Compile>
     <Compile Include="FacilityListPage.aspx.designer.cs">
       <DependentUpon>FacilityListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FacilityPage.aspx.cs">
+      <DependentUpon>FacilityPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FacilityPage.aspx.designer.cs">
+      <DependentUpon>FacilityPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
