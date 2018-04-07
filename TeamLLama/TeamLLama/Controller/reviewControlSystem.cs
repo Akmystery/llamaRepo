@@ -13,7 +13,7 @@ namespace TeamLLama.Controller
     public class ReviewControlSystem
     {
 
-        public double GetAverageRating(String id)
+        public double GetAverageRating(int id)
         {
             float avg = 0;
             float total = 0;
@@ -36,7 +36,7 @@ namespace TeamLLama.Controller
             return System.Math.Round(avg,2);
         }
 
-        public Review GetReview(String id)
+        public Review GetReview(int id)
         {
             Review r = new Review();
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -57,7 +57,7 @@ namespace TeamLLama.Controller
             conn.Close();
             return r;
         }
-        public DataSet GetAllReviews(String id)
+        public DataSet GetAllReviews(int id)
         {
 
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
