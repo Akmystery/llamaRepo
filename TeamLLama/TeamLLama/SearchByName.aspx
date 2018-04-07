@@ -16,7 +16,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Name">
                                 <ItemTemplate>
-                                    <a href="#<%#Item.facilityID%>">
+                                    <a href="<%=Request.ApplicationPath == "/" ? "": Request.ApplicationPath%>/FacilityPage.aspx?id=<%#Item.facilityID%>">
                                         <asp:Label ID="lblFacilityName" runat="server" Text='<%# Item.facilityName %>'></asp:Label>
                                     </a>
                                 </ItemTemplate>

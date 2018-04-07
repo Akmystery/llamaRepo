@@ -17,6 +17,7 @@ namespace TeamLLama
         protected Tuple<double, double> lowerbound;
         protected Tuple<double, double> upperbound;
         protected List<Tuple<double, double>> location_list;
+        protected ReviewControlSystem rcs = new ReviewControlSystem();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,8 +40,14 @@ namespace TeamLLama
             var points = location_list.Concat(new[] { this.location });
             this.upperbound = Tuple.Create(points.Select(p => p.Item1).Max(), points.Select(p => p.Item2).Max());
             this.lowerbound = Tuple.Create(points.Select(p => p.Item1).Min(), points.Select(p => p.Item2).Min());
-            grdFacility.DataSource = facilities;
-            grdFacility.DataBind();
+            listResults.DataSource = facilities;
+            listResults.DataBind();
+        }
+
+        protected string GetRatingString(int id)
+        {
+            double i = rcs.GetAverageRating(id);
+            return double.IsNaN(i) ? "No Ratings Yet" : i.ToString();
         }
     }
 

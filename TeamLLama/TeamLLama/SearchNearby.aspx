@@ -17,6 +17,30 @@
             text-align: center;
             font-weight: bold;
         }
+
+        .nearbyResults {
+            display: flex;
+            margin: 0 auto;
+        }
+        .facilitySquare {
+            display: block;
+            flex: 1;
+            padding: 1em;
+            border: 1px solid grey;
+            text-decoration: inherit;
+            color: inherit;
+        }
+        .facilityImage {
+            width: 100%;
+        }
+        .facilityTitle {
+            font-weight: bold;
+            text-align: center;
+        }
+        .facilityRating {
+            text-align: center;
+        }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
@@ -61,63 +85,23 @@
                 addMarker('<%= (char)('A' + l.Index)%>', <%= l.Point.Item1 %>, <%= l.Point.Item2 %>);
                 <% } %>
             </script>
-            <div class="row">
-                <div class="col">
-                    <div class ="text-center pb-3">
-                        <asp:GridView ID="grdFacility" ItemType="TeamLLama.Entity.Facility" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="false">
-                            <Columns>
-                                <asp:TemplateField HeaderText="ID" Visible="false">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblFacilityID" runat="server" Text='<%# Item.facilityID %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Name">
-                                    <ItemTemplate>
-                                        <a href="#<%#Item.facilityID%>">
-                                            <asp:Label ID="lblFacilityName" runat="server" Text='<%# Item.facilityName %>'></asp:Label>
-                                        </a>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Type">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblFacilityType" runat="server" Text='<%# Item.facilityType %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="GeneralInfo">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblGeneralInfo" runat="server" Text='<%# Item.generalInfo %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="PhoneNumber">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblPhoneNumber" runat="server" Text='<%# Item.phoneNumber %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="OpeningHrs">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblOpeningHrs" runat="server" Text='<%# Item.openingHrs %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ClosingHrs">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblClosingHrs" runat="server" Text='<%# Item.closingHrs %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Address">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblAddress" runat="server" Text='<%# Item.address %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Region">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblRegion" runat="server" Text='<%# Item.region %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                        </asp:GridView>
+
+            <asp:ListView ID="listResults" 
+                ItemType="TeamLLama.Entity.Facility" 
+                runat="server">
+                <LayoutTemplate>
+                    <div class="nearbyResults" runat="server">
+                        <a class="facilitySquare" id="itemPlaceholder" runat="server"></a>
                     </div>
-                </div>
-            </div>
+                </LayoutTemplate>
+                <ItemTemplate>
+                    <a class="facilitySquare" href="<%=Request.ApplicationPath == "/"?"": Request.ApplicationPath %>/FacilityPage.aspx?id=<%# Item.facilityID %>">
+                        <img class="facilityImage" src="https://m.phnompenhpost.com/sites/default/files/styles/full-screen/public/field/image/8-mount-alvernia-hospital.jpg" />
+                        <div class="facilityTitle"><%# Item.facilityName %></div>
+                        <div class="facilityRating"><%# GetRatingString(Item.facilityID) %></div>
+                    </a>
+                </ItemTemplate>
+            </asp:ListView>
         <% } else { %>
             <div>
                 No results found.
