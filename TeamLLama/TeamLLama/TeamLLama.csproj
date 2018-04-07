@@ -124,11 +124,8 @@
     <Content Include="PatientAppointmentPage.aspx" />
     <Content Include="PharmamyList.aspx" />
     <Content Include="PickAppointmentPage.aspx" />
-    <Content Include="PlanTransportation.aspx" />
     <Content Include="ReferPatient.aspx" />
     <Content Include="SearchByName.aspx" />
-    <Content Include="ReviewPage.aspx" />
-    <Content Include="ReviewTempaspx.aspx" />
     <Content Include="SearchNearby.aspx" />
     <Content Include="SignOut.aspx" />
     <Content Include="CreateFacility.aspx" />
@@ -322,13 +319,6 @@
     <Compile Include="PickAppointmentPage.aspx.designer.cs">
       <DependentUpon>PickAppointmentPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PlanTransportation.aspx.cs">
-      <DependentUpon>PlanTransportation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PlanTransportation.aspx.designer.cs">
-      <DependentUpon>PlanTransportation.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CreateAccount.aspx.cs">
       <DependentUpon>CreateAccount.aspx</DependentUpon>
@@ -350,20 +340,6 @@
     </Compile>
     <Compile Include="SearchByName.aspx.designer.cs">
       <DependentUpon>SearchByName.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ReviewPage.aspx.cs">
-      <DependentUpon>ReviewPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ReviewPage.aspx.designer.cs">
-      <DependentUpon>ReviewPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ReviewTempaspx.aspx.cs">
-      <DependentUpon>ReviewTempaspx.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ReviewTempaspx.aspx.designer.cs">
-      <DependentUpon>ReviewTempaspx.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ak_testing.aspx.cs">
       <DependentUpon>Ak_testing.aspx</DependentUpon>
