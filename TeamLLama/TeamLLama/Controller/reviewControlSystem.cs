@@ -90,6 +90,12 @@ namespace TeamLLama.Controller
             cmd.ExecuteNonQuery();
             conn.Close();
         }
+
+        public string GetRatingString(int id)
+        {
+            double i = GetAverageRating(id);
+            return double.IsNaN(i) ? "No Ratings Yet" : i.ToString();
+        }
     }
 
     
