@@ -15,7 +15,8 @@ namespace TeamLLama
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            String id = (String)Session["fac_id"];
+            if (!IsPostBack) { 
+                String id = (String)Session["fac_id"];
             FacilityManagementSystem app = new FacilityManagementSystem();
             DepartmentManagementSystem dpp = new DepartmentManagementSystem();
             Facility f = new Facility();
@@ -41,20 +42,21 @@ namespace TeamLLama
 
             List<Department> Deptlist = dpp.getDepartments(id);
 
+            //////////////////////////////////////Department can't be deleted because doctor is tied to the department
             for(int i=0;i< Deptlist.Count;i++)
             {
-                foreach (ListItem listItem in CreateDepartmentList.Items)
+                foreach (ListItem listItem in UpdateDepartmentList.Items)
                 {
-                    if (listItem.Text.Equals(Deptlist.ElementAt(i).departmentName))
+                    if(listItem.Value.Equals(Deptlist.ElementAt(i).departmentName))
                     {
-                        listItem.Enabled = false;
+                        listItem.Selected = true;
                     }
                 }
 
             }
 
-            
 
+            }
         }
 
         protected void UpDate_Click(object sender, EventArgs e)
@@ -131,6 +133,33 @@ namespace TeamLLama
 
             app.UpdateFacility(txtName.Text, listFacility.SelectedItem.Text, txtInfo.Text, Convert.ToInt32(txtPhoneNumber.Text), txtOpeninghr.Text + ":" + txtOpeninghr.Text + ":" + "00", txtClosinghr.Text + ":" + txtClosingmin.Text + ":" + "00", txtAddress.Text, txtRegion.Text, image, f.facilityID);
 
+            //need to check whether there's any doctor with these department
+            DepartmentManagementSystem dpp = new DepartmentManagementSystem();
+            Department[] dp = new Department[12]; //selected
+            Department[] ndp = new Department[12]; //not selected
+            int index = 0;
+            int nindex = 0;
+            foreach (ListItem listItem in UpdateDepartmentList.Items)
+            {
+                if (listItem.Selected)
+                {
+                    dp[index] = new Department();
+                    dp[index].facilityId = f.facilityID;
+                    dp[index].departmentName = listItem.Value;
+
+                    index++;
+                }
+                else
+                {
+                    ndp[nindex] = new Department();
+                    ndp[nindex].facilityId = f.facilityID;
+                    ndp[nindex].departmentName = listItem.Value;
+
+                    nindex++;
+                }
+            }
+            dpp.DeleteDepartment(ndp);
+            dpp.AddDepartment(dp);
 
             Response.Redirect("FacilityListPage.aspx", false);
         }

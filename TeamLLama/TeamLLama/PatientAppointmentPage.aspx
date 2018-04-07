@@ -15,7 +15,7 @@
             opacity: 0.8;
         }
 
-         .modalPopup1 {
+        .modalPopup1 {
             background-color: #FFFFFF;
             border-width: 3px;
             border-style: solid;
@@ -26,8 +26,29 @@
             height: auto;
         }
 
-        body{
-            background-image:url(images/ap_bg.jpg);
+        body {
+            background-image: url(images/ap_bg.jpg);
+        }
+
+        .GridPager a, .GridPager span {
+            display: block;
+            height: 30px;
+            width: 35px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .GridPager a {
+            background-color: #f5f5f5;
+            color: #969696;
+            border: 1px solid #969696;
+        }
+
+        .GridPager span {
+            background-color: #A1DCF2;
+            color: #000;
+            border: 1px solid #3AC0F2;
         }
     </style>
 
@@ -38,7 +59,8 @@
         <table class="tableStyle">
             <tr>
                 <td>
-                    <h3 class="mt-3"><asp:Label ID="lblUpcoming" runat="server" Text="Upcoming Appointments" Font-Size="Larger"></asp:Label></h3>
+                    <h3 class="mt-3">
+                        <asp:Label ID="lblUpcoming" runat="server" Text="Upcoming Appointments" Font-Size="Larger"></asp:Label></h3>
                 </td>
             </tr>
             <tr>
@@ -82,6 +104,7 @@
                         <EmptyDataTemplate>
                             <asp:Label ID="lb_empty1" class="emptyMsg" runat="server" Text="No Record Found" Width="580px"></asp:Label>
                         </EmptyDataTemplate>
+                        <PagerStyle HorizontalAlign="Center" CssClass="GridPager"></PagerStyle>
                     </asp:GridView>
                 </td>
             </tr>
@@ -90,7 +113,8 @@
             </tr>
             <tr>
                 <td>
-                    <h3><asp:Label ID="lblHistory" runat="server" Text="Past Appointments" Font-Size="Larger"></asp:Label></h3>
+                    <h3>
+                        <asp:Label ID="lblHistory" runat="server" Text="Past Appointments" Font-Size="Larger"></asp:Label></h3>
                 </td>
             </tr>
             <tr>
@@ -129,6 +153,7 @@
                         <EmptyDataTemplate>
                             <asp:Label ID="lb_empty" class="emptyMsg" runat="server" Text="No Record Found" Width="580px"></asp:Label>
                         </EmptyDataTemplate>
+                        <PagerStyle HorizontalAlign="Center" CssClass="GridPager"></PagerStyle>
                     </asp:GridView>
                 </td>
             </tr>
@@ -142,7 +167,7 @@
             <asp:Label ID="Label3" runat="server" Text="Are you sure you want to delete this appointment?" Visible="true"></asp:Label><br />
             <br />
             <asp:Button ID="Button4" runat="server" Text="Confirm" OnClick="btnYes_Click" />
-            <asp:Button ID="btnNo" runat="server" Text="Cancel"/>
+            <asp:Button ID="btnNo" runat="server" Text="Cancel" />
             <div class="m-2"></div>
         </asp:Panel>
     </div>

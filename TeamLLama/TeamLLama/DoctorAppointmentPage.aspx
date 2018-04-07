@@ -24,8 +24,30 @@
             width: auto;
             height: auto;
         }
-        body{
-            background-color:  #99ff66;
+
+        body {
+            background-color: #99ff66;
+        }
+
+        .GridPager a, .GridPager span {
+            display: block;
+            height: 30px;
+            width: 35px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .GridPager a {
+            background-color: #f5f5f5;
+            color: #969696;
+            border: 1px solid #969696;
+        }
+
+        .GridPager span {
+            background-color: #A1DCF2;
+            color: #000;
+            border: 1px solid #3AC0F2;
         }
     </style>
 </asp:Content>
@@ -36,7 +58,8 @@
         <table class="tableStyle">
             <tr>
                 <td>
-                    <h3 class="mt-3"><asp:Label ID="lblUpcoming" runat="server" Text="Upcoming Appointments" Font-Size="Larger"></asp:Label></h3>
+                    <h3 class="mt-3">
+                        <asp:Label ID="lblUpcoming" runat="server" Text="Upcoming Appointments" Font-Size="Larger"></asp:Label></h3>
                 </td>
             </tr>
             <tr>
@@ -81,6 +104,7 @@
                         <EmptyDataTemplate>
                             <asp:Label ID="lb_empty" class="emptyMsg" runat="server" Text="No Record Found" Width="580px"></asp:Label>
                         </EmptyDataTemplate>
+                        <PagerStyle HorizontalAlign="Center" CssClass="GridPager"></PagerStyle>
                     </asp:GridView>
                 </td>
             </tr>
@@ -90,7 +114,8 @@
             </tr>
             <tr>
                 <td>
-                    <h3><asp:Label ID="lblHistory" runat="server" Text="Past Appointments" Font-Size="Larger"></asp:Label></h3>
+                    <h3>
+                        <asp:Label ID="lblHistory" runat="server" Text="Past Appointments" Font-Size="Larger"></asp:Label></h3>
                 </td>
             </tr>
             <tr>
@@ -130,6 +155,7 @@
                         <EmptyDataTemplate>
                             <asp:Label ID="lb_empty1" class="emptyMsg" runat="server" Text="No Record Found" Width="580px"></asp:Label>
                         </EmptyDataTemplate>
+                        <PagerStyle HorizontalAlign="Center" CssClass="GridPager"></PagerStyle>
                     </asp:GridView>
                 </td>
             </tr>
