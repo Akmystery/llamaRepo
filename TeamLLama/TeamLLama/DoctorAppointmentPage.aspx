@@ -21,8 +21,11 @@
             border-color: black;
             padding-top: 10px;
             padding-left: 10px;
-            width: 200px;
-            height: 140px;
+            width: auto;
+            height: auto;
+        }
+        body{
+            background-color:  #99ff66;
         }
     </style>
 </asp:Content>
@@ -33,7 +36,7 @@
         <table class="tableStyle">
             <tr>
                 <td>
-                    <asp:Label ID="lblUpcoming" runat="server" Text="Upcoming Appointments" Font-Size="Larger"></asp:Label>
+                    <h3 class="mt-3"><asp:Label ID="lblUpcoming" runat="server" Text="Upcoming Appointments" Font-Size="Larger"></asp:Label></h3>
                 </td>
             </tr>
             <tr>
@@ -71,7 +74,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="" ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
-                                    <asp:Button ID="btnRefer" runat="server" Text="Refer" OnClick="btnRefer_Click" />
+                                    <asp:Button ID="btnRefer" runat="server" Text="Refer" OnClick="btnRefer_Click" CssClass="btn btn-success" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -87,7 +90,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblHistory" runat="server" Text="Past Appointments" Font-Size="Larger"></asp:Label>
+                    <h3><asp:Label ID="lblHistory" runat="server" Text="Past Appointments" Font-Size="Larger"></asp:Label></h3>
                 </td>
             </tr>
             <tr>
@@ -136,10 +139,11 @@
         <cc1:ModalPopupExtender ID="confirmPopup" runat="server" PopupControlID="CfmPanel" TargetControlID="HiddenField1" CancelControlID="btnNo" BackgroundCssClass="modalBackground"></cc1:ModalPopupExtender>
         <asp:Panel ID="CfmPanel" runat="server" CssClass="modalPopup1" align="center" Style="display: none">
             <asp:Label ID="lbl_id" runat="server" Text="" Visible="false"></asp:Label>
-            <asp:Label ID="lblMsg" runat="server" Text="Confirm Refer?" Visible="true"></asp:Label><br />
+            <asp:Label ID="lblMsg" runat="server" Text="Confirm Refer?" Visible="true" CssClass="mr-3"></asp:Label><br />
             <br />
             <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="btnYes_Click" />
             <asp:Button ID="btnNo" runat="server" Text="No" />
+            <div class="mb-2"></div>
         </asp:Panel>
     </div>
 </asp:Content>

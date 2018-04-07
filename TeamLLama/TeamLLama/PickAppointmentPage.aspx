@@ -20,8 +20,11 @@
             border-color: black;
             padding-top: 10px;
             padding-left: 10px;
-            width: 200px;
-            height: 140px;
+            width: auto;
+            height: auto;
+        }
+        body{
+            background-color: #99ff66;
         }
     </style>
 
@@ -32,8 +35,7 @@
         <table class="tableStyle">
             <tr>
                 <td colspan="4">
-                    <asp:Label ID="lblPick" runat="server" Text="Pick Appointments" Font-Size="Larger"></asp:Label><br />
-                    <br />
+                    <h3 class="mt-3"><asp:Label ID="lblPick" runat="server" Text="Pick Appointments" Font-Size="Larger"></asp:Label></h3>
                 </td>
             </tr>
             <tr>
@@ -45,13 +47,15 @@
                     <asp:Label ID="lblFromDate" runat="server" Text="From Date: "></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtFromDate" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control d-inline" Width="200px"></asp:TextBox>
                     <asp:Label ID="lblActualFrom" runat="server" Text="" Visible="false"></asp:Label>
                     <cc1:CalendarExtender ID="CalendarExtender1" TargetControlID="txtFromDate" runat="server" Format="dd/MM/yyyy"></cc1:CalendarExtender>
                 </td>
                 <td>
-                    <asp:Label ID="lblToDate" runat="server" Text="To Date: "></asp:Label>
-                    <asp:TextBox ID="txtToDate" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblToDate" runat="server" Text="To Date:"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control d-inline"  Width="200px"></asp:TextBox>
                     <asp:Label ID="lblActualTo" runat="server" Text="" Visible="false"></asp:Label>
                     <cc1:CalendarExtender ID="CalendarExtender2" TargetControlID="txtToDate" runat="server" Format="dd/MM/yyyy"></cc1:CalendarExtender>
                 </td>
@@ -94,7 +98,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="" ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
-                                    <asp:Button ID="btnPick" runat="server" Text="Pick" OnClick="btnPick_Click" />
+                                    <asp:Button ID="btnPick" runat="server" Text="Pick" OnClick="btnPick_Click" CssClass="btn btn-success" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -111,10 +115,11 @@
         <cc1:ModalPopupExtender ID="confirmPopup" runat="server" PopupControlID="CfmPanel" TargetControlID="HiddenField1" CancelControlID="btnNo" BackgroundCssClass="modalBackground"></cc1:ModalPopupExtender>
         <asp:Panel ID="CfmPanel" runat="server" CssClass="modalPopup1" align="center" Style="display: none">
             <asp:Label ID="lbl_id" runat="server" Text="" Visible="false"></asp:Label>
-            <asp:Label ID="lblMsg" runat="server" Text="Confirm Pick?" Visible="true" Font-Size="Large"></asp:Label><br />
+            <asp:Label ID="lblMsg" runat="server" Text="Confirm Pick?" Visible="true" Font-Size="Large" CssClass="mr-3"></asp:Label><br />
             <br />
             <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="btnYes_Click" />
             <asp:Button ID="btnNo" runat="server" Text="No" />
+            <div class="mb-2"></div>
         </asp:Panel>
     </div>
 </asp:Content>

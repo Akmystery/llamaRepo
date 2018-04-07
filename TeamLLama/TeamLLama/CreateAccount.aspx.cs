@@ -103,9 +103,9 @@ namespace TeamLLama
                     check = false;
                     lblImage.Text = "This Picture format is not supported by the system";
                 }
-                else if (width > 170 || height > 170)
+                else if (width > 500 || height > 300)
                 {
-                    lblImage.Text = "Profile Picture size does not meet specified requirements 170x170 pixels";
+                    lblImage.Text = "Profile Picture size does not meet specified requirements 500x300 pixels";
                     check = false;
                 }
             }

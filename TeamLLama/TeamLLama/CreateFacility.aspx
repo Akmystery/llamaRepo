@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 	<style type="text/css">
         .auto-style2 {
-            width: 152px;
+            width: 220px;
             height: 10px;
         }
 
@@ -32,26 +32,46 @@
             border-color: black;
             padding-top: 10px;
             padding-left: 10px;
-            width: 1000px;
-            height: 600px;
+            width: auto;
+            height: auto;
+        }
+        .font_style_two {
+            font-family: 'Karma', serif;
+            font-weight: 500;
+            font-size: 20px;
+        }
+        body{
+            background-image:url(images/ad_bg.jpg);
         }
     </style>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function showpreview(input) {
+
+            if (input.files && input.files[0]) {
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imgpreview').css('visibility', 'visible');
+                    $('#imgpreview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+
+        }
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
-
-
-    <div class="container text-center">
-        <h1 class="font_style_one mt-5 mb-4">Add New Facility</h1>
-    </div>
-    <div class="content-wrap" style="max-width: 810px;">
+    <div class="content-wrap  mt-5 mb-4" style="max-width: 800px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);  background-color:white;">
+        <h1 class="font_style_one mt-3 mb-4 text-center">Add New Facility</h1>
         <table style="width: 100%;">
             <tr>
-                <td class="auto-style2">Facility Name</td>
+                <td class="auto-style2 font_style_two">Facility Name</td>
                 <td>
-                    <asp:TextBox ID="txtName" runat="server" Width="280px"></asp:TextBox>
+                    <asp:TextBox ID="txtName" runat="server" Width="280px" CssClass="form-control d-inline"></asp:TextBox>
                     <asp:Button ID="bn_search" runat="server" Text="Search" OnClick="bn_search_Click" />
                 </td>
-                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style2"></td>
@@ -60,9 +80,9 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2">Facility Type</td>
+                <td class="auto-style2 font_style_two">Facility Type</td>
                 <td class="auto-style5">
-                    <asp:DropDownList ID="listFacility" runat="server">
+                    <asp:DropDownList ID="listFacility" runat="server" CssClass="form-control" Width="350px">
                         <asp:ListItem>Government Hospital</asp:ListItem>
                         <asp:ListItem>PolyClinic</asp:ListItem>
                         <asp:ListItem>Hospital</asp:ListItem>
@@ -70,7 +90,6 @@
                         <asp:ListItem>Phermancy</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style5"></td>
             </tr>
             <tr>
                 <td class="auto-style2"></td>
@@ -79,11 +98,10 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2">General Information</td>
+                <td class="auto-style2 font_style_two">General Information</td>
                 <td>
-                    <asp:TextBox ID="txtInfo" runat="server" TextMode="multiline" Columns="37" Rows="5"></asp:TextBox>
+                    <asp:TextBox ID="txtInfo" runat="server" TextMode="multiline" Columns="37" Rows="5" CssClass="form-control" Width="350px"></asp:TextBox>
                 </td>
-                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style2"></td>
@@ -92,10 +110,9 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2">Phone Number</td>
+                <td class="auto-style2 font_style_two">Phone Number</td>
                 <td>
-                    <asp:TextBox ID="txtPhoneNumber" runat="server" Width="280px"></asp:TextBox>
-                <td>&nbsp;</td>
+                    <asp:TextBox ID="txtPhoneNumber" runat="server" Width="350px" CssClass="form-control" ></asp:TextBox>
             </tr>
             <tr>
                 <td class="auto-style2"></td>
@@ -105,12 +122,11 @@
             </tr>
 
             <tr>
-                <td class="auto-style2">Opening Hour</td>
+                <td class="auto-style2 font_style_two">Opening Hour</td>
                 <td>
-                    <asp:TextBox ID="txtOpeninghr" runat="server" Width="56px"></asp:TextBox> hr
-					<asp:TextBox ID="txtOpeningmin" runat="server" Width="56px"></asp:TextBox> min
+                    <asp:TextBox ID="txtOpeninghr" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox> hr
+					<asp:TextBox ID="txtOpeningmin" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox> min
                 </td>
-                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style2"></td>
@@ -119,12 +135,11 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2">Closing Hour</td>
+                <td class="auto-style2 font_style_two">Closing Hour</td>
                 <td>
-                    <asp:TextBox ID="txtClosinghr" runat="server" Width="56px"></asp:TextBox>
-					<asp:TextBox ID="txtClosingmin" runat="server" Width="56px"></asp:TextBox> min
+                    <asp:TextBox ID="txtClosinghr" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox> hr
+					<asp:TextBox ID="txtClosingmin" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox> min
                 </td>
-                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style2"></td>
@@ -133,13 +148,12 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2">Address</td>
+                <td class="auto-style2 font_style_two">Address</td>
                 <td>
-                    <asp:TextBox ID="txtAddress" runat="server" Width="280px" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox ID="txtAddress" runat="server" Width="350px" TextMode="MultiLine" CssClass="form-control"></asp:TextBox>
                     <asp:Label ID="lblSelectedX" runat="server" Text="" Visible="false"></asp:Label>
                     <asp:Label ID="lblSelectedY" runat="server" Text="" Visible="false"></asp:Label>
                 </td>
-                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style3"></td>
@@ -148,11 +162,10 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2">Region</td>
+                <td class="auto-style2 font_style_two">Region</td>
                 <td>
-                    <asp:TextBox ID="txtRegion" runat="server" Width="280px"></asp:TextBox>
+                    <asp:TextBox ID="txtRegion" runat="server" Width="350px" CssClass="form-control"></asp:TextBox>
                 </td>
-                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style2"></td>
@@ -161,9 +174,9 @@
                 </td>
             </tr>
 			<tr>
-                <td class="auto-style2">Departments Available</td>
+                <td class="auto-style2 font_style_two">Departments Available</td>
                 <td>
-                    <asp:ListBox runat="server" ID="CreateDepartmentList" SelectionMode="multiple" Width="278px" Height="220px">
+                    <asp:ListBox runat="server" ID="CreateDepartmentList" SelectionMode="multiple" Width="350px" Height="220px" CssClass="form-control">
 						<asp:ListItem Text="Anaesthesiology" Value="Anaesthesiology" />
 						<asp:ListItem Text="Cardiology" Value="Cardiology" />
 						<asp:ListItem Text="Colorectal" Value="Colorectal" />
@@ -177,7 +190,6 @@
 
 					</asp:ListBox> 
                 </td>
-                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style2"></td>
@@ -186,11 +198,11 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2">Facility Image</td>
+                <td class="auto-style2 font_style_two">Facility Image</td>
                 <td>
-                    <asp:FileUpload ID="ImageUpload" runat="server" Width="280px" />
+                    <img id="imgpreview" height="250" width="300" src="" style="border-width:0px; margin-bottom:10px; visibility: hidden;" />
+                    <asp:FileUpload ID="ImageUpload" runat="server" Width="280px" onchange="showpreview(this);" />
                 </td>
-                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style2"></td>
@@ -202,13 +214,9 @@
             <tr>
                 <td class="auto-style2">&nbsp;</td>
                 <td>
-                    <asp:Button ID="btnCreate" runat="server" OnClick="Create_Click" Text="Create" />
-                    <asp:Button ID="btnBack" runat="server" Text="Back to Home Page" OnClick="btnBack_Click" />
+                    <asp:Button ID="btnBack" runat="server" Text="Back to Home Page" OnClick="btnBack_Click" CssClass="btn btn-dark mb-2 mt-3 float-right mr-5" />
+                    <asp:Button ID="btnCreate" runat="server" OnClick="Create_Click" Text="Create" CssClass="btn btn-dark mb-2 mt-3 float-right mr-2" />    
                 </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style2">&nbsp;</td>
             </tr>
         </table>
     </div>
@@ -220,7 +228,8 @@
     <asp:Panel ID="CfmPanel" runat="server" CssClass="modalPopup1" align="center" Style="display: none">
         <asp:Label ID="lblMsg" runat="server" Text="Results" Visible="true" Font-Size="Large"></asp:Label><br />
         <br />
-        <asp:GridView ID="grdFacilities" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="false" PageSize="5" OnPageIndexChanging="grdFacilities_PageIndexChanging" AllowPaging="True" PagerStyle-HorizontalAlign="Center" RowStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" EmptyDataRowStyle-HorizontalAlign="Center" BorderStyle="Solid" CellPadding="10">
+        <asp:GridView ID="grdFacilities" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="false" PageSize="5" OnPageIndexChanging="grdFacilities_PageIndexChanging" 
+            AllowPaging="True" PagerStyle-HorizontalAlign="Center" RowStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" EmptyDataRowStyle-HorizontalAlign="Center" BorderStyle="Solid" CellPadding="10" CssClass="mr-3">
                         <Columns>
                             <asp:TemplateField HeaderText="Building" ItemStyle-Width="250px">
                                 <ItemTemplate>
@@ -257,6 +266,7 @@
                             <asp:Label ID="lb_empty" class="emptyMsg" runat="server" Text="No Record Found" Width="730px"></asp:Label>
                         </EmptyDataTemplate>
                     </asp:GridView>
-        <asp:Button ID="btnClose" runat="server" Text="Close" />
+        <asp:Button ID="btnClose" runat="server" Text="Close" CSSClass="mt-2"/>
+        <div class="mb-3"></div>
     </asp:Panel>
 </asp:Content>

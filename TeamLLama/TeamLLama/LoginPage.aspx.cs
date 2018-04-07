@@ -74,8 +74,8 @@ namespace TeamLLama
                         case "patient":
                             Response.Redirect("HomePage.aspx", false);
                             break;
-                        case "doctor":
-                            Response.Redirect("DoctorHomePage.aspx", false);
+                        case "Doctor":
+                            Response.Redirect("DoctorAppointmentPage.aspx", false);
                             break;
                         case "admin":
                             Response.Redirect("AdminHomePage.aspx", false);

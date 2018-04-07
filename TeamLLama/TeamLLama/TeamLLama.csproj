@@ -109,6 +109,7 @@
     <Content Include="images\ad_bg.jpg" />
     <Content Include="images\ap_bg.jpg" />
     <Content Include="images\bo_bg.jpg" />
+    <Content Include="images\doc_bg.jpg" />
     <Content Include="images\FilledStar.gif" />
     <Content Include="images\Login.png" />
     <Content Include="images\login_bg.jpg" />
@@ -236,6 +237,7 @@
     <Compile Include="Controller\AccountManagementSystem.cs" />
     <Compile Include="Controller\AccountVerificationSystem.cs" />
     <Compile Include="Controller\AppointmentManagementSystem.cs" />
+    <Compile Include="Controller\DepartmentManagementSystem.cs" />
     <Compile Include="Controller\FacilityManagementSystem.cs" />
     <Compile Include="Controller\ReviewControlSystem.cs" />
     <Compile Include="Controller\Svy21.cs" />

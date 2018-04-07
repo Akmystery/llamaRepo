@@ -64,10 +64,27 @@ namespace TeamLLama
             if (ImageUpload.HasFile)
             {
                 string ext = System.IO.Path.GetExtension(ImageUpload.PostedFile.FileName);
+                byte[] bytes = ImageUpload.FileBytes;
+                int width;
+                int height;
+
+                using (Stream memStream = new MemoryStream(bytes))
+                {
+                    using (System.Drawing.Image img = System.Drawing.Image.FromStream(memStream))
+                    {
+                        width = img.Width;
+                        height = img.Height;
+                    }
+                }
                 if (!vc.ImageCheck(ext))
                 {
                     check = false;
                     lblImage.Text = "Invalid image type";
+                }
+                else if (width > 720 || height > 480)
+                {
+                    lblImage.Text = "Profile Picture size does not meet specified requirements 720x480 pixels";
+                    check = false;
                 }
             }
 

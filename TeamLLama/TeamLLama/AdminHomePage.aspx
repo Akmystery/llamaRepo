@@ -12,9 +12,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
     <div class="container">
         
-		<h2 class="text-center pt-3 pb-2 font_style_one">ADMIN CONTROL PANNEL</h2>
-            <div class="row">
-                <div class="col">
+		<h2 class="text-center pt-4 pb-2 font_style_one">ADMIN CONTROL PANNEL</h2>
+            <div class="row" style="height:50vh">
+                <div class="col align-self-center">
                     <h4 class="text-center font_style_one">Account Management</h4>
                     <div class="text-center pb-3">
                     <asp:Button ID="Button1" runat="server" Text="Create Account" OnClick="CreateDocAcc_Click" CssClass="btn btn-dark"/>
@@ -23,7 +23,7 @@
                     <asp:Button ID="Button4" runat="server" Text="Delete Account" OnClick="DeleteDocAcc_Click" CssClass="btn btn-dark"/>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col align-self-center">
                     <h4 class="text-center font_style_one">Facility Management</h4>
                     <div class="text-center pb-3">
                     <asp:Button ID="Button2" runat="server" Text="Create Facility" OnClick="CreateFacility_Click" CssClass="btn btn-dark"/>

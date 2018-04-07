@@ -3,9 +3,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
     <div class="container mb-4">
-    <h2 class="font_style_one pt-4">List of Facility</h2>
+    <p class="font_style_one mt-4" style="font-size:30px;">List of Facilities</p>
             
-            <asp:GridView ID="grdFacility" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="false">
+            <asp:GridView ID="grdFacility" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="false"  PagerStyle-HorizontalAlign="Center" RowStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" EmptyDataRowStyle-HorizontalAlign="Center" BorderStyle="Solid" CellPadding="10">
                 <Columns>
                     <asp:TemplateField HeaderText="ID" Visible="false">
                         <ItemTemplate>
@@ -54,18 +54,18 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_click" />
+                            <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_click" CssClass="btn btn-dark" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_click" />
+                            <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_click" CssClass="btn btn-danger" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
          <div class="mb-5 mt-2"   style="float:right">
-             <asp:Button ID="btnBack" runat="server" Text="Back to Home Page" OnClick="btnBack_Click"/>
+             <asp:Button ID="btnBack" runat="server" Text="Back to Home Page" OnClick="btnBack_Click" CssClass="btn btn-dark"/>
              </div>
         </div>
 </asp:Content>
