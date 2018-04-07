@@ -22,7 +22,6 @@ namespace TeamLLama
         {
             if (string.IsNullOrWhiteSpace(Request.QueryString["q"]))
             {
-                //display error message
                 return;
             }
             FacilityManagementSystem app = new FacilityManagementSystem();
@@ -30,7 +29,6 @@ namespace TeamLLama
 
             if (locations == null || locations.Count == 0)
             {
-                //error error error help
                 return;
             }
 
