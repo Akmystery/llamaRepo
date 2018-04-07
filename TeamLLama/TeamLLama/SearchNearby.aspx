@@ -66,9 +66,8 @@
                     },
                 });
 
-                var center = L.bounds([1.56073, 104.11475], [1.16, 103.502]).getCenter();
-                var map = L.map('map').setView([center.x, center.y], 12);
-                map.setMaxBounds([[1.56073, 104.1147], [1.16, 103.502]]);
+                var map = L.map('map');
+                map.fitBounds([[<%=this.upperbound.Item1%>, <%=this.upperbound.Item2%>], [<%=this.lowerbound.Item1%>, <%=this.lowerbound.Item2%>]]);
 
                 L.tileLayer('https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png', {
                     detectRetina: true,
@@ -98,7 +97,7 @@
                     <a class="facilitySquare" href="<%=Request.ApplicationPath == "/"?"": Request.ApplicationPath %>/FacilityPage.aspx?id=<%# Item.facilityID %>">
                         <img class="facilityImage" src="https://m.phnompenhpost.com/sites/default/files/styles/full-screen/public/field/image/8-mount-alvernia-hospital.jpg" />
                         <div class="facilityTitle"><%# Item.facilityName %></div>
-                        <div class="facilityRating"><%# GetRatingString(Item.facilityID) %></div>
+                        <div class="facilityRating"><%# rcs.GetRatingString(Item.facilityID) %></div>
                     </a>
                 </ItemTemplate>
             </asp:ListView>

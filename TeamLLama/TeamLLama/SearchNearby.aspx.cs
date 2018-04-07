@@ -43,12 +43,6 @@ namespace TeamLLama
             listResults.DataSource = facilities;
             listResults.DataBind();
         }
-
-        protected string GetRatingString(int id)
-        {
-            double i = rcs.GetAverageRating(id);
-            return double.IsNaN(i) ? "No Ratings Yet" : i.ToString();
-        }
     }
 
 }
