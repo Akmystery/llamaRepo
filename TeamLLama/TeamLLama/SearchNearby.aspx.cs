@@ -20,7 +20,7 @@ namespace TeamLLama
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["q"] == null)
+            if (string.IsNullOrWhiteSpace(Request.QueryString["q"]))
             {
                 //display error message
                 return;
@@ -28,7 +28,7 @@ namespace TeamLLama
             FacilityManagementSystem app = new FacilityManagementSystem();
             List<SearchResults> locations = app.getAPIData(Uri.EscapeDataString(Request.QueryString["q"]));
 
-            if (locations.Count == 0)
+            if (locations == null || locations.Count == 0)
             {
                 //error error error help
                 return;
