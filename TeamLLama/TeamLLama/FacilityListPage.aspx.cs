@@ -51,6 +51,8 @@ namespace TeamLLama
             System.Web.UI.WebControls.Label lblFacilityID = grdFacility.Rows[i].FindControl("lblFacilityID") as System.Web.UI.WebControls.Label;
             String id = lblFacilityID.Text;
             FacilityManagementSystem app = new FacilityManagementSystem();
+            DepartmentManagementSystem dpp = new DepartmentManagementSystem();
+            dpp.DeleteDepartments(id); //delete child
             app.DeleteFacility(id);
             Response.Write("<script type=\"text/javascript\">alert('Facility Deleted!');location.href='FacilityListPage.aspx'</script>");
         }

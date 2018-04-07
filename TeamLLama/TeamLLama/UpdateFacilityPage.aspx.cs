@@ -17,16 +17,44 @@ namespace TeamLLama
         {
             String id = (String)Session["fac_id"];
             FacilityManagementSystem app = new FacilityManagementSystem();
+            DepartmentManagementSystem dpp = new DepartmentManagementSystem();
             Facility f = new Facility();
             f = app.GetFacility(id);
             txtName.Attributes.Add("placeholder",f.facilityName);
-            txtType.Attributes.Add("placeholder",f.facilityType);
-            txtGeneralInfo.Attributes.Add("placeholder", f.generalInfo);
+            txtInfo.Attributes.Add("placeholder", f.generalInfo);
             txtPhoneNumber.Attributes.Add("placeholder", f.phoneNumber.ToString());
-            txtOpeningHrs.Attributes.Add("placeholder", f.openingHrs);
-            txtClosingHrs.Attributes.Add("placeholder", f.closingHrs);
+
+            string[] OpeningTimeArray = f.openingHrs.Split(':');
+            txtOpeninghr.Attributes.Add("placeholder", OpeningTimeArray[0]);
+            txtOpeningmin.Attributes.Add("placeholder", OpeningTimeArray[1]);
+
+            string[] ClosingTimeArray = f.closingHrs.Split(':');
+            txtClosinghr.Attributes.Add("placeholder", ClosingTimeArray[0]);
+            txtClosingmin.Attributes.Add("placeholder", ClosingTimeArray[1]);
+
+
             txtAddress.Attributes.Add("placeholder", f.address);
             txtRegion.Attributes.Add("placeholder", f.region);
+
+
+            listFacility.SelectedValue = f.facilityType;
+
+            List<Department> Deptlist = dpp.getDepartments(id);
+
+            for(int i=0;i< Deptlist.Count;i++)
+            {
+                foreach (ListItem listItem in CreateDepartmentList.Items)
+                {
+                    if (listItem.Text.Equals(Deptlist.ElementAt(i).departmentName))
+                    {
+                        listItem.Enabled = false;
+                    }
+                }
+
+            }
+
+            
+
         }
 
         protected void UpDate_Click(object sender, EventArgs e)
@@ -42,14 +70,9 @@ namespace TeamLLama
                 txtName.Text = f.facilityName;
             }
 
-            if (string.IsNullOrEmpty(txtType.Text))
+            if (string.IsNullOrEmpty(txtInfo.Text))
             {
-                txtType.Text = f.facilityType;
-            }
-
-            if (string.IsNullOrEmpty(txtGeneralInfo.Text))
-            {
-                txtGeneralInfo.Text = f.generalInfo;
+                txtInfo.Text = f.generalInfo;
             }
 
             if (string.IsNullOrEmpty(txtPhoneNumber.Text))
@@ -57,14 +80,26 @@ namespace TeamLLama
                 txtPhoneNumber.Text = f.phoneNumber.ToString();
             }
 
-            if (string.IsNullOrEmpty(txtOpeningHrs.Text))
+            if (string.IsNullOrEmpty(txtOpeninghr.Text) || string.IsNullOrEmpty(txtOpeningmin.Text))
             {
-                txtOpeningHrs.Text = f.openingHrs;
+                string[] OpeningTimeArray = f.openingHrs.Split(':');
+                txtOpeninghr.Text = OpeningTimeArray[0];
             }
 
-            if (string.IsNullOrEmpty(txtClosingHrs.Text))
+            if (string.IsNullOrEmpty(txtClosinghr.Text))
             {
-                txtClosingHrs.Text = f.closingHrs;
+                string[] ClosingTimeArray = f.closingHrs.Split(':');
+                txtClosinghr.Text = ClosingTimeArray[0];
+            }
+
+            if (vc.isEmpty(txtOpeningmin.Text))
+            {
+                txtOpeningmin.Text = "00";
+            }
+
+            if (vc.isEmpty(txtClosingmin.Text))
+            {
+                txtClosingmin.Text = "00";
             }
 
             if (string.IsNullOrEmpty(txtAddress.Text))
@@ -94,7 +129,7 @@ namespace TeamLLama
 
             }
 
-            app.UpdateFacility(txtName.Text, txtType.Text, txtGeneralInfo.Text, Convert.ToInt32(txtPhoneNumber.Text), txtOpeningHrs.Text, txtClosingHrs.Text, txtAddress.Text, txtRegion.Text, image, f.facilityID);
+            app.UpdateFacility(txtName.Text, listFacility.SelectedItem.Text, txtInfo.Text, Convert.ToInt32(txtPhoneNumber.Text), txtOpeninghr.Text + ":" + txtOpeninghr.Text + ":" + "00", txtClosinghr.Text + ":" + txtClosingmin.Text + ":" + "00", txtAddress.Text, txtRegion.Text, image, f.facilityID);
 
 
             Response.Redirect("FacilityListPage.aspx", false);

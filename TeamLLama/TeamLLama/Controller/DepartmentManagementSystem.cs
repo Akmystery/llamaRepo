@@ -45,6 +45,48 @@ namespace TeamLLama.Controller
             return result;
         }
 
+        public List<Department> getDepartments(string hospitalSelected)
+        {
+            List<Department> d = new List<Department>();
+            using (MySqlConnection conn = new MySqlConnection(dbConnectionString))
+            {
+                string FacQuery = "Select department_id, department_name from department where facility_id = @s";
+                MySqlCommand FacCmd = new MySqlCommand(FacQuery, conn);
+                FacCmd.Parameters.AddWithValue("@s", hospitalSelected);
+                conn.Open();
+
+                MySqlDataReader dr;
+                dr = FacCmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Department d1 = new Department();
+                    d1.departmentID = Convert.ToInt32(dr["department_id"]);
+                    d1.departmentName = dr["department_name"].ToString();
+                    d.Add(d1);
+                }
+                conn.Close();
+
+            }
+            return d;
+        }
+
+
+        public void DeleteDepartments(String facilityid)
+        {
+
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "DELETE FROM department WHERE facility_id=@id";
+
+            var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@id", facilityid);
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
 
     }
 }
