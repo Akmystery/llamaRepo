@@ -62,6 +62,15 @@ namespace TeamLLama.Controller
 
         public Facility GetFacility(String id)
         {
+            if (!int.TryParse(id, out int result))
+            {
+                return null;
+            }
+            return GetFacility(result);
+        }
+
+        public Facility GetFacility(int id)
+        {
             Facility f = new Facility();
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
