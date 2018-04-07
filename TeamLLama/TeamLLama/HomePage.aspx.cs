@@ -11,12 +11,12 @@ namespace TeamLLama
 
         protected void btnSearchFacility_Click(object sender, EventArgs e)
         {
-            Response.Redirect(string.Format("SearchByName.aspx?q={0}", Uri.EscapeDataString(tbSearchFacility.Text)));
+            Response.Redirect(string.Format("SearchByName.aspx?q={0}", Uri.EscapeDataString(tbSearch.Text)));
         }
 
         protected void btnSearchNearby_Click(object sender, EventArgs e)
         {
-            Response.Redirect(string.Format("SearchNearby.aspx?q={0}", Uri.EscapeDataString(tbSearchNearby.Text)));
+            Response.Redirect(string.Format("SearchNearby.aspx?q={0}", Uri.EscapeDataString(tbSearch.Text)));
         }
     }
 }
