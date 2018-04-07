@@ -11,12 +11,20 @@ namespace TeamLLama
 {
     public partial class SearchByName : System.Web.UI.Page
     {
+        protected ReviewControlSystem rcs = new ReviewControlSystem();
+        protected bool noResults = false;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             FacilityManagementSystem app = new FacilityManagementSystem();
             List<Facility> facilities = app.SearchFacility(Request.QueryString["q"]??"");
-            grdFacility.DataSource = facilities;
-            grdFacility.DataBind();
+            if (facilities == null || facilities.Count == 0)
+            {
+                noResults = true;
+                return;
+            }
+            listResults.DataSource = facilities;
+            listResults.DataBind();
         }
 
     }
