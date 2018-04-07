@@ -146,7 +146,7 @@ namespace TeamLLama.Controller
                 f.closingHrs = reader["closingHrs"].ToString();
                 f.address = reader["address"].ToString();
                 f.region = reader["region"].ToString();
-                f.x = (decimal) reader["x"];
+                f.x = (decimal)reader["x"];
                 f.y = (decimal)reader["y"];
                 searchResults.Add(f);
             }
@@ -275,6 +275,14 @@ namespace TeamLLama.Controller
             var url = "https://developers.onemap.sg/commonapi/search?searchVal=" +query +" &returnGeom=Y&getAddrDetails=Y&pageNum=1";
             var hospital = _download_serialized_json_data<JsonData>(url);
             List<SearchResults> results = hospital.results;
+            return results;
+        }
+        public List<Pharmacy> getPharmacyData(string category)
+        {
+            var url = "https://data.gov.sg/api/action/datastore_search?resource_id=16db7800-d81e-4d0d-9d59-936f2c10d668&q=%7B%22pharmacy_name%22%3A%20%22{0}%22%7D";
+            url = string.Format(url, category);
+            var data = _download_serialized_json_data<GovData>(url);
+            List<Pharmacy> results = data.result.records;
             return results;
         }
         public static T _download_serialized_json_data<T>(string url) where T : new()

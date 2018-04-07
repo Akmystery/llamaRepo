@@ -3,10 +3,11 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="c_head" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-        .tableStyle{
-            margin-left:auto;
-            margin-right:auto;
+        .tableStyle {
+            margin-left: auto;
+            margin-right: auto;
         }
+
         .modalBackground {
             background-color: Black;
             filter: alpha(opacity=90);
@@ -23,8 +24,30 @@
             width: auto;
             height: auto;
         }
-        body{
+
+        body {
             background-color: #99ff66;
+        }
+
+        .GridPager a, .GridPager span {
+            display: block;
+            height: 30px;
+            width: 35px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .GridPager a {
+            background-color: #f5f5f5;
+            color: #969696;
+            border: 1px solid #969696;
+        }
+
+        .GridPager span {
+            background-color: #A1DCF2;
+            color: #000;
+            border: 1px solid #3AC0F2;
         }
     </style>
 
@@ -35,7 +58,8 @@
         <table class="tableStyle">
             <tr>
                 <td colspan="4">
-                    <h3 class="mt-3"><asp:Label ID="lblPick" runat="server" Text="Pick Appointments" Font-Size="Larger"></asp:Label></h3>
+                    <h3 class="mt-3">
+                        <asp:Label ID="lblPick" runat="server" Text="Pick Appointments" Font-Size="Larger"></asp:Label></h3>
                 </td>
             </tr>
             <tr>
@@ -55,7 +79,7 @@
                     <asp:Label ID="lblToDate" runat="server" Text="To Date:"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control d-inline"  Width="200px"></asp:TextBox>
+                    <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control d-inline" Width="200px"></asp:TextBox>
                     <asp:Label ID="lblActualTo" runat="server" Text="" Visible="false"></asp:Label>
                     <cc1:CalendarExtender ID="CalendarExtender2" TargetControlID="txtToDate" runat="server" Format="dd/MM/yyyy"></cc1:CalendarExtender>
                 </td>
@@ -105,6 +129,8 @@
                         <EmptyDataTemplate>
                             <asp:Label ID="lb_empty" class="emptyMsg" runat="server" Text="No Record Found" Width="580px"></asp:Label>
                         </EmptyDataTemplate>
+
+                        <PagerStyle HorizontalAlign="Center" CssClass="GridPager"></PagerStyle>
                     </asp:GridView>
                 </td>
             </tr>

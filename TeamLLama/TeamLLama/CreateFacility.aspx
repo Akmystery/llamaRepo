@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Page.Master" AutoEventWireup="true" CodeBehind="CreateFacility.aspx.cs" Inherits="TeamLLama.WebForm3" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-	<style type="text/css">
+    <style type="text/css">
         .auto-style2 {
             width: 220px;
             height: 10px;
@@ -20,11 +21,13 @@
         .auto-style5 {
             height: 10px;
         }
-         .modalBackground {
+
+        .modalBackground {
             background-color: Black;
             filter: alpha(opacity=90);
             opacity: 0.8;
         }
+
         .modalPopup1 {
             background-color: #FFFFFF;
             border-width: 3px;
@@ -35,13 +38,36 @@
             width: auto;
             height: auto;
         }
+
         .font_style_two {
             font-family: 'Karma', serif;
             font-weight: 500;
             font-size: 20px;
         }
-        body{
-            background-image:url(images/ad_bg.jpg);
+
+        body {
+            background-image: url(images/ad_bg.jpg);
+        }
+
+        .GridPager a, .GridPager span {
+            display: block;
+            height: 30px;
+            width: 35px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .GridPager a {
+            background-color: #f5f5f5;
+            color: #969696;
+            border: 1px solid #969696;
+        }
+
+        .GridPager span {
+            background-color: #A1DCF2;
+            color: #000;
+            border: 1px solid #3AC0F2;
         }
     </style>
     <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
@@ -63,7 +89,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
-    <div class="content-wrap  mt-5 mb-4" style="max-width: 800px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);  background-color:white;">
+    <div class="content-wrap  mt-5 mb-4" style="max-width: 800px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5); background-color: white;">
         <h1 class="font_style_one mt-3 mb-4 text-center">Add New Facility</h1>
         <table style="width: 100%;">
             <tr>
@@ -112,7 +138,7 @@
             <tr>
                 <td class="auto-style2 font_style_two">Phone Number</td>
                 <td>
-                    <asp:TextBox ID="txtPhoneNumber" runat="server" Width="350px" CssClass="form-control" ></asp:TextBox>
+                    <asp:TextBox ID="txtPhoneNumber" runat="server" Width="350px" CssClass="form-control"></asp:TextBox>
             </tr>
             <tr>
                 <td class="auto-style2"></td>
@@ -124,8 +150,10 @@
             <tr>
                 <td class="auto-style2 font_style_two">Opening Hour</td>
                 <td>
-                    <asp:TextBox ID="txtOpeninghr" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox> hr
-					<asp:TextBox ID="txtOpeningmin" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox> min
+                    <asp:TextBox ID="txtOpeninghr" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox>
+                    hr
+					<asp:TextBox ID="txtOpeningmin" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox>
+                    min
                 </td>
             </tr>
             <tr>
@@ -137,8 +165,10 @@
             <tr>
                 <td class="auto-style2 font_style_two">Closing Hour</td>
                 <td>
-                    <asp:TextBox ID="txtClosinghr" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox> hr
-					<asp:TextBox ID="txtClosingmin" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox> min
+                    <asp:TextBox ID="txtClosinghr" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox>
+                    hr
+					<asp:TextBox ID="txtClosingmin" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox>
+                    min
                 </td>
             </tr>
             <tr>
@@ -173,22 +203,22 @@
                     <asp:Label ID="lblRegion" runat="server" ForeColor="Red"></asp:Label>
                 </td>
             </tr>
-			<tr>
+            <tr>
                 <td class="auto-style2 font_style_two">Departments Available</td>
                 <td>
                     <asp:ListBox runat="server" ID="CreateDepartmentList" SelectionMode="multiple" Width="350px" Height="220px" CssClass="form-control">
-						<asp:ListItem Text="Anaesthesiology" Value="Anaesthesiology" />
-						<asp:ListItem Text="Cardiology" Value="Cardiology" />
-						<asp:ListItem Text="Colorectal" Value="Colorectal" />
-						<asp:ListItem Text="Dermatology" Value="Dermatology" />
-						<asp:ListItem Text="ER" Value="ER" />
-						<asp:ListItem Text="Neuro" Value="Neuro" />
-						<asp:ListItem Text="Orthopaedic" Value="Colorectal" />
-						<asp:ListItem Text="Psychiatry" Value="Dermatology" />
-						<asp:ListItem Text="Urology" Value="Urology" />
-						<asp:ListItem Text="X Ray" Value="X Ray" />
+                        <asp:ListItem Text="Anaesthesiology" Value="Anaesthesiology" />
+                        <asp:ListItem Text="Cardiology" Value="Cardiology" />
+                        <asp:ListItem Text="Colorectal" Value="Colorectal" />
+                        <asp:ListItem Text="Dermatology" Value="Dermatology" />
+                        <asp:ListItem Text="ER" Value="ER" />
+                        <asp:ListItem Text="Neuro" Value="Neuro" />
+                        <asp:ListItem Text="Orthopaedic" Value="Colorectal" />
+                        <asp:ListItem Text="Psychiatry" Value="Dermatology" />
+                        <asp:ListItem Text="Urology" Value="Urology" />
+                        <asp:ListItem Text="X Ray" Value="X Ray" />
 
-					</asp:ListBox> 
+                    </asp:ListBox>
                 </td>
             </tr>
             <tr>
@@ -200,7 +230,7 @@
             <tr>
                 <td class="auto-style2 font_style_two">Facility Image</td>
                 <td>
-                    <img id="imgpreview" height="250" width="300" src="" style="border-width:0px; margin-bottom:10px; visibility: hidden;" />
+                    <img id="imgpreview" height="250" width="300" src="" style="border-width: 0px; margin-bottom: 10px; visibility: hidden;" />
                     <asp:FileUpload ID="ImageUpload" runat="server" Width="280px" onchange="showpreview(this);" />
                 </td>
             </tr>
@@ -215,58 +245,58 @@
                 <td class="auto-style2">&nbsp;</td>
                 <td>
                     <asp:Button ID="btnBack" runat="server" Text="Back to Home Page" OnClick="btnBack_Click" CssClass="btn btn-dark mb-2 mt-3 float-right mr-5" />
-                    <asp:Button ID="btnCreate" runat="server" OnClick="Create_Click" Text="Create" CssClass="btn btn-dark mb-2 mt-3 float-right mr-2" />    
+                    <asp:Button ID="btnCreate" runat="server" OnClick="Create_Click" Text="Create" CssClass="btn btn-dark mb-2 mt-3 float-right mr-2" />
                 </td>
             </tr>
         </table>
     </div>
     <asp:ScriptManager ID="ScriptManager1" runat="server">
-
     </asp:ScriptManager>
     <asp:HiddenField ID="HiddenField1" runat="server" />
-    <cc1:modalpopupextender id="confirmPopup" runat="server" popupcontrolid="CfmPanel" targetcontrolid="HiddenField1" cancelcontrolid="btnClose" backgroundcssclass="modalBackground"></cc1:modalpopupextender>
+    <cc1:ModalPopupExtender ID="confirmPopup" runat="server" PopupControlID="CfmPanel" TargetControlID="HiddenField1" CancelControlID="btnClose" BackgroundCssClass="modalBackground"></cc1:ModalPopupExtender>
     <asp:Panel ID="CfmPanel" runat="server" CssClass="modalPopup1" align="center" Style="display: none">
         <asp:Label ID="lblMsg" runat="server" Text="Results" Visible="true" Font-Size="Large"></asp:Label><br />
         <br />
-        <asp:GridView ID="grdFacilities" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="false" PageSize="5" OnPageIndexChanging="grdFacilities_PageIndexChanging" 
+        <asp:GridView ID="grdFacilities" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="false" PageSize="5" OnPageIndexChanging="grdFacilities_PageIndexChanging"
             AllowPaging="True" PagerStyle-HorizontalAlign="Center" RowStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" EmptyDataRowStyle-HorizontalAlign="Center" BorderStyle="Solid" CellPadding="10" CssClass="mr-3">
-                        <Columns>
-                            <asp:TemplateField HeaderText="Building" ItemStyle-Width="250px">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblBuilding" runat="server" Text='<%# Eval("Building") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Address" ItemStyle-Width="400px">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblAddress" runat="server" Text='<%# Eval("Address") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Postal" ItemStyle-Width="80px">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblPostal" runat="server" Text='<%# Eval("Postal") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="x" visible="false">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblX" runat="server" Text='<%# Eval("x") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="y" visible="false">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblY" runat="server" Text='<%# Eval("y") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="" ItemStyle-HorizontalAlign="Center">
-                                <ItemTemplate>
-                                    <asp:Button ID="btnSelect" runat="server" Text="Select" OnClick="btnSelect_Click" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                        <EmptyDataTemplate>
-                            <asp:Label ID="lb_empty" class="emptyMsg" runat="server" Text="No Record Found" Width="730px"></asp:Label>
-                        </EmptyDataTemplate>
-                    </asp:GridView>
-        <asp:Button ID="btnClose" runat="server" Text="Close" CSSClass="mt-2"/>
+            <Columns>
+                <asp:TemplateField HeaderText="Building" ItemStyle-Width="250px">
+                    <ItemTemplate>
+                        <asp:Label ID="lblBuilding" runat="server" Text='<%# Eval("Building") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Address" ItemStyle-Width="400px">
+                    <ItemTemplate>
+                        <asp:Label ID="lblAddress" runat="server" Text='<%# Eval("Address") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Postal" ItemStyle-Width="80px">
+                    <ItemTemplate>
+                        <asp:Label ID="lblPostal" runat="server" Text='<%# Eval("Postal") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="x" Visible="false">
+                    <ItemTemplate>
+                        <asp:Label ID="lblX" runat="server" Text='<%# Eval("x") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="y" Visible="false">
+                    <ItemTemplate>
+                        <asp:Label ID="lblY" runat="server" Text='<%# Eval("y") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="" ItemStyle-HorizontalAlign="Center">
+                    <ItemTemplate>
+                        <asp:Button ID="btnSelect" runat="server" Text="Select" OnClick="btnSelect_Click" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+            <EmptyDataTemplate>
+                <asp:Label ID="lb_empty" class="emptyMsg" runat="server" Text="No Record Found" Width="730px"></asp:Label>
+            </EmptyDataTemplate>
+            <PagerStyle HorizontalAlign="Center" CssClass="GridPager"></PagerStyle>
+        </asp:GridView>
+        <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="mt-2" />
         <div class="mb-3"></div>
     </asp:Panel>
 </asp:Content>

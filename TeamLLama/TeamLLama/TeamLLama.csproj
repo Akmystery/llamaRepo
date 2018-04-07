@@ -121,6 +121,7 @@
     <Content Include="Ak_testing.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="PatientAppointmentPage.aspx" />
+    <Content Include="HealthierChoice.aspx" />
     <Content Include="PickAppointmentPage.aspx" />
     <Content Include="PlanTransportation.aspx" />
     <Content Include="ReferPatient.aspx" />
@@ -257,6 +258,10 @@
       <DependentUpon>DoctorHomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entity\Account.cs" />
+    <Compile Include="Entity\Fields.cs" />
+    <Compile Include="Entity\GovData.cs" />
+    <Compile Include="Entity\GovResult.cs" />
+    <Compile Include="Entity\Pharmacy.cs" />
     <Compile Include="Entity\JsonData.cs" />
     <Compile Include="Entity\SearchResults.cs" />
     <Compile Include="FacilityListPage.aspx.cs">
@@ -294,6 +299,13 @@
     </Compile>
     <Compile Include="PatientAppointmentPage.aspx.designer.cs">
       <DependentUpon>PatientAppointmentPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HealthierChoice.aspx.cs">
+      <DependentUpon>HealthierChoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HealthierChoice.aspx.designer.cs">
+      <DependentUpon>HealthierChoice.aspx</DependentUpon>
     </Compile>
     <Compile Include="PickAppointmentPage.aspx.cs">
       <DependentUpon>PickAppointmentPage.aspx</DependentUpon>
