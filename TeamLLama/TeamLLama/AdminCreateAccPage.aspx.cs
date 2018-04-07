@@ -21,19 +21,41 @@ namespace TeamLLama
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
-            string query = "SELECT * FROM department";
+                string query = "SELECT * FROM facility";
+
+            var cmd = new MySqlCommand(query, conn);
+                //cmd.Parameters.AddWithValue("@idTest", 1);
+
+                
+
+                conn.Open();
+
+            FacilityDropDownList.DataSource = cmd.ExecuteReader();
+            FacilityDropDownList.DataBind();
+            conn.Close();
+            }
+
+            FacilityDropDownList.Items.Insert(0, new ListItem("- Select faciliy -", ""));
+
+        }
+
+        protected void FilterDept(object sender, EventArgs e) //action fired after selecting facility
+        {
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "SELECT * FROM department where facility_id="+FacilityDropDownList.SelectedItem.Value;
 
             var cmd = new MySqlCommand(query, conn);
             //cmd.Parameters.AddWithValue("@idTest", 1);
+
+
 
             conn.Open();
 
             DepartmentDropDownList.DataSource = cmd.ExecuteReader();
             DepartmentDropDownList.DataBind();
-
             conn.Close();
-            }
-
         }
 
         protected void CreatrDocAcc_Click(object sender, EventArgs e)

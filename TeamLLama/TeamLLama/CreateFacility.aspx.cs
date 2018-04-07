@@ -15,11 +15,10 @@ namespace TeamLLama
     public partial class WebForm3 : System.Web.UI.Page
     {
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
+
 
         protected void Create_Click(object sender, EventArgs e)
         {
@@ -98,7 +97,7 @@ namespace TeamLLama
                 txtClosingmin.Text = "00";
             }
 
-            if (CreateDepartmentList.GetSelectedIndices().Count() == 0)
+            if (CreateDepartmentList.Items.Cast<ListItem>().Count(li => li.Selected) == 0)
             {
                 check = false;
                 lblDepartmentList.Text = "Please select at least 1 department";

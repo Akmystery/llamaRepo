@@ -134,19 +134,19 @@
 			<tr>
                 <td class="auto-style2">Add new departments</td>
                 <td>
-                    <asp:ListBox runat="server" ID="CreateDepartmentList" SelectionMode="multiple" Width="278px" Height="220px">
-						<asp:ListItem Text="Anaesthesiology" Value="Anaesthesiology" />
-						<asp:ListItem Text="Cardiology" Value="Cardiology" />
-						<asp:ListItem Text="Colorectal" Value="Colorectal" />
-						<asp:ListItem Text="Dermatology" Value="Dermatology" />
-						<asp:ListItem Text="ER" Value="ER" />
-						<asp:ListItem Text="Neuro" Value="Neuro" />
-						<asp:ListItem Text="Orthopaedic" Value="Colorectal" />
-						<asp:ListItem Text="Psychiatry" Value="Dermatology" />
-						<asp:ListItem Text="Urology" Value="Urology" />
-						<asp:ListItem Text="X Ray" Value="X Ray" />
 
-					</asp:ListBox> 
+					<asp:CheckBoxList runat="server"  ID="UpdateDepartmentList" Width="350px" Height="350px" CssClass="form-control">
+						<asp:ListItem Value="Anaesthesiology">&nbsp Anaesthesiology</asp:ListItem>
+						<asp:ListItem Value="Cardiology">&nbsp Cardiology</asp:ListItem>
+						<asp:ListItem Value="Colorectal">&nbsp Colorectal</asp:ListItem>
+						<asp:ListItem Value="Dermatology">&nbsp Dermatology</asp:ListItem>
+						<asp:ListItem Value="ER">&nbsp ER</asp:ListItem>
+						<asp:ListItem Value="Neuro">&nbsp Neuro</asp:ListItem>
+						<asp:ListItem Value="Orthopaedic">&nbsp Orthopaedic</asp:ListItem>
+						<asp:ListItem Value="Psychiatry">&nbsp Psychiatry</asp:ListItem>
+						<asp:ListItem Value="Urology">&nbsp Urology</asp:ListItem>
+						<asp:ListItem Value="X Ray">&nbsp X Ray</asp:ListItem>
+					</asp:CheckBoxList>
                 </td>
                 <td>&nbsp;</td>
             </tr>
