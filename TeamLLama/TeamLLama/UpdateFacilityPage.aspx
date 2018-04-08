@@ -135,7 +135,7 @@
                 <td class="auto-style2">Add new departments</td>
                 <td>
 
-					<asp:CheckBoxList runat="server"  ID="UpdateDepartmentList" Width="350px" Height="350px" CssClass="form-control">
+					<asp:CheckBoxList runat="server" ID="UpdateDepartmentList" Width="350px" Height="350px" CssClass="form-control">
 						<asp:ListItem Value="Anaesthesiology">&nbsp Anaesthesiology</asp:ListItem>
 						<asp:ListItem Value="Cardiology">&nbsp Cardiology</asp:ListItem>
 						<asp:ListItem Value="Colorectal">&nbsp Colorectal</asp:ListItem>
