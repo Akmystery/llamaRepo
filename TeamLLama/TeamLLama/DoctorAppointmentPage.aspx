@@ -26,7 +26,7 @@
         }
 
         body {
-            background-color: #99ff66;
+            background-color: #b3ffb3;
         }
 
         .GridPager a, .GridPager span {

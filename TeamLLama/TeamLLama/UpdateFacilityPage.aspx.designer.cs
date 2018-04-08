@@ -22,15 +22,6 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// lblName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName;
-        
-        /// <summary>
         /// listFacility control.
         /// </summary>
         /// <remarks>
@@ -38,15 +29,6 @@ namespace TeamLLama {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList listFacility;
-        
-        /// <summary>
-        /// lblType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblType;
         
         /// <summary>
         /// txtInfo control.
@@ -58,15 +40,6 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.TextBox txtInfo;
         
         /// <summary>
-        /// lblInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInfo;
-        
-        /// <summary>
         /// txtPhoneNumber control.
         /// </summary>
         /// <remarks>
@@ -74,15 +47,6 @@ namespace TeamLLama {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPhoneNumber;
-        
-        /// <summary>
-        /// lblPhoneNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPhoneNumber;
         
         /// <summary>
         /// txtOpeninghr control.
@@ -103,15 +67,6 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.TextBox txtOpeningmin;
         
         /// <summary>
-        /// lblOpening control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOpening;
-        
-        /// <summary>
         /// txtClosinghr control.
         /// </summary>
         /// <remarks>
@@ -128,15 +83,6 @@ namespace TeamLLama {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtClosingmin;
-        
-        /// <summary>
-        /// lblClosing control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblClosing;
         
         /// <summary>
         /// txtAddress control.
@@ -166,15 +112,6 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.Label lblSelectedY;
         
         /// <summary>
-        /// lblAddress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAddress;
-        
-        /// <summary>
         /// txtRegion control.
         /// </summary>
         /// <remarks>
@@ -184,15 +121,6 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.TextBox txtRegion;
         
         /// <summary>
-        /// lblRegion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRegion;
-        
-        /// <summary>
         /// UpdateDepartmentList control.
         /// </summary>
         /// <remarks>
@@ -200,15 +128,6 @@ namespace TeamLLama {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList UpdateDepartmentList;
-        
-        /// <summary>
-        /// lblDepartmentList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDepartmentList;
         
         /// <summary>
         /// ImageUpload control.
