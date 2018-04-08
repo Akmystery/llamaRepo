@@ -138,6 +138,52 @@ namespace TeamLLama.Controller
 
         }
 
+        public String CheckDepartmentForStaff(Department a)
+        {
+            using (MySqlConnection conn = new MySqlConnection(dbConnectionString))
+            {
+                // to get dept id
+                string FacQuery2 = "Select department_id, department_name from department where facility_id = @s AND department_name = @n";
+                MySqlCommand FacCmd2 = new MySqlCommand(FacQuery2, conn);
+                FacCmd2.Parameters.AddWithValue("@s", a.facilityId);
+                FacCmd2.Parameters.AddWithValue("@n", a.departmentName);
+
+                Department dept = new Department();
+                    dept.departmentID = -1;
+
+                conn.Open();
+
+                MySqlDataReader dr;
+                dr = FacCmd2.ExecuteReader();
+                while (dr.Read())
+                {
+                    dept.departmentID = Convert.ToInt32(dr["department_id"]);
+                    dept.departmentName = dr["department_name"].ToString();
+                }
+                conn.Close();
+
+                conn.Open();
+                if(dept.departmentID != -1)
+                { 
+                string FacQuery = "Select * from facility_staff WHERE department_id=@s";
+                MySqlCommand FacCmd = new MySqlCommand(FacQuery, conn);
+                FacCmd.Parameters.AddWithValue("@s", dept.departmentID);
+                dr = FacCmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    return dept.departmentName; //cannot delete
+                }
+                }
+                conn.Close();
+
+            }
+
+            return null; //can delete
+
+   
+
+        }
+
 
     }
 }

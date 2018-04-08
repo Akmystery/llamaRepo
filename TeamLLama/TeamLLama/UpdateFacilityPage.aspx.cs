@@ -158,10 +158,28 @@ namespace TeamLLama
                     nindex++;
                 }
             }
+
+
+            bool DepartmentCheckexist = false; //this is to check whether there's child dependency for facility_staff before deleting the uncheck facility to prevent database error
+            String tempDeptName;
+            foreach(Department d in ndp)
+            {
+                if (d != null) { 
+                tempDeptName = dpp.CheckDepartmentForStaff(d);
+                if (tempDeptName != null)
+                {
+                    lblImage.Text = "unable to remove department: " + tempDeptName + ", there are doctors working in that department";
+                    DepartmentCheckexist = true;//don't allow the update 
+                }
+                }
+            }
+            if(DepartmentCheckexist == false)
+            { 
             dpp.DeleteDepartment(ndp);
             dpp.AddDepartment(dp);
-
             Response.Redirect("FacilityListPage.aspx", false);
+            }
+           
         }
     }
 }
