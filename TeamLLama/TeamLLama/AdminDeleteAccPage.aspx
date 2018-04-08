@@ -47,7 +47,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Photo">
                         <ItemTemplate>
-                            <asp:Label ID="lblphoto" runat="server" Text='<%# Eval("photo") %>'></asp:Label>
+							<img id="lblphoto" height="170" width="170" src="~/upload/facility/<%# Eval("photo") %>" style="border-width:0px; margin-bottom:10px; visibility: hidden;" />
                         </ItemTemplate>
                     </asp:TemplateField>
 					<asp:TemplateField HeaderText="Name">

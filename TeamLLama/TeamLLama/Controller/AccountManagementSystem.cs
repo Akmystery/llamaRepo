@@ -172,6 +172,16 @@ namespace TeamLLama.Controller
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
+
+            ///////////////////////////////////delete data from facility_staff as that's the child of account
+            string query2 = "DELETE FROM facility_staff WHERE account_id=@id";
+            var cmd2 = new MySqlCommand(query2, conn);
+            cmd2.Parameters.AddWithValue("@id", id);
+            conn.Open();
+            cmd2.ExecuteNonQuery();
+            conn.Close();
+            //////////////////////////////////////////////////////////////////
+
             string query = "DELETE FROM account WHERE account_id=@id";
 
             var cmd = new MySqlCommand(query, conn);
