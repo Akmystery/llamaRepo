@@ -13,15 +13,6 @@ namespace TeamLLama {
     public partial class HomePage {
         
         /// <summary>
-        /// panelSearchFacility control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelSearchFacility;
-        
-        /// <summary>
         /// tbSearch control.
         /// </summary>
         /// <remarks>
@@ -31,15 +22,6 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.TextBox tbSearch;
         
         /// <summary>
-        /// btnSearchFacility control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchFacility;
-        
-        /// <summary>
         /// btnSearchNearby control.
         /// </summary>
         /// <remarks>
@@ -47,5 +29,14 @@ namespace TeamLLama {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearchNearby;
+        
+        /// <summary>
+        /// btnSearchFacility control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearchFacility;
     }
 }

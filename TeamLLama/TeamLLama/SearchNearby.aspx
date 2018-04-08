@@ -7,7 +7,7 @@
         integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
         crossorigin=""></script>
     <style>
-        #map { height: 800px; }
+        #map { height: 600px; }
 
         .leaflet-marker-icon .number {
             position: relative;
@@ -21,14 +21,16 @@
         .nearbyResults {
             display: flex;
             margin: 0 auto;
+            height:auto;
         }
         .facilitySquare {
             display: block;
-            flex: 1;
+            flex: 2;
             padding: 1em;
-            border: 1px solid grey;
             text-decoration: inherit;
             color: inherit;
+            margin-right:10px;
+            box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
         }
         .facilityImage {
             width: 100%;
@@ -40,12 +42,14 @@
         .facilityRating {
             text-align: center;
         }
-
+        body{
+            background-image:url(images/ap_bg.jpg);
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
     <div class="container">
-        <h2>SEARCH RESULTS</h2>
+        <h2 class="font_style_one mt-3 mb-3" style="font-size:30px">Hospitals near your location</h2>
         <%if (this.location != null)
             { %>
             <div id="map"></div>
@@ -84,20 +88,20 @@
                 addMarker('<%= (char)('A' + l.Index)%>', <%= l.Point.Item1 %>, <%= l.Point.Item2 %>);
                 <% } %>
             </script>
-
+            <h2 class="font_style_one mt-3 mb-1" style="font-size:20px; font-weight:bold;">Lists of Hospitals near your location by ratings</h2>
             <asp:ListView ID="listResults" 
                 ItemType="TeamLLama.Entity.Facility" 
                 runat="server">
                 <LayoutTemplate>
-                    <div class="nearbyResults" runat="server">
-                        <a class="facilitySquare" id="itemPlaceholder" runat="server"></a>
+                    <div class="nearbyResults mt-2 mb-4" runat="server">
+                        <a class="facilitySquare card" id="itemPlaceholder" runat="server"></a>
                     </div>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <a class="facilitySquare" href="<%=Request.ApplicationPath == "/"?"": Request.ApplicationPath %>/FacilityPage.aspx?id=<%# Item.facilityID %>">
+                    <a class="facilitySquare card" href="<%=Request.ApplicationPath == "/"?"": Request.ApplicationPath %>/FacilityPage.aspx?id=<%# Item.facilityID %>">
                         <img class="facilityImage" src="https://m.phnompenhpost.com/sites/default/files/styles/full-screen/public/field/image/8-mount-alvernia-hospital.jpg" />
                         <div class="facilityTitle"><%# Item.facilityName %></div>
-                        <div class="facilityRating"><%# rcs.GetRatingString(Item.facilityID) %></div>
+                        <div class="facilityRating">Rating: <%# rcs.GetRatingString(Item.facilityID) %></div>
                     </a>
                 </ItemTemplate>
             </asp:ListView>

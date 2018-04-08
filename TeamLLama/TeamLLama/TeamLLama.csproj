@@ -112,6 +112,7 @@
     <Content Include="images\bo_bg.jpg" />
     <Content Include="images\doc_bg.jpg" />
     <Content Include="images\FilledStar.gif" />
+    <Content Include="images\home_bg2.jpg" />
     <Content Include="images\Login.png" />
     <Content Include="images\login_bg.jpg" />
     <Content Include="images\logo.png" />

@@ -13,16 +13,16 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav class="navbar navbar-light" style="box-shadow: 1px 2px 4px rgba(0, 0, 0, .5); background-color:white;">
+        <nav class="navbar navbar-light" style="box-shadow: 1px 2px 4px rgba(0, 0, 0, .5); background-color:floralwhite">
              <div class="nav">
                  <img src="images/logo.png" alt="logo" class="ml-5" style="border-radius:50%; height:50px; width:50px" />
                   <span class="font_style_one black pt-2 pl-3">Doctor LLama</span>
-              <%if((String)Session["Type"] == "patient"){%>
-                    <a class="nav-link pt-3 ml-4 font_style_one black" style="font-size:18px" href="HomePage.aspx">Home</a>
+                 <a class="nav-link pt-3 ml-4 font_style_one black" style="font-size:18px" href="HomePage.aspx">Home</a>
+              <%if((String)Session["Type"] == "patient" && Session["Account"] != null){%>
                     <a class="nav-link pt-3 font_style_one black" style="font-size:18px" href="BookAppointmentPage.aspx">Book Appointment</a>
                     <a class="nav-link pt-3 font_style_one black" style="font-size:18px" href="PatientAppointmentPage.aspx">View Appointment</a>
               <%}%>
-              <%if((String)Session["Type"] == "Doctor"){%>
+              <%if((String)Session["Type"] == "Doctor" && Session["Account"] != null){%>
                     <a class="nav-link pt-3 ml-4 font_style_one black" style="font-size:18px" href="DoctorAppointmentPage.aspx">Home</a>
                     <a class="nav-link pt-3 font_style_one black" style="font-size:18px" href="PickAppointmentPage.aspx">Pick Appointment</a>
               <%}%>
