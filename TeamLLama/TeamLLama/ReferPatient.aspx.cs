@@ -161,7 +161,7 @@ namespace TeamLLama
 
             if (result == 1)
             {
-                Response.Write("<script type=\"text/javascript\">alert('Appointment Added!');location.href='PatientAppointmentPage.aspx'</script>");
+                Response.Write("<script type=\"text/javascript\">alert('Appointment Added!');location.href='DoctorAppointmentPage.aspx'</script>");
             }
 
 
