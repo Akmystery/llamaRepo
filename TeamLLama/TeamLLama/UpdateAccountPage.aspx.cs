@@ -99,8 +99,8 @@ namespace TeamLLama
                 {
                     lblImage.Text = "This Picture format is not supported by the system";
                     check = false;
-                }else if(width > 170 || height > 170){
-                    lblImage.Text = "Profile Picture size does not meet specified requirements 170x170 pixels";
+                }else if(width > 500|| height > 300){
+                    lblImage.Text = "Profile Picture size does not meet specified requirements 500x300 pixels";
                     check = false;
                 }
                 else
@@ -117,6 +117,7 @@ namespace TeamLLama
 
             if (check == true)
             {
+                update.accountType = a.accountType;
                 Session["Account"] = update;
                 app.UpdateAccount(txtName.Text, txtPassword.Text, txtEmail.Text, txtAddress.Text, txtNric.Text, update.photo, a.accountID);
                 Response.Write("<script type=\"text/javascript\">alert('Account Info is successfully updated!');location.href='AccountInfoPage.aspx'</script>");

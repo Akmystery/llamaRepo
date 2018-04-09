@@ -37,8 +37,9 @@
         <h1 class="font_style_one mb-3 mt-2 text-center">Create Your Account</h1>
 		<table style="width:100%;">
             	<tr>
-				<td class="auto-style2 font_style_two">Image</td>
+				<td class="auto-style2 font_style_two" style="padding-top:210px;">Image</td>
 				<td>
+                    <p class="font_style_two" style="font-size:12px">Maximum Profile Picture size is 500x300 pixels.</p>
                     <img id="imgpreview" height="170" width="170" src="" style="border-width:0px; margin-bottom:10px; visibility: hidden;" />
 					<asp:FileUpload ID="ImageUpload" runat="server" Width="280px" onchange="showpreview(this);" />
 				</td>

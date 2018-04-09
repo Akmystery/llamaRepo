@@ -40,8 +40,9 @@
         <p class="font_style_one mb-4 text-center" style="font-size:20px;">Please fill the fields that you want to update.</p>
 		<table style="width:100%;">
             <tr>
-				<td class="auto-style2 font_style_two">Profile Picture</td>
+				<td class="auto-style2 font_style_two" style="padding-top:200px;">Profile Picture</td>
 				<td>
+                    <p class="font_style_two" style="font-size:12px">Maximum Profile Picture size is 500x300 pixels.</p>
                     <img id="imgpreview" height="170" width="170" src="" style="border-width:0px; margin-bottom:10px; visibility: hidden;" />
 					<asp:FileUpload ID="ImageUpload" runat="server" Width="280px" onchange="showpreview(this);"/>
 				</td>

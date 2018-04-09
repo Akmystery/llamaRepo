@@ -14,6 +14,9 @@
             border: 1px solid grey;
             text-decoration: inherit;
             color: inherit;
+            margin-right:15px;
+            margin-bottom:10px;
+            box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
         }
         .facilityImage {
             width: 100%;
@@ -25,12 +28,15 @@
         .facilityRating {
             text-align: center;
         }
+        body{
+            background-image:url(images/ap_bg.jpg);
+        }
 
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
 	<div class="container">
-        <h2>SEARCH RESULTS</h2>
+        <h2 class="mt-3 mb-3">SEARCH RESULTS</h2>
         <%if (!noResults)
             { %>
             <asp:ListView ID="listResults" 
@@ -38,14 +44,14 @@
                 runat="server">
                 <LayoutTemplate>
                     <div class="searchResults" runat="server">
-                        <a class="facilitySquare" id="itemPlaceholder" runat="server"></a>
+                        <a class="facilitySquare card" id="itemPlaceholder" runat="server"></a>
                     </div>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <a class="facilitySquare" href="<%=Request.ApplicationPath == "/"?"": Request.ApplicationPath %>/FacilityPage.aspx?id=<%# Item.facilityID %>">
-                        <img class="facilityImage" src="https://m.phnompenhpost.com/sites/default/files/styles/full-screen/public/field/image/8-mount-alvernia-hospital.jpg" />
+                    <a class="facilitySquare card" href="<%=Request.ApplicationPath == "/"?"": Request.ApplicationPath %>/FacilityPage.aspx?id=<%# Item.facilityID %>">
+                        <img class="facilityImage card-img" src="https://m.phnompenhpost.com/sites/default/files/styles/full-screen/public/field/image/8-mount-alvernia-hospital.jpg" />
                         <div class="facilityTitle"><%# Item.facilityName %></div>
-                        <div class="facilityRating"><%# rcs.GetRatingString(Item.facilityID) %></div>
+                        <div class="facilityRating">Rating: <%# rcs.GetRatingString(Item.facilityID) %></div>
                     </a>
                 </ItemTemplate>
             </asp:ListView>

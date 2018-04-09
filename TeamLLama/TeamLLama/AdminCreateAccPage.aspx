@@ -73,6 +73,37 @@
 					<asp:Label ID="lblNric" runat="server" ForeColor="Red"  Text=""></asp:Label>
 				</td>
 			</tr>
+            <tr>
+				<td class="auto-style2 font_style_two">Facility</td>
+				<td>
+					<asp:DropDownList ID="FacilityDropDownList" DataTextField = "facility_name" DataValueField = "facility_id" runat="server" AutoPostBack="true" onselectedindexchanged="FilterDept"  CssClass="form-control" Width="280px">
+						<Items>
+							  <asp:ListItem Selected = "True" Text = "select something" Value = "0"></asp:ListItem>
+						</Items>
+					</asp:DropDownList>
+				</td>
+			</tr>
+			<tr>
+				<td class="auto-style2"></td>
+				<td>
+					<asp:Label ID="lblFacility" runat="server" ForeColor="Red"></asp:Label>
+				</td>
+			</tr>
+			
+			<tr>
+				<td class="auto-style2 font_style_two">Department</td>
+				<td>
+					<asp:DropDownList ID="DepartmentDropDownList" DataTextField = "department_name" DataValueField = "department_id" runat="server" CssClass="form-control" Width="280px">
+
+					</asp:DropDownList>
+				</td>
+			</tr>
+			<tr>
+				<td class="auto-style2"></td>
+				<td>
+					<asp:Label ID="lblDepartment" runat="server" ForeColor="Red"></asp:Label>
+				</td>
+			</tr>
 			<tr>
 				<td class="auto-style2 font_style_two">Password</td>
 				<td>
@@ -123,37 +154,7 @@
 				</td>
 			</tr>
 				
-			<tr>
-				<td class="auto-style2 font_style_two">Facility</td>
-				<td>
-					<asp:DropDownList ID="FacilityDropDownList" DataTextField = "facility_name" DataValueField = "facility_id" runat="server" AutoPostBack="true" onselectedindexchanged="FilterDept"  CssClass="form-control" Width="280px">
-						<Items>
-							  <asp:ListItem Selected = "True" Text = "select something" Value = "0"></asp:ListItem>
-						</Items>
-					</asp:DropDownList>
-				</td>
-			</tr>
-			<tr>
-				<td class="auto-style2"></td>
-				<td>
-					<asp:Label ID="lblFacility" runat="server" ForeColor="Red"></asp:Label>
-				</td>
-			</tr>
 			
-			<tr>
-				<td class="auto-style2 font_style_two">Department</td>
-				<td>
-					<asp:DropDownList ID="DepartmentDropDownList" DataTextField = "department_name" DataValueField = "department_id" runat="server" CssClass="form-control" Width="280px">
-
-					</asp:DropDownList>
-				</td>
-			</tr>
-			<tr>
-				<td class="auto-style2"></td>
-				<td>
-					<asp:Label ID="lblDepartment" runat="server" ForeColor="Red"></asp:Label>
-				</td>
-			</tr>
 
 			
 			<tr>

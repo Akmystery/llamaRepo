@@ -21,6 +21,7 @@ namespace TeamLLama
             {
                 Session["Type"] = a.accountType;
                 lblUsername.Text = a.name;
+                lblUsername_admin.Text = a.name;
             }
         
         }

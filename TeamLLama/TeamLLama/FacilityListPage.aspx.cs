@@ -30,6 +30,12 @@ namespace TeamLLama
 
         }
 
+        protected void grdFacility_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdFacility.PageIndex = e.NewPageIndex;
+            bindFacility();
+        }
+
         protected void btnUpdate_click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
@@ -49,14 +55,20 @@ namespace TeamLLama
             int i = Convert.ToInt32(row.RowIndex);
 
             System.Web.UI.WebControls.Label lblFacilityID = grdFacility.Rows[i].FindControl("lblFacilityID") as System.Web.UI.WebControls.Label;
-            String id = lblFacilityID.Text;
+            //String id = lblFacilityID.Text;
+            lbl_id.Text = lblFacilityID.Text;
+            deletePopup.Show();
+            
+        }
+        protected void btnConfirm_Click(object sender, EventArgs e)
+        {
+            String id = lbl_id.Text;
             FacilityManagementSystem app = new FacilityManagementSystem();
             DepartmentManagementSystem dpp = new DepartmentManagementSystem();
             dpp.DeleteDepartments(id); //delete child
             app.DeleteFacility(id);
             Response.Write("<script type=\"text/javascript\">alert('Facility Deleted!');location.href='FacilityListPage.aspx'</script>");
         }
-
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("AdminHomePage.aspx");

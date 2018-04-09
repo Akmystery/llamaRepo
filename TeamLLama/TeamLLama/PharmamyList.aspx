@@ -31,18 +31,18 @@
             color: #000;
             border: 1px solid #3AC0F2;
         }
+
+        body{
+            background-image:url(images/ap_bg.jpg);
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
-    <table class="tableStyle">
+    <table class="tableStyle mb-5">
         <tr>
             <td colspan="2">
                 <h3 class="mt-3">
-                    <asp:Label ID="lbPharmacy" runat="server" Text="Pharmacies" Font-Size="Larger"></asp:Label></h3>
-            </td>
-        </tr>
-        <tr>
-            <td>&nbsp;
+                    <asp:Label ID="lbPharmacy" runat="server" Text="Pharmacies" Font-Size="Larger" CssClass="font_style_one"></asp:Label></h3>
             </td>
         </tr>
         <tr>
@@ -56,7 +56,7 @@
                 </asp:RadioButtonList>
             </td>
             <td>
-                <asp:Button ID="bnSelect" runat="server" Text="Select" OnClick="bnSelect_Click" />
+                <asp:Button ID="bnSelect" runat="server" Text="Select" OnClick="bnSelect_Click" CssClass="btn btn-primary mr-3" Width="100px" />
             </td>
         </tr>
 

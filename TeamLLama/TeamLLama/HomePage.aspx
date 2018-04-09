@@ -15,8 +15,14 @@
                     <p class="font_style_one" style="font-size: 24px">"One Click away from your HealthCare"</p>
                     <div class="row">
                     <asp:TextBox ID="tbSearch" runat="server" placeholder="Enter your location" CSSClass="form-control ml-3 border-dark" Width="650px"></asp:TextBox>
-                    <asp:Button ID="btnSearchNearby" runat="server" Text="Search" OnClick="btnSearchNearby_Click" CssClass="btn btn-dark d-inline fs" Width="100px"/>
                     </div>
-                    <!-- <asp:Button ID="btnSearchFacility" runat="server" Text="Search Facility" OnClick="btnSearchFacility_Click" /> -->            
+                    <div class="row ml-1 mt-4 mb-5">
+                        <asp:Button ID="btnSearchNearby" runat="server" Text="Search Nearby" OnClick="btnSearchNearby_Click" CssClass="btn btn-dark d-inline fs mr-3"/>
+                        <asp:Button ID="btnSearchFacility" runat="server" Text="Search Facility" OnClick="btnSearchFacility_Click" CssClass="btn btn-dark d-inline fs" />
+                    </div>
+                    <div class="mt-5">
+                        <p class="font_style_one" style="font-size: 16px">"Additonal Health Info"</p>
+                        <a href="PharmamyList.aspx" class="btn btn-outline-secondary btn-sm">Pharmancies</a>
+                    </div>
     </div>
 </asp:Content>
