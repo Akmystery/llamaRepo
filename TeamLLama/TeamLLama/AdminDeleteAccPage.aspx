@@ -38,7 +38,7 @@
     </div>
     <div class="content-wrap" style="max-width:810px;">
             <h4><asp:Label ID="lblHistory" runat="server" Text="Account List"></asp:Label></h4>
-            <asp:GridView ID="grdAllDocAcc" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="false" PageSize="2" OnPageIndexChanging="grdAllDocAcc_PageIndexChanging" AllowPaging="True" PagerStyle-HorizontalAlign="Center" RowStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" EmptyDataRowStyle-HorizontalAlign="Center" BorderStyle="Solid" CellPadding="10">
+            <asp:GridView ID="grdAllDocAcc" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="false"  OnPageIndexChanging="grdAllDocAcc_PageIndexChanging" AllowPaging="True" PagerStyle-HorizontalAlign="Center" RowStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" EmptyDataRowStyle-HorizontalAlign="Center" BorderStyle="Solid" CellPadding="10">
                 <Columns>
                     <asp:TemplateField HeaderText="ID" Visible="false">
                         <ItemTemplate>
@@ -83,6 +83,7 @@
         <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup1" align="center" Style="display: none">
              <asp:Label ID="Label3" runat="server" Text="Are you sure you want to delete your account?" Visible="true"></asp:Label><br />
             <br />
+            <asp:Label ID="lbl_id" runat="server" Text="" Visible="false"></asp:Label>
             <asp:Button ID="Button4" runat="server" Text="Confirm" OnClick="btnConfirm_Click" />
             <asp:Button ID="btnNo" runat="server" Text="Cancel"/>
             <div class="m-2"></div>

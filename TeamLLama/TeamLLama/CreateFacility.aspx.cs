@@ -164,7 +164,7 @@ namespace TeamLLama
                         }
                     }
 
-                    lblImage.Text = "Created successfully";
+                    Response.Write("<script type=\"text/javascript\">alert('Facility Created!');location.href='AdminHomePage.aspx'</script>");
 
                     //Response.Redirect("AdminHomePage.aspx", false);
                 }

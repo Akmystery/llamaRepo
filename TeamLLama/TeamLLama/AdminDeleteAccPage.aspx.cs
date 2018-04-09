@@ -67,17 +67,18 @@ namespace TeamLLama
         protected void btnDelete_click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            GridViewRow row = (GridViewRow)button.NamingContainer;
+            int i = Convert.ToInt32(row.RowIndex);
+
+            System.Web.UI.WebControls.Label lblAccountID = grdAllDocAcc.Rows[i].FindControl("lblAccountID") as System.Web.UI.WebControls.Label;
+            //int accountID = Convert.ToInt32(lblAccountID.Text);
+            lbl_id.Text = lblAccountID.Text;
             deletePopup.Show();
         }
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            GridViewRow row = (GridViewRow)button.NamingContainer;
-            int i = Convert.ToInt32(row.RowIndex);
-
-            System.Web.UI.WebControls.Label lblAccountID = grdAllDocAcc.Rows[i].FindControl("lblAccountID") as System.Web.UI.WebControls.Label;
-            int accountID = Convert.ToInt32(lblAccountID.Text);
+            int accountID = Convert.ToInt32(lbl_id.Text);
             AccountManagementSystem ams = new AccountManagementSystem();
             ams.DeleteAccount(accountID);
             Response.Write("<script type=\"text/javascript\">alert('Account Deleted!');location.href='AdminDeleteAccPage.aspx'</script>");
