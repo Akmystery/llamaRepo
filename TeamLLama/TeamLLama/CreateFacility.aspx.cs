@@ -87,16 +87,6 @@ namespace TeamLLama
                 }
             }
 
-            if (vc.isEmpty(txtOpeningmin.Text))
-            {
-                txtOpeningmin.Text = "00";
-            }
-
-            if (vc.isEmpty(txtClosingmin.Text))
-            {
-                txtClosingmin.Text = "00";
-            }
-
             if (CreateDepartmentList.Items.Cast<ListItem>().Count(li => li.Selected) == 0)
             {
                 check = false;
@@ -110,8 +100,8 @@ namespace TeamLLama
                 f.facilityType = listFacility.SelectedItem.Text;
                 f.generalInfo = txtInfo.Text;
                 f.phoneNumber = Int32.Parse(txtPhoneNumber.Text);
-                f.openingHrs = txtOpeninghr.Text+":"+ txtOpeninghr.Text+":"+"00";
-                f.closingHrs = txtClosinghr.Text + ":" + txtClosingmin.Text + ":" + "00";
+                f.openingHrs = txtOpeninghr.SelectedItem.Text + ":"+"00";
+                f.closingHrs = txtClosinghr.SelectedItem.Text + ":" + "00";
                 f.address = txtAddress.Text;
                 f.region = txtRegion.Text;
                 f.x = Decimal.Parse(lblSelectedX.Text);
@@ -153,7 +143,7 @@ namespace TeamLLama
                     dpp.AddDepartment(dp);
 
 
-                    txtName.Text = txtInfo.Text = txtPhoneNumber.Text = txtOpeninghr.Text = txtOpeningmin.Text = txtClosinghr.Text = txtClosingmin.Text = txtAddress.Text = txtRegion.Text = "";
+                    txtName.Text = txtInfo.Text = txtPhoneNumber.Text = txtOpeninghr.Text = txtClosinghr.Text = txtAddress.Text = txtRegion.Text = "";
                     lblName.Text = lblInfo.Text = lblPhoneNumber.Text = lblOpening.Text = lblClosing.Text = lblAddress.Text = lblRegion.Text = "";
 
                     foreach (ListItem listItem in CreateDepartmentList.Items)

@@ -64,6 +64,19 @@ namespace TeamLLama
         }
         */
 
+
+        protected void btnUpdate_click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            GridViewRow row = (GridViewRow)button.NamingContainer;
+            int i = Convert.ToInt32(row.RowIndex);
+
+            System.Web.UI.WebControls.Label lblAccountID = grdAllDocAcc.Rows[i].FindControl("lblAccountID") as System.Web.UI.WebControls.Label;
+            String id = lblAccountID.Text;
+            Session["doc_id"] = id;
+            Response.Redirect("AdminUpdateAccPage.aspx");
+        }
+
         protected void btnDelete_click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
@@ -75,6 +88,7 @@ namespace TeamLLama
             lbl_id.Text = lblAccountID.Text;
             deletePopup.Show();
         }
+
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {

@@ -92,6 +92,12 @@
     <div class="content-wrap  mt-5 mb-4" style="max-width: 800px; box-shadow: 1px 2px 4px rgba(0, 0, 0, .5); background-color: white;">
         <h1 class="font_style_one mt-3 mb-4 text-center">Add New Facility</h1>
         <table style="width: 100%;">
+			<tr>
+                <td class="auto-style2"></td>
+                <td>
+                    <asp:Label ID="lblImage" runat="server" ForeColor="Red"></asp:Label>
+                </td>
+            </tr>
             <tr>
                 <td class="auto-style2 font_style_two">Facility Name</td>
                 <td>
@@ -150,10 +156,56 @@
             <tr>
                 <td class="auto-style2 font_style_two">Opening Hour</td>
                 <td>
-                    <asp:TextBox ID="txtOpeninghr" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox>
-                    hr
-					<asp:TextBox ID="txtOpeningmin" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox>
-                    min
+					<asp:DropDownList ID="txtOpeninghr" runat="server" CssClass="form-control" Width="350px">
+						<asp:ListItem>00:00</asp:ListItem>
+                        <asp:ListItem>00:30</asp:ListItem>
+						<asp:ListItem>01:00</asp:ListItem>
+						<asp:ListItem>01:30</asp:ListItem>
+                        <asp:ListItem>02:00</asp:ListItem>
+						<asp:ListItem>02:30</asp:ListItem>
+                        <asp:ListItem>03:00</asp:ListItem>
+						<asp:ListItem>03:30</asp:ListItem>
+                        <asp:ListItem>04:00</asp:ListItem>
+						<asp:ListItem>04:30</asp:ListItem>
+                        <asp:ListItem>05:00</asp:ListItem>
+						<asp:ListItem>05:30</asp:ListItem>
+						<asp:ListItem>06:00</asp:ListItem>
+						<asp:ListItem>06:30</asp:ListItem>
+						<asp:ListItem>07:00</asp:ListItem>
+						<asp:ListItem>07:30</asp:ListItem>
+						<asp:ListItem>08:00</asp:ListItem>
+						<asp:ListItem>08:30</asp:ListItem>
+						<asp:ListItem>09:00</asp:ListItem>
+						<asp:ListItem>09:30</asp:ListItem>
+						<asp:ListItem>10:00</asp:ListItem>
+						<asp:ListItem>10:30</asp:ListItem>
+						<asp:ListItem>11:00</asp:ListItem>
+						<asp:ListItem>11:30</asp:ListItem>
+						<asp:ListItem>12:00</asp:ListItem>
+						<asp:ListItem>12:30</asp:ListItem>
+						<asp:ListItem>13:00</asp:ListItem>
+						<asp:ListItem>13:30</asp:ListItem>
+						<asp:ListItem>14:00</asp:ListItem>
+						<asp:ListItem>14:30</asp:ListItem>
+						<asp:ListItem>15:00</asp:ListItem>
+						<asp:ListItem>15:30</asp:ListItem>
+						<asp:ListItem>16:00</asp:ListItem>
+						<asp:ListItem>16:30</asp:ListItem>
+						<asp:ListItem>17:00</asp:ListItem>
+						<asp:ListItem>17:30</asp:ListItem>
+						<asp:ListItem>18:00</asp:ListItem>
+						<asp:ListItem>18:30</asp:ListItem>
+						<asp:ListItem>19:00</asp:ListItem>
+						<asp:ListItem>19:30</asp:ListItem>
+						<asp:ListItem>20:00</asp:ListItem>
+						<asp:ListItem>20:30</asp:ListItem>
+						<asp:ListItem>21:00</asp:ListItem>
+						<asp:ListItem>21:30</asp:ListItem>
+						<asp:ListItem>22:00</asp:ListItem>
+						<asp:ListItem>22:30</asp:ListItem>
+						<asp:ListItem>23:00</asp:ListItem>
+						<asp:ListItem>23:30</asp:ListItem>
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>
@@ -165,10 +217,56 @@
             <tr>
                 <td class="auto-style2 font_style_two">Closing Hour</td>
                 <td>
-                    <asp:TextBox ID="txtClosinghr" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox>
-                    hr
-					<asp:TextBox ID="txtClosingmin" runat="server" Width="56px" CssClass="form-control d-inline"></asp:TextBox>
-                    min
+                    <asp:DropDownList ID="txtClosinghr" runat="server" CssClass="form-control" Width="350px">
+						<asp:ListItem>00:00</asp:ListItem>
+                        <asp:ListItem>00:30</asp:ListItem>
+						<asp:ListItem>01:00</asp:ListItem>
+						<asp:ListItem>01:30</asp:ListItem>
+                        <asp:ListItem>02:00</asp:ListItem>
+						<asp:ListItem>02:30</asp:ListItem>
+                        <asp:ListItem>03:00</asp:ListItem>
+						<asp:ListItem>03:30</asp:ListItem>
+                        <asp:ListItem>04:00</asp:ListItem>
+						<asp:ListItem>04:30</asp:ListItem>
+                        <asp:ListItem>05:00</asp:ListItem>
+						<asp:ListItem>05:30</asp:ListItem>
+						<asp:ListItem>06:00</asp:ListItem>
+						<asp:ListItem>06:30</asp:ListItem>
+						<asp:ListItem>07:00</asp:ListItem>
+						<asp:ListItem>07:30</asp:ListItem>
+						<asp:ListItem>08:00</asp:ListItem>
+						<asp:ListItem>08:30</asp:ListItem>
+						<asp:ListItem>09:00</asp:ListItem>
+						<asp:ListItem>09:30</asp:ListItem>
+						<asp:ListItem>10:00</asp:ListItem>
+						<asp:ListItem>10:30</asp:ListItem>
+						<asp:ListItem>11:00</asp:ListItem>
+						<asp:ListItem>11:30</asp:ListItem>
+						<asp:ListItem>12:00</asp:ListItem>
+						<asp:ListItem>12:30</asp:ListItem>
+						<asp:ListItem>13:00</asp:ListItem>
+						<asp:ListItem>13:30</asp:ListItem>
+						<asp:ListItem>14:00</asp:ListItem>
+						<asp:ListItem>14:30</asp:ListItem>
+						<asp:ListItem>15:00</asp:ListItem>
+						<asp:ListItem>15:30</asp:ListItem>
+						<asp:ListItem>16:00</asp:ListItem>
+						<asp:ListItem>16:30</asp:ListItem>
+						<asp:ListItem>17:00</asp:ListItem>
+						<asp:ListItem>17:30</asp:ListItem>
+						<asp:ListItem>18:00</asp:ListItem>
+						<asp:ListItem>18:30</asp:ListItem>
+						<asp:ListItem>19:00</asp:ListItem>
+						<asp:ListItem>19:30</asp:ListItem>
+						<asp:ListItem>20:00</asp:ListItem>
+						<asp:ListItem>20:30</asp:ListItem>
+						<asp:ListItem>21:00</asp:ListItem>
+						<asp:ListItem>21:30</asp:ListItem>
+						<asp:ListItem>22:00</asp:ListItem>
+						<asp:ListItem>22:30</asp:ListItem>
+						<asp:ListItem>23:00</asp:ListItem>
+						<asp:ListItem>23:30</asp:ListItem>
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>
@@ -234,12 +332,7 @@
                     <asp:FileUpload ID="ImageUpload" runat="server" Width="280px" onchange="showpreview(this);" />
                 </td>
             </tr>
-            <tr>
-                <td class="auto-style2"></td>
-                <td>
-                    <asp:Label ID="lblImage" runat="server" ForeColor="Red"></asp:Label>
-                </td>
-            </tr>
+            
 
             <tr>
                 <td class="auto-style2">&nbsp;</td>

@@ -13,6 +13,15 @@ namespace TeamLLama {
     public partial class WebForm3 {
         
         /// <summary>
+        /// lblImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblImage;
+        
+        /// <summary>
         /// txtName control.
         /// </summary>
         /// <remarks>
@@ -100,16 +109,7 @@ namespace TeamLLama {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOpeninghr;
-        
-        /// <summary>
-        /// txtOpeningmin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOpeningmin;
+        protected global::System.Web.UI.WebControls.DropDownList txtOpeninghr;
         
         /// <summary>
         /// lblOpening control.
@@ -127,16 +127,7 @@ namespace TeamLLama {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtClosinghr;
-        
-        /// <summary>
-        /// txtClosingmin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtClosingmin;
+        protected global::System.Web.UI.WebControls.DropDownList txtClosinghr;
         
         /// <summary>
         /// lblClosing control.
@@ -227,15 +218,6 @@ namespace TeamLLama {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload ImageUpload;
-        
-        /// <summary>
-        /// lblImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblImage;
         
         /// <summary>
         /// btnBack control.

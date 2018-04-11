@@ -70,6 +70,11 @@
                             <asp:Label ID="lblDepartment" runat="server" Text='<%# Eval("Department") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
+					<asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_click" CssClass="btn btn-dark" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_click" CssClass="btn btn-danger"/>

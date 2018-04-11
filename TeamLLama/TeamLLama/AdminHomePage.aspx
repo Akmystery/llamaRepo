@@ -20,7 +20,7 @@
                     <asp:Button ID="Button1" runat="server" Text="Create Account" OnClick="CreateDocAcc_Click" CssClass="btn btn-dark"/>
                     </div>
 					<div class="text-center pb-3">
-                    <asp:Button ID="Button4" runat="server" Text="Delete Account" OnClick="DeleteDocAcc_Click" CssClass="btn btn-dark"/>
+                    <asp:Button ID="Button4" runat="server" Text="Open Account List" OnClick="DeleteDocAcc_Click" CssClass="btn btn-dark"/>
                     </div>
                 </div>
                 <div class="col align-self-center">

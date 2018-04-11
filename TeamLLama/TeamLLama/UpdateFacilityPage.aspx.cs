@@ -26,15 +26,14 @@ namespace TeamLLama
             txtPhoneNumber.Attributes.Add("placeholder", f.phoneNumber.ToString());
 
             string[] OpeningTimeArray = f.openingHrs.Split(':');
-            txtOpeninghr.Attributes.Add("placeholder", OpeningTimeArray[0]);
-            txtOpeningmin.Attributes.Add("placeholder", OpeningTimeArray[1]);
+            UpdateOpeninghr.SelectedValue = OpeningTimeArray[0]+":"+ OpeningTimeArray[1];
+      
 
             string[] ClosingTimeArray = f.closingHrs.Split(':');
-            txtClosinghr.Attributes.Add("placeholder", ClosingTimeArray[0]);
-            txtClosingmin.Attributes.Add("placeholder", ClosingTimeArray[1]);
+                UpdateClosinghr.SelectedValue = ClosingTimeArray[0] + ":" + ClosingTimeArray[1];
 
 
-            txtAddress.Attributes.Add("placeholder", f.address);
+                txtAddress.Attributes.Add("placeholder", f.address);
             txtRegion.Attributes.Add("placeholder", f.region);
 
 
@@ -82,27 +81,6 @@ namespace TeamLLama
                 txtPhoneNumber.Text = f.phoneNumber.ToString();
             }
 
-            if (string.IsNullOrEmpty(txtOpeninghr.Text) || string.IsNullOrEmpty(txtOpeningmin.Text))
-            {
-                string[] OpeningTimeArray = f.openingHrs.Split(':');
-                txtOpeninghr.Text = OpeningTimeArray[0];
-            }
-
-            if (string.IsNullOrEmpty(txtClosinghr.Text))
-            {
-                string[] ClosingTimeArray = f.closingHrs.Split(':');
-                txtClosinghr.Text = ClosingTimeArray[0];
-            }
-
-            if (vc.isEmpty(txtOpeningmin.Text))
-            {
-                txtOpeningmin.Text = "00";
-            }
-
-            if (vc.isEmpty(txtClosingmin.Text))
-            {
-                txtClosingmin.Text = "00";
-            }
 
             if (string.IsNullOrEmpty(txtAddress.Text))
             {
@@ -131,7 +109,7 @@ namespace TeamLLama
 
             }
 
-            app.UpdateFacility(txtName.Text, listFacility.SelectedItem.Text, txtInfo.Text, Convert.ToInt32(txtPhoneNumber.Text), txtOpeninghr.Text + ":" + txtOpeninghr.Text + ":" + "00", txtClosinghr.Text + ":" + txtClosingmin.Text + ":" + "00", txtAddress.Text, txtRegion.Text, image, f.facilityID);
+            app.UpdateFacility(txtName.Text, listFacility.SelectedItem.Text, txtInfo.Text, Convert.ToInt32(txtPhoneNumber.Text), UpdateOpeninghr.SelectedItem.Text + ":" + "00", UpdateClosinghr.SelectedItem.Text + ":" + "00", txtAddress.Text, txtRegion.Text, image, f.facilityID);
 
             //need to check whether there's any doctor with these department
             DepartmentManagementSystem dpp = new DepartmentManagementSystem();
@@ -177,7 +155,7 @@ namespace TeamLLama
             { 
             dpp.DeleteDepartment(ndp);
             dpp.AddDepartment(dp);
-            Response.Redirect("FacilityListPage.aspx", false);
+            Response.Write("<script type=\"text/javascript\">alert('Facility Updated!');location.href='AdminHomePage.aspx'</script>");
             }
            
         }

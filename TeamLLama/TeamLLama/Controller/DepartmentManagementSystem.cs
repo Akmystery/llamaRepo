@@ -95,6 +95,42 @@ namespace TeamLLama.Controller
         }
 
 
+        public DataTable getDepartmentsFromThisFacility(string FacilitySelected)
+        {
+            Facility f = new Facility();
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "SELECT department_id, department_name FROM department where facility_id="+ FacilitySelected;
+
+            var cmd = new MySqlCommand(query, conn);
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("department_id");
+            dt.Columns.Add("department_name");
+
+            int i = 0;
+
+            conn.Open();
+            var reader = cmd.ExecuteReader();
+
+
+            while (reader.Read())
+            {
+
+                dt.Rows.Add();
+                dt.Rows[i]["department_id"] = reader["department_id"].ToString();
+                dt.Rows[i]["department_name"] = reader["department_name"].ToString();
+                i++;
+            }
+            reader.Close();
+            conn.Close();
+
+            return dt;
+        }
+
+
+
         public void DeleteDepartments(String facilityid)
         {
 
@@ -184,6 +220,47 @@ namespace TeamLLama.Controller
 
         }
 
+        public Department GetDepartmentByUserID(int id)
+        {
+            Department f = new Department();
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "SELECT department.department_id,department_name,facility_id FROM department,facility_staff where facility_staff.department_id=department.department_id AND account_id=@id";
+
+            var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            conn.Open();
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                f.departmentID = Convert.ToInt32(reader["department_id"]);
+                f.departmentName = reader["department_name"].ToString();
+                f.facilityId = Convert.ToInt32(reader["facility_id"]);
+            }
+            conn.Close();
+            return f;
+        }
+
+
+        public void UpdateDepartment(int departmentID, String departmentName, int facilityid)
+        {
+
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "UPDATE department SET department_name=@department_name,facility_id=@facility_id WHERE department_id=@department_id";
+
+            var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@department_name", departmentName);
+            cmd.Parameters.AddWithValue("@facility_id", facilityid);
+            cmd.Parameters.AddWithValue("@department_id", departmentID);
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
 
     }
 }

@@ -208,6 +208,40 @@ namespace TeamLLama.Controller
 
         }
 
+        public DataTable GetAllfacility()
+        {
+            Facility f = new Facility();
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
+
+            string query = "SELECT facility_id, facility_name FROM facility";
+
+            var cmd = new MySqlCommand(query, conn);
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("facility_id");
+            dt.Columns.Add("facility_name");
+
+            int i = 0;
+
+            conn.Open();
+            var reader = cmd.ExecuteReader();
+
+
+            while (reader.Read())
+            {
+
+                dt.Rows.Add();
+                dt.Rows[i]["facility_id"] = reader["facility_id"].ToString();
+                dt.Rows[i]["facility_name"] = reader["facility_name"].ToString();
+                i++;
+            }
+            reader.Close();
+            conn.Close();
+
+            return dt;
+        }
+
         public void CreateFacility(Facility f)
         {
             int result = 0;

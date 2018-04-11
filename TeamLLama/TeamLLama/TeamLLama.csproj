@@ -88,6 +88,7 @@
     <Content Include="AdminCreateAccPage.aspx" />
     <Content Include="AdminDeleteAccPage.aspx" />
     <Content Include="AdminHomePage.aspx" />
+    <Content Include="AdminUpdateAccPage.aspx" />
     <Content Include="BookAppointmentPage.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -226,6 +227,13 @@
     </Compile>
     <Compile Include="AdminHomePage.aspx.designer.cs">
       <DependentUpon>AdminHomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUpdateAccPage.aspx.cs">
+      <DependentUpon>AdminUpdateAccPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUpdateAccPage.aspx.designer.cs">
+      <DependentUpon>AdminUpdateAccPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="BookAppointmentPage.aspx.cs">
       <DependentUpon>BookAppointmentPage.aspx</DependentUpon>

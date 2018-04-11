@@ -17,45 +17,24 @@ namespace TeamLLama
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
-            { 
-            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
-            var conn = new MySqlConnection(dbConnectionString);
+            {
+                FacilityManagementSystem fms = new FacilityManagementSystem();
 
-                string query = "SELECT * FROM facility";
-
-            var cmd = new MySqlCommand(query, conn);
-                //cmd.Parameters.AddWithValue("@idTest", 1);
-
-                
-
-                conn.Open();
-
-            FacilityDropDownList.DataSource = cmd.ExecuteReader();
-            FacilityDropDownList.DataBind();
-            conn.Close();
+                FacilityDropDownList.DataSource = fms.GetAllfacility();
+                FacilityDropDownList.DataBind();
+                //FacilityDropDownList.Items.Insert(0, new ListItem("- Select faciliy -", ""));
             }
-
-            FacilityDropDownList.Items.Insert(0, new ListItem("- Select faciliy -", ""));
-
         }
 
         protected void FilterDept(object sender, EventArgs e) //action fired after selecting facility
         {
-            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
-            var conn = new MySqlConnection(dbConnectionString);
 
-            string query = "SELECT * FROM department where facility_id="+FacilityDropDownList.SelectedItem.Value;
-
-            var cmd = new MySqlCommand(query, conn);
-            //cmd.Parameters.AddWithValue("@idTest", 1);
+            DepartmentManagementSystem dms = new DepartmentManagementSystem();
+           
 
 
-
-            conn.Open();
-
-            DepartmentDropDownList.DataSource = cmd.ExecuteReader();
+            DepartmentDropDownList.DataSource = dms.getDepartmentsFromThisFacility(FacilityDropDownList.SelectedItem.Value);
             DepartmentDropDownList.DataBind();
-            conn.Close();
         }
 
         protected void CreatrDocAcc_Click(object sender, EventArgs e)
@@ -115,6 +94,12 @@ namespace TeamLLama
                 lblEmail.Text = "Invalid Email";
                 check = false;
 
+            }
+
+            if(DepartmentDropDownList.SelectedItem == null)
+            {
+                lblDepartment.Text = "This facility do not have department for the doctor to join";
+                check = false;
             }
 
             if (ImageUpload.HasFile)

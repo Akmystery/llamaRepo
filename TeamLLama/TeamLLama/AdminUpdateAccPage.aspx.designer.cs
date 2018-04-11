@@ -10,7 +10,16 @@
 namespace TeamLLama {
     
     
-    public partial class UpdateFacilityPage {
+    public partial class AdminUpdateAccPage {
+        
+        /// <summary>
+        /// ImageUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ImageUpload;
         
         /// <summary>
         /// lblImage control.
@@ -22,6 +31,15 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.Label lblImage;
         
         /// <summary>
+        /// txtNric control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNric;
+        
+        /// <summary>
         /// txtName control.
         /// </summary>
         /// <remarks>
@@ -31,49 +49,49 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// listFacility control.
+        /// txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList listFacility;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
-        /// txtInfo control.
+        /// txtConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInfo;
+        protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
         
         /// <summary>
-        /// txtPhoneNumber control.
+        /// CompareValidator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPhoneNumber;
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator2;
         
         /// <summary>
-        /// UpdateOpeninghr control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList UpdateOpeninghr;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
-        /// UpdateClosinghr control.
+        /// RegularExpressionValidator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList UpdateClosinghr;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
         
         /// <summary>
         /// txtAddress control.
@@ -85,49 +103,40 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
         
         /// <summary>
-        /// lblSelectedX control.
+        /// FacilityDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSelectedX;
+        protected global::System.Web.UI.WebControls.DropDownList FacilityDropDownList;
         
         /// <summary>
-        /// lblSelectedY control.
+        /// lblFacility control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSelectedY;
+        protected global::System.Web.UI.WebControls.Label lblFacility;
         
         /// <summary>
-        /// txtRegion control.
+        /// DepartmentDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRegion;
+        protected global::System.Web.UI.WebControls.DropDownList DepartmentDropDownList;
         
         /// <summary>
-        /// UpdateDepartmentList control.
+        /// lblDepartment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList UpdateDepartmentList;
-        
-        /// <summary>
-        /// ImageUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload ImageUpload;
+        protected global::System.Web.UI.WebControls.Label lblDepartment;
         
         /// <summary>
         /// updateButton control.
