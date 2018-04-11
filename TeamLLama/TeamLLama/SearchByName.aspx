@@ -36,6 +36,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
 	<div class="container">
+        <br />
+        <div class="row">
+            <asp:TextBox ID="tbSearch" runat="server" placeholder="Search new facility" CSSClass="form-control ml-3 border-dark" Width="650px"></asp:TextBox>
+            <asp:Button ID="btnSearchFacility" runat="server" Text="Search Facility" OnClick="btnSearchFacility_Click" CssClass="btn btn-dark d-inline fs" />
+        </div>
         <h2 class="mt-3 mb-3">SEARCH RESULTS</h2>
         <%if (!noResults)
             { %>

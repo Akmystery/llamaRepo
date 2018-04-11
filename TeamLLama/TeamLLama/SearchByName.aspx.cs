@@ -27,5 +27,10 @@ namespace TeamLLama
             listResults.DataBind();
         }
 
+        protected void btnSearchFacility_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("SearchByName.aspx?q={0}", Uri.EscapeDataString(tbSearch.Text)));
+        }
+
     }
 }
