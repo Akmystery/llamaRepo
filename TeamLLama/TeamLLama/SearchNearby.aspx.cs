@@ -43,6 +43,11 @@ namespace TeamLLama
             listResults.DataSource = facilities;
             listResults.DataBind();
         }
+
+        protected void btnSearchNearby_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("SearchNearby.aspx?q={0}", Uri.EscapeDataString(tbSearch.Text)));
+        }
     }
 
 }

@@ -49,6 +49,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
     <div class="container">
+        <br />
+        <div class="row">
+            <asp:TextBox ID="tbSearch" runat="server" placeholder="Search new location" CSSClass="form-control ml-3 border-dark" Width="650px"></asp:TextBox>
+            <asp:Button ID="btnSearchNearby" runat="server" Text="Search Nearby" OnClick="btnSearchNearby_Click" CssClass="btn btn-dark d-inline fs mr-3"/>
+        </div>
         <h2 class="font_style_one mt-3 mb-3" style="font-size:30px">Hospitals near your location</h2>
         <%if (this.location != null)
             { %>
@@ -88,7 +93,7 @@
                 addMarker('<%= (char)('A' + l.Index)%>', <%= l.Point.Item1 %>, <%= l.Point.Item2 %>);
                 <% } %>
             </script>
-            <h2 class="font_style_one mt-3 mb-1" style="font-size:20px; font-weight:bold;">Lists of Hospitals near your location by ratings</h2>
+            <h2 class="font_style_one mt-3 mb-1" style="font-size:20px; font-weight:bold;">Lists of Hospitals near your location by distance</h2>
             <asp:ListView ID="listResults" 
                 ItemType="TeamLLama.Entity.Facility" 
                 runat="server">
