@@ -31,14 +31,17 @@ namespace TeamLLama
             {
                 FacilityDropDownList.DataSource = FacilityManagementSystem.GetAllfacility();
                 FacilityDropDownList.DataBind();
-                //FacilityDropDownList.Items.Insert(0, new ListItem("- Select faciliy -", ""));
+                FacilityDropDownList.Items.Insert(0, new ListItem("- Select faciliy -", "-1"));
             }
         }
 
         protected void FilterDept(object sender, EventArgs e) //action fired after selecting facility
         {
+            
             DepartmentDropDownList.DataSource = DepartmentManagementSystem.getDepartmentsFromThisFacility(FacilityDropDownList.SelectedItem.Value);
             DepartmentDropDownList.DataBind();
+
+            DepartmentDropDownList.Items.Insert(0, new ListItem("(Select a Department)", "-1"));
         }
 
         protected void CreatrDocAcc_Click(object sender, EventArgs e)
@@ -104,7 +107,11 @@ namespace TeamLLama
                 lblDepartment.Text = "This facility do not have department for the doctor to join";
                 check = false;
             }
-
+            if (DepartmentDropDownList.SelectedValue.ToString() == "-1")
+            {
+                lblDepartment.Text = "Please select a department";
+                check = false;
+            }
             if (ImageUpload.HasFile)
             {
                 string ext = System.IO.Path.GetExtension(ImageUpload.PostedFile.FileName);

@@ -52,16 +52,16 @@ namespace TeamLLama
                     switch(a.accountType)
                     {
                         case "patient":
-                            Response.Redirect("HomePage.aspx", false);
+                            Response.Write("<script type=\"text/javascript\">alert('Welcome Back!');location.href='HomePage.aspx'</script>");
                             break;
                         case "Doctor":
-                            Response.Redirect("DoctorAppointmentPage.aspx", false);
+                            Response.Write("<script type=\"text/javascript\">alert('Welcome Back Doctor!');location.href='DoctorAppointmentPage.aspx'</script>");
                             break;
                         case "admin":
-                            Response.Redirect("AdminHomePage.aspx", false);
+                            Response.Write("<script type=\"text/javascript\">alert('Welcome Back Admin!');location.href='AdminHomePage.aspx'</script>");
                             break;
                         default:
-                            Response.Redirect("LoginPage.aspx", false);
+                            Response.Write("<script type=\"text/javascript\">alert('Login Failed!');location.href='LoginPage.aspx'</script>");
                             break;
 
                     };

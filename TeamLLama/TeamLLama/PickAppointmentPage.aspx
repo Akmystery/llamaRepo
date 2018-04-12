@@ -92,7 +92,7 @@
                     <cc1:CalendarExtender ID="CalendarExtender2" TargetControlID="txtToDate" runat="server" Format="dd/MM/yyyy"></cc1:CalendarExtender>
                 </td>
                 <td>
-                    <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
+                    <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" CssClass="btn btn-primary mr-3" Width="100px" />
                 </td>
             </tr>
             <tr>

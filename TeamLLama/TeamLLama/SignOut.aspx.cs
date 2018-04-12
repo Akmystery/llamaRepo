@@ -12,7 +12,7 @@ namespace TeamLLama
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["account"] = null;
-            Response.Redirect("LoginPage.aspx");
+            Response.Write("<script type=\"text/javascript\">alert('Signed Out!');location.href='LoginPage.aspx'</script>");
         }
     }
 }

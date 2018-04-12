@@ -66,6 +66,7 @@ namespace TeamLLama
                 ReviewControlSystem.CreateReview(r);
                 BindRatings();
                 BindComments();
+                Response.Write("<script type=\"text/javascript\">alert('Review Added!')</script>");
             }
         }
 
