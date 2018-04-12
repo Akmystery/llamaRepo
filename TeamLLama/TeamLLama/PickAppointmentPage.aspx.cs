@@ -43,10 +43,8 @@ namespace TeamLLama
             {
                 accountID = a.accountID;
             }
-            AppointmentManagementSystem ams = new AppointmentManagementSystem();
-
             
-            grdPickAppointment.DataSource = ams.getRequestPool(accountID,lblActualFrom.Text,lblActualTo.Text);
+            grdPickAppointment.DataSource = AppointmentManagementSystem.getRequestPool(accountID,lblActualFrom.Text,lblActualTo.Text);
             grdPickAppointment.DataBind();
        
         }
@@ -70,10 +68,8 @@ namespace TeamLLama
             }
 
             string id = lbl_id.Text;
-
-            AppointmentManagementSystem ams = new AppointmentManagementSystem();
-
-            int result = ams.pickAppointment(id, accountID);
+            
+            int result = AppointmentManagementSystem.pickAppointment(id, accountID);
 
             if (result == 1)
             {

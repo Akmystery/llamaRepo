@@ -22,40 +22,39 @@ namespace TeamLLama
 
         protected void Create_Click(object sender, EventArgs e)
         {
-            Validation vc = new Validation();
             bool check = true;
 
-            if (vc.isEmpty(txtName.Text))
+            if (Validation.isEmpty(txtName.Text))
             {
                 lblName.Text = "Name cannot be empty";
                 check = false;
             }
-            if (vc.isEmpty(txtInfo.Text))
+            if (Validation.isEmpty(txtInfo.Text))
             {
                 lblInfo.Text = "Info cannot be empty";
                 check = false;
             }
-            if (vc.isEmpty(txtPhoneNumber.Text))
+            if (Validation.isEmpty(txtPhoneNumber.Text))
             {
                 lblPhoneNumber.Text = "PhoneNumber cannot be empty";
                 check = false;
             }
-            if (vc.isEmpty(txtOpeninghr.Text))
+            if (Validation.isEmpty(txtOpeninghr.Text))
             {
                 lblOpening.Text = "Opening Hours cannot be empty";
                 check = false;
             }
-            if (vc.isEmpty(txtClosinghr.Text))
+            if (Validation.isEmpty(txtClosinghr.Text))
             {
                 lblClosing.Text = "Closing Hours cannot be empty";
                 check = false;
             }
-            if (vc.isEmpty(txtAddress.Text))
+            if (Validation.isEmpty(txtAddress.Text))
             {
                 lblAddress.Text = "Address cannot be empty";
                 check = false;
             }
-            if (vc.isEmpty(txtRegion.Text))
+            if (Validation.isEmpty(txtRegion.Text))
             {
                 lblRegion.Text = "Region cannot be empty";
                 check = false;
@@ -75,7 +74,7 @@ namespace TeamLLama
                         height = img.Height;
                     }
                 }
-                if (!vc.ImageCheck(ext))
+                if (!Validation.ImageCheck(ext))
                 {
                     check = false;
                     lblImage.Text = "Invalid image type";
@@ -113,18 +112,15 @@ namespace TeamLLama
                     f.image = Path.GetFileName(ImageUpload.PostedFile.FileName);
                     ImageUpload.PostedFile.SaveAs(Server.MapPath("~/upload/facility/") + f.image);
                 }
-
-                FacilityManagementSystem app = new FacilityManagementSystem();
-                DepartmentManagementSystem dpp = new DepartmentManagementSystem();
-
-                if (!app.CheckFacilityName(f.facilityName))
+                
+                if (!FacilityManagementSystem.CheckFacilityName(f.facilityName))
                 {
 
-                    app.CreateFacility(f);
+                    FacilityManagementSystem.CreateFacility(f);
 
 
                     /////////////////////////To add data department table///////////////////////////
-                    int facility_id = app.GetFacilityId(f.facilityName); //only after facility is created will there be facility id
+                    int facility_id = FacilityManagementSystem.GetFacilityId(f.facilityName); //only after facility is created will there be facility id
 
                     Department[] dp = new Department[12];
                     int index = 0;
@@ -140,7 +136,7 @@ namespace TeamLLama
                         }
                     }
 
-                    dpp.AddDepartment(dp);
+                    DepartmentManagementSystem.AddDepartment(dp);
 
 
                     txtName.Text = txtInfo.Text = txtPhoneNumber.Text = txtOpeninghr.Text = txtClosinghr.Text = txtAddress.Text = txtRegion.Text = "";
@@ -177,8 +173,7 @@ namespace TeamLLama
         }
         private void bindData()
         {
-            FacilityManagementSystem app = new FacilityManagementSystem();
-            List<SearchResults> results = app.getAPIData(txtName.Text);
+            List<SearchResults> results = FacilityManagementSystem.getAPIData(txtName.Text);
             DataTable dt = new DataTable();
             dt.Columns.Add("Building");
             dt.Columns.Add("Address");

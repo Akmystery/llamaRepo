@@ -15,7 +15,7 @@ namespace TeamLLama.Controller
     {
         static string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
 
-        public int AddDepartment(Department[] a)
+        public static int AddDepartment(Department[] a)
         {
             int result = 0;
 
@@ -47,7 +47,7 @@ namespace TeamLLama.Controller
             return result;
         }
 
-        public bool checkdepartmentexist(int hospitalSelected, string department)
+        public static bool checkdepartmentexist(int hospitalSelected, string department)
         {
             using (MySqlConnection conn = new MySqlConnection(dbConnectionString))
             {
@@ -69,7 +69,7 @@ namespace TeamLLama.Controller
             return false;
         }
 
-        public List<Department> getDepartments(string hospitalSelected)
+        public static List<Department> getDepartments(string hospitalSelected)
         {
             List<Department> d = new List<Department>();
             using (MySqlConnection conn = new MySqlConnection(dbConnectionString))
@@ -95,7 +95,7 @@ namespace TeamLLama.Controller
         }
 
 
-        public DataTable getDepartmentsFromThisFacility(string FacilitySelected)
+        public static DataTable getDepartmentsFromThisFacility(string FacilitySelected)
         {
             Facility f = new Facility();
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -131,7 +131,7 @@ namespace TeamLLama.Controller
 
 
 
-        public void DeleteDepartments(String facilityid)
+        public static void DeleteDepartments(String facilityid)
         {
 
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -147,7 +147,7 @@ namespace TeamLLama.Controller
             conn.Close();
         }
 
-        public void DeleteDepartment(Department[] a)
+        public static void DeleteDepartment(Department[] a)
         {
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
@@ -174,7 +174,7 @@ namespace TeamLLama.Controller
 
         }
 
-        public String CheckDepartmentForStaff(Department a)
+        public static String CheckDepartmentForStaff(Department a)
         {
             using (MySqlConnection conn = new MySqlConnection(dbConnectionString))
             {
@@ -220,7 +220,7 @@ namespace TeamLLama.Controller
 
         }
 
-        public Department GetDepartmentByUserID(int id)
+        public static Department GetDepartmentByUserID(int id)
         {
             Department f = new Department();
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -244,7 +244,7 @@ namespace TeamLLama.Controller
         }
 
 
-        public void UpdateDepartment(int departmentID, String departmentName, int facilityid)
+        public static void UpdateDepartment(int departmentID, String departmentName, int facilityid)
         {
 
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;

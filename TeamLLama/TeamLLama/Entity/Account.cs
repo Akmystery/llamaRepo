@@ -15,6 +15,10 @@ namespace TeamLLama.Entity
         public string email { get; set; }
         public string address { get; set; }
         public string photo { get; set; }
+        public List<Review> reviews { get; set; }
+        public List<Appointment> appointments { get; set; }
+        public List<DoctorAppointment> doctorAppointments { get; set; }
+        public FacilityStaff facilityStaff { get; set; }
 
     }
 }

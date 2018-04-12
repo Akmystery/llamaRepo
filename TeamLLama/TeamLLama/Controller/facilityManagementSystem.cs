@@ -14,9 +14,9 @@ namespace TeamLLama.Controller
 {
     public class FacilityManagementSystem
     {
-        
 
-        public DataTable GetFacility()
+
+        public static DataTable GetFacility()
         {
             Facility f = new Facility();
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -60,7 +60,7 @@ namespace TeamLLama.Controller
             return dt;
         }
 
-        public Facility GetFacility(String id)
+        public static Facility GetFacility(String id)
         {
             if (!int.TryParse(id, out int result))
             {
@@ -69,7 +69,7 @@ namespace TeamLLama.Controller
             return GetFacility(result);
         }
 
-        public Facility GetFacility(int id)
+        public static Facility GetFacility(int id)
         {
             Facility f = new Facility();
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -97,8 +97,36 @@ namespace TeamLLama.Controller
             conn.Close();
             return f;
         }
+        public static Facility GetFacilityFromName(String name)
+        {
+            Facility f = new Facility();
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+            var conn = new MySqlConnection(dbConnectionString);
 
-        public List<Facility> SearchFacility(String name)
+            string query = "SELECT * FROM facility WHERE facility_name=@name";
+
+            var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@name", name);
+
+            conn.Open();
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                f.facilityID = Convert.ToInt32(reader["facility_id"]);
+                f.facilityName = reader["facility_name"].ToString();
+                f.facilityType = reader["facility_type"].ToString();
+                f.generalInfo = reader["generalInfo"].ToString();
+                f.phoneNumber = Convert.ToInt32(reader["phoneNumber"]);
+                f.openingHrs = reader["openingHrs"].ToString();
+                f.closingHrs = reader["closingHrs"].ToString();
+                f.address = reader["address"].ToString();
+                f.region = reader["region"].ToString();
+            }
+            conn.Close();
+            return f;
+        }
+
+        public static List<Facility> SearchFacility(String name)
         {
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
@@ -129,7 +157,7 @@ namespace TeamLLama.Controller
             return searchResults;
         }
 
-        public List<Facility> SearchNearby(decimal x, decimal y)
+        public static List<Facility> SearchNearby(decimal x, decimal y)
         {
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
@@ -163,7 +191,7 @@ namespace TeamLLama.Controller
             return searchResults;
         }
 
-        public bool CheckFacilityName(String name)
+        public static bool CheckFacilityName(String name)
         {
             Facility f = new Facility();
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -186,7 +214,7 @@ namespace TeamLLama.Controller
 
         }
 
-        public int GetFacilityId(String name)
+        public static int GetFacilityId(String name)
         {
             Facility f = new Facility();
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -208,7 +236,7 @@ namespace TeamLLama.Controller
 
         }
 
-        public DataTable GetAllfacility()
+        public static DataTable GetAllfacility()
         {
             Facility f = new Facility();
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -242,7 +270,7 @@ namespace TeamLLama.Controller
             return dt;
         }
 
-        public void CreateFacility(Facility f)
+        public static void CreateFacility(Facility f)
         {
             int result = 0;
 
@@ -272,7 +300,7 @@ namespace TeamLLama.Controller
             conn.Close();
         }
 
-        public void UpdateFacility(String name, String type, String generalinfo, int phoneNumber, String openingHrs, String closingHrs, String Address, String Region, String image, int id)
+        public static void UpdateFacility(String name, String type, String generalinfo, int phoneNumber, String openingHrs, String closingHrs, String Address, String Region, String image, int id)
         {
 
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -298,7 +326,7 @@ namespace TeamLLama.Controller
             conn.Close();
         }
 
-        public void DeleteFacility(String id)
+        public static void DeleteFacility(String id)
         {
 
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -313,14 +341,14 @@ namespace TeamLLama.Controller
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public List<SearchResults> getAPIData(string query)
+        public static List<SearchResults> getAPIData(string query)
         {
             var url = "https://developers.onemap.sg/commonapi/search?searchVal=" +query +" &returnGeom=Y&getAddrDetails=Y&pageNum=1";
             var hospital = _download_serialized_json_data<JsonData>(url);
             List<SearchResults> results = hospital.results;
             return results;
         }
-        public List<Pharmacy> getPharmacyData(string category)
+        public static List<Pharmacy> getPharmacyData(string category)
         {
             var url = "https://data.gov.sg/api/action/datastore_search?resource_id=16db7800-d81e-4d0d-9d59-936f2c10d668&q=%7B%22pharmacy_name%22%3A%20%22{0}%22%7D";
             url = string.Format(url, category);

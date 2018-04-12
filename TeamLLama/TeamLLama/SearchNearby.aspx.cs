@@ -17,16 +17,14 @@ namespace TeamLLama
         protected Tuple<double, double> lowerbound;
         protected Tuple<double, double> upperbound;
         protected List<Tuple<double, double>> location_list;
-        protected ReviewControlSystem rcs = new ReviewControlSystem();
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(Request.QueryString["q"]))
             {
                 return;
             }
-            FacilityManagementSystem app = new FacilityManagementSystem();
-            List<SearchResults> locations = app.getAPIData(Uri.EscapeDataString(Request.QueryString["q"]));
+            List<SearchResults> locations = FacilityManagementSystem.getAPIData(Uri.EscapeDataString(Request.QueryString["q"]));
 
             if (locations == null || locations.Count == 0)
             {
@@ -34,7 +32,7 @@ namespace TeamLLama
             }
 
             SearchResults location = locations[0];
-            List<Facility> facilities = app.SearchNearby(Decimal.Parse(location.x), Decimal.Parse(location.y));
+            List<Facility> facilities = FacilityManagementSystem.SearchNearby(Decimal.Parse(location.x), Decimal.Parse(location.y));
             location_list = facilities.Select(f => Svy21.ComputeLatitudeLongitude((double)f.x, (double)f.y)).ToList();
             this.location = Svy21.ComputeLatitudeLongitude(Double.Parse(location.x), Double.Parse(location.y));
             var points = location_list.Concat(new[] { this.location });

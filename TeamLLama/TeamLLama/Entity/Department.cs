@@ -10,5 +10,8 @@ namespace TeamLLama.Entity
         public int departmentID { get; set; }
         public string departmentName { get; set; }
         public int facilityId { get; set; }
+        public Facility facility { get; set; }
+        public List<FacilityStaff> facilityStaffs { get; set; }
+        public List<Appointment> appointments { get; set; }
     }
 }

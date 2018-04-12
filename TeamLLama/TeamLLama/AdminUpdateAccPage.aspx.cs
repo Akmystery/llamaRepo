@@ -18,31 +18,28 @@ namespace TeamLLama
             if (!IsPostBack)
             {
                 int id = Int32.Parse((string)Session["doc_id"]);
-                AccountManagementSystem app = new AccountManagementSystem();
                 Account a = new Account();
-                a = app.GetAccount(id);
+                a = AccountManagementSystem.GetAccount(id);
                 txtNric.Attributes.Add("placeholder", a.nric);
                 txtName.Attributes.Add("placeholder", a.name);
                 txtPassword.Attributes.Add("placeholder", a.password);
                 txtEmail.Attributes.Add("placeholder", a.email);
                 txtAddress.Attributes.Add("placeholder", a.address);
 
-                DepartmentManagementSystem dms = new DepartmentManagementSystem();
                 Department D = new Department();
-                D = dms.GetDepartmentByUserID(id);
+                D = DepartmentManagementSystem.GetDepartmentByUserID(id);
 
 
-                FacilityManagementSystem fms = new FacilityManagementSystem();
                 Facility F = new Facility();
-                F = fms.GetFacility(D.facilityId);
+                F = FacilityManagementSystem.GetFacility(D.facilityId);
 
-                FacilityDropDownList.DataSource = fms.GetAllfacility();
+                FacilityDropDownList.DataSource = FacilityManagementSystem.GetAllfacility();
                 FacilityDropDownList.DataBind();
 
                 FacilityDropDownList.SelectedValue = F.facilityID.ToString();
 
 
-                DepartmentDropDownList.DataSource = dms.getDepartmentsFromThisFacility(FacilityDropDownList.SelectedItem.Value);
+                DepartmentDropDownList.DataSource = DepartmentManagementSystem.getDepartmentsFromThisFacility(FacilityDropDownList.SelectedItem.Value);
                 DepartmentDropDownList.DataBind();
 
 
@@ -53,12 +50,7 @@ namespace TeamLLama
 
         protected void FilterDept(object sender, EventArgs e) //action fired after selecting facility
         {
-
-            DepartmentManagementSystem dms = new DepartmentManagementSystem();
-
-
-
-            DepartmentDropDownList.DataSource = dms.getDepartmentsFromThisFacility(FacilityDropDownList.SelectedItem.Value);
+            DepartmentDropDownList.DataSource = DepartmentManagementSystem.getDepartmentsFromThisFacility(FacilityDropDownList.SelectedItem.Value);
             DepartmentDropDownList.DataBind();
         }
 
@@ -69,8 +61,7 @@ namespace TeamLLama
            
 
             Account update = new Account();
-            AccountManagementSystem app = new AccountManagementSystem();
-            a = app.GetAccount(Int32.Parse((string)Session["doc_id"]));
+            a = AccountManagementSystem.GetAccount(Int32.Parse((string)Session["doc_id"]));
 
             if (string.IsNullOrEmpty(txtNric.Text))
             {
@@ -123,8 +114,7 @@ namespace TeamLLama
                 lblDepartment.Text = "This facility do not have department for the doctor to join";
                 check = false;
             }
-
-            Validation vc = new Validation();
+            
             if (ImageUpload.HasFile)
             {
                 string ext = System.IO.Path.GetExtension(ImageUpload.PostedFile.FileName);
@@ -141,7 +131,7 @@ namespace TeamLLama
                         height = img.Height;
                     }
                 }
-                if (!vc.ImageCheck(ext))
+                if (!Validation.ImageCheck(ext))
                 {
                     lblImage.Text = "This Picture format is not supported by the system";
                     check = false;
@@ -167,13 +157,13 @@ namespace TeamLLama
             {
                 update.accountType = a.accountType;
                 //Session["Account"] = update;
-                app.UpdateAccount(txtName.Text, txtPassword.Text, txtEmail.Text, txtAddress.Text, txtNric.Text, update.photo, a.accountID);
+                AccountManagementSystem.UpdateAccount(txtName.Text, txtPassword.Text, txtEmail.Text, txtAddress.Text, txtNric.Text, update.photo, a.accountID);
 
                 
 
                 int Departmentid = Int32.Parse(DepartmentDropDownList.SelectedValue);
 
-                app.UpdateFacilityStaff(a.accountID, Departmentid);
+                AccountManagementSystem.UpdateFacilityStaff(a.accountID, Departmentid);
 
                 Response.Write("<script type=\"text/javascript\">alert('Account Info is successfully updated!');location.href='AdminHomePage.aspx'</script>");
             }

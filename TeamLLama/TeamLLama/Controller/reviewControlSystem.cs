@@ -13,7 +13,7 @@ namespace TeamLLama.Controller
     public class ReviewControlSystem
     {
 
-        public double GetAverageRating(int id)
+        public static double GetAverageRating(int id)
         {
             float avg = 0;
             float total = 0;
@@ -36,7 +36,7 @@ namespace TeamLLama.Controller
             return System.Math.Round(avg,2);
         }
 
-        public Review GetReview(int id)
+        public static Review GetReview(int id)
         {
             Review r = new Review();
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -57,7 +57,7 @@ namespace TeamLLama.Controller
             conn.Close();
             return r;
         }
-        public DataSet GetAllReviews(int id)
+        public static DataSet GetAllReviews(int id)
         {
 
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -73,7 +73,7 @@ namespace TeamLLama.Controller
             return ds;
         }
 
-        public void CreateReview(Review r)
+        public static void CreateReview(Review r)
         {
 
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -91,7 +91,7 @@ namespace TeamLLama.Controller
             conn.Close();
         }
 
-        public string GetRatingString(int id)
+        public static string GetRatingString(int id)
         {
             double i = GetAverageRating(id);
             return double.IsNaN(i) ? "No Ratings Yet" : i.ToString();

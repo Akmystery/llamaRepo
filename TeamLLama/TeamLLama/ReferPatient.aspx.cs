@@ -16,21 +16,25 @@ namespace TeamLLama
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            if (Session["nric"]==null)
+            {
+                Response.Redirect("DoctorAppointmentPage.aspx");
+            }
             DateTextBox.Attributes.Add("readonly", "readonly");//prevents textbox from losing text after postback
             if (!IsPostBack)
             {
                 //set namedropdownlist names
                 Account a = new Account();
 
-                string nric = Session["id"].ToString();
+                string nric = Session["nric"].ToString();
 
-                AppointmentManagementSystem ams = new AppointmentManagementSystem();
-                a = ams.getAccountViaNRIC(nric);
+                a = AppointmentManagementSystem.getAccountViaNRIC(nric);
                 lb_name.Text = a.name;
                 lb_id.Text = a.accountID.ToString();
 
                 //set hospitaldropdownlist
-                HospitalDropDownList.DataSource = ams.getFacilities();
+                HospitalDropDownList.DataSource = AppointmentManagementSystem.getFacilities();
                 HospitalDropDownList.DataTextField = "facilityName";
                 HospitalDropDownList.DataValueField = "facilityID";
                 HospitalDropDownList.DataBind();
@@ -55,11 +59,8 @@ namespace TeamLLama
                 lb_openingHrs.Visible = false;
                 lb_closingHrs.Visible = false;
             }
-
-
-            AppointmentManagementSystem ams = new AppointmentManagementSystem();
-
-            DepartmentDropDownList.DataSource = ams.getDepartments(HospitalDropDownList.SelectedValue.ToString());
+            
+            DepartmentDropDownList.DataSource = AppointmentManagementSystem.getDepartments(HospitalDropDownList.SelectedValue.ToString());
             DepartmentDropDownList.DataTextField = "departmentName";
             DepartmentDropDownList.DataValueField = "departmentID";
             DepartmentDropDownList.DataBind();
@@ -70,7 +71,7 @@ namespace TeamLLama
             //get opening hours and set it
             if (HospitalDropDownList.SelectedValue.ToString() != "-1")
             {
-                Facility f = ams.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
+                Facility f = AppointmentManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
                 HourChange("AM");
 
                 AMPMDropDownList.ClearSelection();
@@ -125,12 +126,10 @@ namespace TeamLLama
 
         protected void YesButton_Click(object sender, EventArgs e)
         {
-            AppointmentManagementSystem ams = new AppointmentManagementSystem();
-
             //get account id
-            string nric = Session["id"].ToString();
+            string nric = Session["nric"].ToString();
             Account a = new Account();
-            a = ams.getAccountViaNRIC(nric);
+            a = AppointmentManagementSystem.getAccountViaNRIC(nric);
 
             int accountID = 1;
 
@@ -157,7 +156,10 @@ namespace TeamLLama
             ap.time = time.ToString();
             ap.date = DateTextBox.Text; //this was lblActualDate.Text. is this intentional?
             ap.comments = "Referral - " + CommentTextBox.Text.ToString();
-            int result = ams.bookAppointment(ap);
+            int result = AppointmentManagementSystem.bookAppointment(ap);
+
+            string id = Session["id"].ToString();
+            result= AppointmentManagementSystem.deleteAppointment(id);
 
             if (result == 1)
             {
@@ -201,9 +203,7 @@ namespace TeamLLama
 
         void MinChange(int hour)
         {
-
-            AppointmentManagementSystem ams = new AppointmentManagementSystem();
-            Facility f = ams.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
+            Facility f = AppointmentManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
             int openHours = Convert.ToInt32(f.openingHrs.Substring(0, 2));
             int closeHours = Convert.ToInt32(f.closingHrs.Substring(0, 2));
             int openMins = Convert.ToInt32(f.openingHrs.Substring(2, 2));
@@ -256,8 +256,7 @@ namespace TeamLLama
 
         void HourChange(string AMPM)
         {
-            AppointmentManagementSystem ams = new AppointmentManagementSystem();
-            Facility f = ams.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
+            Facility f = AppointmentManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
             int openHours = Convert.ToInt32(f.openingHrs.Substring(0, 2));
             int closeHours = Convert.ToInt32(f.closingHrs.Substring(0, 2));
 

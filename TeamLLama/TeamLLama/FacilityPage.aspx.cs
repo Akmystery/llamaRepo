@@ -12,19 +12,20 @@ namespace TeamLLama
     public partial class FacilityPage : System.Web.UI.Page
     {
         protected int facilityId;
+        protected string facilityName;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!int.TryParse(Request.QueryString["id"], out facilityId))
+            /*if (!int.TryParse(Request.QueryString["id"], out facilityId))
             {
                 return;
-            }
-
-            FacilityManagementSystem app = new FacilityManagementSystem();
-            Facility facility = app.GetFacility(facilityId);
+            }*/
+            facilityName = Request.QueryString["name"];
+            Facility facility = FacilityManagementSystem.GetFacilityFromName(facilityName);
             if (facility == null) {
                 return;
             }
+            facilityId = facility.facilityID;
             lblName.Text = facility.facilityName;
             lblInformation.Text = facility.generalInfo;
             lblContact.Text = facility.phoneNumber.ToString();
@@ -44,11 +45,10 @@ namespace TeamLLama
             Account a = (Account)Session["Account"];
             //int fac_id = (int)Session["fac_id"];
 
-            Validation v = new Validation();
             Review r = new Review();
             r.rating = Rating1.CurrentRating;
             r.comment = txtComment.Text;
-            if (v.isEmpty(r.comment))
+            if (Validation.isEmpty(r.comment))
             {
                 lblComment.Text = "Please write comment";
             }
@@ -59,8 +59,8 @@ namespace TeamLLama
                 txtComment.Text = "";
                 r.accountId = a.accountID;
                 r.facilityId = facilityId;
-                ReviewControlSystem rcs = new ReviewControlSystem();
-                rcs.CreateReview(r);
+             
+                ReviewControlSystem.CreateReview(r);
                 BindRatings();
                 BindComments();
             }
@@ -68,21 +68,20 @@ namespace TeamLLama
 
         public void BindRatings()
         {
-            ReviewControlSystem rc = new ReviewControlSystem();
-            double i = rc.GetAverageRating(facilityId);
+            double i = ReviewControlSystem.GetAverageRating(facilityId);
             lblRatingNumber.Text = lblRating.Text = double.IsNaN(i)?"No Ratings Yet":i.ToString();
         }
 
         private void BindComments()
         {
-            ReviewControlSystem rcs = new ReviewControlSystem();
-            Comments.DataSource = rcs.GetAllReviews(facilityId);
+            Comments.DataSource = ReviewControlSystem.GetAllReviews(facilityId);
             Comments.DataBind();
         }
 
         protected void btnBookAppointment_Click(object sender, EventArgs e)
         {
-            Response.Redirect("BookAppointmentPage.aspx");
+            //Response.Redirect("BookAppointmentPage.aspx");
+            Response.Redirect(string.Format("BookAppointmentPage.aspx?q={0}", Uri.EscapeDataString(lblName.Text)));
         }
     }
 

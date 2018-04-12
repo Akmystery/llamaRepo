@@ -103,10 +103,10 @@
                     </div>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <a class="facilitySquare card" href="<%=Request.ApplicationPath == "/"?"": Request.ApplicationPath %>/FacilityPage.aspx?id=<%# Item.facilityID %>">
+                    <a class="facilitySquare card" href="<%=Request.ApplicationPath == "/"?"": Request.ApplicationPath %>/FacilityPage.aspx?name=<%# Item.facilityName %>">
                         <img class="facilityImage" src="https://m.phnompenhpost.com/sites/default/files/styles/full-screen/public/field/image/8-mount-alvernia-hospital.jpg" />
                         <div class="facilityTitle"><%# Item.facilityName %></div>
-                        <div class="facilityRating">Rating: <%# rcs.GetRatingString(Item.facilityID) %></div>
+                        <div class="facilityRating">Rating: <%# TeamLLama.Controller.ReviewControlSystem.GetRatingString(Item.facilityID) %></div>
                     </a>
                 </ItemTemplate>
             </asp:ListView>

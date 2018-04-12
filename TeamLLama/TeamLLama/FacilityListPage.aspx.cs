@@ -24,8 +24,7 @@ namespace TeamLLama
         {
             Facility f = new Facility();
 
-            FacilityManagementSystem app = new FacilityManagementSystem();
-            grdFacility.DataSource = app.GetFacility();
+            grdFacility.DataSource = FacilityManagementSystem.GetFacility();
             grdFacility.DataBind();
 
         }
@@ -63,10 +62,8 @@ namespace TeamLLama
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
             String id = lbl_id.Text;
-            FacilityManagementSystem app = new FacilityManagementSystem();
-            DepartmentManagementSystem dpp = new DepartmentManagementSystem();
-            dpp.DeleteDepartments(id); //delete child
-            app.DeleteFacility(id);
+            DepartmentManagementSystem.DeleteDepartments(id); //delete child
+            FacilityManagementSystem.DeleteFacility(id);
             Response.Write("<script type=\"text/javascript\">alert('Facility Deleted!');location.href='FacilityListPage.aspx'</script>");
         }
         protected void btnBack_Click(object sender, EventArgs e)

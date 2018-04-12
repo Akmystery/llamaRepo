@@ -38,16 +38,15 @@ namespace TeamLLama
 
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
-            Validation vc = new Validation();
             bool check = true;
 
             lblNRIC.Text = lblPassword.Text = "";
-            if (vc.isEmpty(txtNRIC.Text))
+            if (Validation.isEmpty(txtNRIC.Text))
             {
                 lblNRIC.Text = "NRIC cannot be empty";
                 check = false;
             }
-            if (vc.isEmpty(txtPassword.Text))
+            if (Validation.isEmpty(txtPassword.Text))
             {
                 lblPassword.Text = "Password cannot be empty";
                 check = false;
@@ -57,8 +56,7 @@ namespace TeamLLama
 
             if (check == true)
             {
-                AccountVerificationSystem app = new AccountVerificationSystem();
-                Account a = app.LoginAccount(txtNRIC.Text, txtPassword.Text);
+                Account a = AccountVerificationSystem.LoginAccount(txtNRIC.Text, txtPassword.Text);
 
                 if(a.nric==null)
                 {

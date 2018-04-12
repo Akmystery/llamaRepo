@@ -58,8 +58,8 @@ namespace TeamLLama
         {
             Account a = new Account();
             a = (Account)Session["Account"];
-            AccountManagementSystem app = new AccountManagementSystem();
-            app.DeleteAccount(a.accountID);
+            
+            AccountManagementSystem.DeleteAccount(a.accountID);
             Session["Account"] = null;
             Response.Write("<script type=\"text/javascript\">alert('Account Deactivated!');location.href='LoginPage.aspx'</script>");
         }

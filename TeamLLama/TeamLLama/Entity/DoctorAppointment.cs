@@ -9,5 +9,7 @@ namespace TeamLLama.Entity
     {
         public int accountId { get; set; }
         public int appointmentId { get; set; }
+        public Account account { get; set; }
+        public Appointment appointment { get; set; }
     }
 }

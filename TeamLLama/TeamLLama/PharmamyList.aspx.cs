@@ -26,9 +26,8 @@ namespace TeamLLama
         private void bindData()
         {
             string selected = rbnCategory.SelectedValue;
-            FacilityManagementSystem app = new FacilityManagementSystem();
-
-            grdPharmacy.DataSource = app.getPharmacyData(selected);
+            
+            grdPharmacy.DataSource = FacilityManagementSystem.getPharmacyData(selected);
             grdPharmacy.DataBind();
 
         }

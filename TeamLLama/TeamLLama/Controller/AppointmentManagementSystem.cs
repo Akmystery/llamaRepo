@@ -14,7 +14,7 @@ namespace TeamLLama.Controller
     {
         static string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
 
-        public int bookAppointment(Appointment a)
+        public static int bookAppointment(Appointment a)
         {
             int result = 0;
             
@@ -35,7 +35,7 @@ namespace TeamLLama.Controller
             command.Parameters.AddWithValue("@time", a.time);
             command.Parameters.AddWithValue("@date", date);
             command.Parameters.AddWithValue("@taken", "0");
-            command.Parameters.AddWithValue("@comments", " ");
+            command.Parameters.AddWithValue("@comments", a.comments);
 
             connection.Open();
             var reader = command.ExecuteNonQuery();
@@ -45,7 +45,8 @@ namespace TeamLLama.Controller
 
             return result;
         }
-        public Appointment GetAppointment()
+
+        public static Appointment GetAppointment()
         {
             Appointment a = new Appointment();
 
@@ -73,7 +74,7 @@ namespace TeamLLama.Controller
             conn.Close();
             return a;
         }
-        public DataTable getUpcomingAppointments(int accountID)
+        public static DataTable getUpcomingAppointments(int accountID)
         {
             //string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
@@ -116,7 +117,7 @@ namespace TeamLLama.Controller
 
             return dt;
         }
-        public DataTable getAppointmentHistory(int accountID)
+        public static DataTable getAppointmentHistory(int accountID)
         {
             //string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
@@ -159,7 +160,7 @@ namespace TeamLLama.Controller
 
             return dt;
         }
-        public Appointment getPatientAppointment(string appointmentID)
+        public static Appointment getPatientAppointment(string appointmentID)
         {
             Appointment ap = new Appointment();
 
@@ -187,7 +188,7 @@ namespace TeamLLama.Controller
 
             return ap;
         }
-        public int deleteAppointment(string id)
+        public static int deleteAppointment(string id)
         {
             int result = 0;
 
@@ -224,7 +225,7 @@ namespace TeamLLama.Controller
 
             return result;
         }
-        public DataTable getRequestPool(int accountID, string dateFrom, string dateTo)
+        public static DataTable getRequestPool(int accountID, string dateFrom, string dateTo)
         {
             //string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
@@ -291,7 +292,7 @@ namespace TeamLLama.Controller
 
             return dt;
         }
-        public int pickAppointment(string id, int accountID)
+        public static int pickAppointment(string id, int accountID)
         {
             int result = 0;
 
@@ -328,7 +329,7 @@ namespace TeamLLama.Controller
             result = reader1;
             return result;
         }
-        public DataTable getDoctorAppointmentHistory(int accountID)
+        public static DataTable getDoctorAppointmentHistory(int accountID)
         {
             var conn = new MySqlConnection(dbConnectionString);
 
@@ -369,7 +370,7 @@ namespace TeamLLama.Controller
 
             return dt;
         }
-        public DataTable getDoctorUpcomingAppointment(int accountID)
+        public static DataTable getDoctorUpcomingAppointment(int accountID)
         {
             var conn = new MySqlConnection(dbConnectionString);
 
@@ -410,7 +411,7 @@ namespace TeamLLama.Controller
 
             return dt;
         }
-        public List<Facility> getFacilities()
+        public static List<Facility> getFacilities()
         {
             List<Facility> f = new List<Facility>();
             using (MySqlConnection conn = new MySqlConnection(dbConnectionString))
@@ -433,7 +434,7 @@ namespace TeamLLama.Controller
             }
             return f;
         }
-        public List<Department> getDepartments(string hospitalSelected)
+        public static List<Department> getDepartments(string hospitalSelected)
         {
             List<Department> d = new List<Department>();
             using (MySqlConnection conn = new MySqlConnection(dbConnectionString))
@@ -457,7 +458,7 @@ namespace TeamLLama.Controller
             }
             return d;
         }
-        public Facility getOpeningHrs(string hospitalSelected)
+        public static Facility getOpeningHrs(string hospitalSelected)
         {
             Facility f1 = new Facility();
             using (MySqlConnection conn = new MySqlConnection(dbConnectionString))
@@ -482,7 +483,7 @@ namespace TeamLLama.Controller
             }
             return f1;
         }
-        public Account getAccountViaID(int id)
+        public static Account getAccountViaID(int id)
         {
             Account a = new Account();
 
@@ -501,7 +502,7 @@ namespace TeamLLama.Controller
             conn.Close();
             return a;
         }
-        public Account getAccountViaNRIC(string nric)
+        public static Account getAccountViaNRIC(string nric)
         {
             Account a = new Account();
 

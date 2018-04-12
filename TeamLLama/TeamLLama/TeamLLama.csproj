@@ -265,6 +265,7 @@
       <DependentUpon>DoctorHomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entity\Account.cs" />
+    <Compile Include="Entity\FacilityStaff.cs" />
     <Compile Include="Entity\Fields.cs" />
     <Compile Include="Entity\GovData.cs" />
     <Compile Include="Entity\GovResult.cs" />

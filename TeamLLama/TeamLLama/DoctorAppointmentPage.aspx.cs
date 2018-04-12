@@ -33,16 +33,15 @@ namespace TeamLLama
             {
                 accountID = a.accountID;
             }
-            AppointmentManagementSystem ams = new AppointmentManagementSystem();
-
+            
             if (c == 1)
             {
-                grdAppointmentHistory.DataSource = ams.getDoctorAppointmentHistory(accountID);
+                grdAppointmentHistory.DataSource = AppointmentManagementSystem.getDoctorAppointmentHistory(accountID);
                 grdAppointmentHistory.DataBind();
             }
             else
             {
-                grdUpcomingAppointment.DataSource = ams.getDoctorUpcomingAppointment(accountID);
+                grdUpcomingAppointment.DataSource = AppointmentManagementSystem.getDoctorUpcomingAppointment(accountID);
                 grdUpcomingAppointment.DataBind();
             }
             
@@ -64,6 +63,9 @@ namespace TeamLLama
             string id = lbl_id.Text;
             Session["id"] = id;
 
+            string nric = lbl_nric.Text;
+            Session["nric"] = nric;
+
             Response.Redirect("ReferPatient.aspx");
             
 
@@ -76,7 +78,10 @@ namespace TeamLLama
             int i = Convert.ToInt32(row.RowIndex);
 
             System.Web.UI.WebControls.Label lblNRIC = grdUpcomingAppointment.Rows[i].FindControl("lblNRIC") as System.Web.UI.WebControls.Label;
-            lbl_id.Text = lblNRIC.Text;
+            lbl_nric.Text = lblNRIC.Text;
+
+            System.Web.UI.WebControls.Label lblID = grdUpcomingAppointment.Rows[i].FindControl("lblAppointmentID") as System.Web.UI.WebControls.Label;
+            lbl_id.Text = lblID.Text;
 
             confirmPopup.Show();
         }

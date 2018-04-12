@@ -22,12 +22,8 @@ namespace TeamLLama
 
         private void bindAppointments()
         {
-
-            AccountManagementSystem ams = new AccountManagementSystem();
-
-       
-                grdAllDocAcc.DataSource = ams.getAllDoctorAcc();
-                grdAllDocAcc.DataBind();
+            grdAllDocAcc.DataSource = AccountManagementSystem.getAllDoctorAcc();
+            grdAllDocAcc.DataBind();
 
         }
 
@@ -93,8 +89,7 @@ namespace TeamLLama
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
             int accountID = Convert.ToInt32(lbl_id.Text);
-            AccountManagementSystem ams = new AccountManagementSystem();
-            ams.DeleteAccount(accountID);
+            AccountManagementSystem.DeleteAccount(accountID);
             Response.Write("<script type=\"text/javascript\">alert('Account Deleted!');location.href='AdminDeleteAccPage.aspx'</script>");
         }
     }

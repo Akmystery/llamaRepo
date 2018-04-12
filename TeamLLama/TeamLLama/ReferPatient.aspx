@@ -23,8 +23,17 @@
             border-color: black;
             padding-top: 10px;
             padding-left: 10px;
-            width: auto;
-            height: auto;
+            width: 300px;
+            height: 200px;
+        }
+        .popUpButton{
+            
+            height: 50px;
+            width: 55px;
+            font-weight: bold;
+            font-size: larger;
+            text-align: center;
+            text-decoration: none;
         }
         .font_style_two {
             font-family: 'Karma', serif;
@@ -32,7 +41,7 @@
             font-size: 20px;
         }
          body{
-            background-color: #99ff99;
+            background-image:url(images/bo_bg.jpg);
         }
     </style>
 
@@ -167,11 +176,12 @@
     <asp:HiddenField ID="HiddenField1" runat="server" />
     <cc1:ModalPopupExtender ID="confirmPopup" runat="server" PopupControlID="CfmPanel" TargetControlID="HiddenField1" CancelControlID="btnNo" BackgroundCssClass="modalBackground"></cc1:ModalPopupExtender>
     <asp:Panel ID="CfmPanel" runat="server" CssClass="modalPopup1" align="center" Style="display: none">
-        <asp:Label ID="lbl_id" runat="server" Text="" Visible="false"></asp:Label>
-        <asp:Label ID="lblMsg" runat="server" Text="Confirm Refer?" Visible="true" Font-Size="Large" CssClass="mr-3"></asp:Label><br />
         <br />
-        <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="YesButton_Click" />
-        <asp:Button ID="btnNo" runat="server" Text="No" />
+        <asp:Label ID="lbl_id" runat="server" Text="" Visible="false"></asp:Label>
+        <h3><asp:Label ID="lblMsg" runat="server" Text="Confirm Refer?" Visible="true"></asp:Label></h3><br />
+        <br />
+        <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="YesButton_Click" CssClass="popUpButton"/>
+        <asp:Button ID="btnNo" runat="server" Text="No" CssClass="popUpButton"/>
         <div class="mb-3"></div>
     </asp:Panel>
 

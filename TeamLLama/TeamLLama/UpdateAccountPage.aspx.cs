@@ -31,8 +31,7 @@ namespace TeamLLama
             a = (Account)Session["Account"];
 
             Account update = new Account();
-            AccountManagementSystem app = new AccountManagementSystem();
-
+            
             if(string.IsNullOrEmpty(txtNric.Text))
             {
                 update.nric = txtNric.Text = a.nric;
@@ -78,7 +77,7 @@ namespace TeamLLama
             {
                 update.address = txtAddress.Text;
             }
-            Validation vc = new Validation();
+            
             if (ImageUpload.HasFile)
             {
                 string ext = System.IO.Path.GetExtension(ImageUpload.PostedFile.FileName);
@@ -95,7 +94,7 @@ namespace TeamLLama
                         height = img.Height;
                     }
                 }
-                if (!vc.ImageCheck(ext))
+                if (!Validation.ImageCheck(ext))
                 {
                     lblImage.Text = "This Picture format is not supported by the system";
                     check = false;
@@ -119,7 +118,7 @@ namespace TeamLLama
             {
                 update.accountType = a.accountType;
                 Session["Account"] = update;
-                app.UpdateAccount(txtName.Text, txtPassword.Text, txtEmail.Text, txtAddress.Text, txtNric.Text, update.photo, a.accountID);
+                AccountManagementSystem.UpdateAccount(txtName.Text, txtPassword.Text, txtEmail.Text, txtAddress.Text, txtNric.Text, update.photo, a.accountID);
                 Response.Write("<script type=\"text/javascript\">alert('Account Info is successfully updated!');location.href='AccountInfoPage.aspx'</script>");
             }
         }

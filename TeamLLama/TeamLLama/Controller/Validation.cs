@@ -12,7 +12,7 @@ namespace TeamLLama.Controller
 {
     public class Validation
     {
-        public bool ComparePassword(string a, string b)
+        public static bool ComparePassword(string a, string b)
         {
             if (a == b)
                 return true;
@@ -20,7 +20,7 @@ namespace TeamLLama.Controller
                 return false;
         }
 
-        public bool isEmpty(String s)
+        public static bool isEmpty(String s)
         {
             if (s == null || s == String.Empty)
                 return true;
@@ -29,7 +29,7 @@ namespace TeamLLama.Controller
 
         }
 
-        public bool CheckEmail(string email)
+        public static bool CheckEmail(string email)
         {
             if (String.IsNullOrEmpty(email))
             { return false; }
@@ -52,13 +52,13 @@ namespace TeamLLama.Controller
             }
         }
 
-        public bool ValidNumber(string a)
+        public static bool ValidNumber(string a)
         {
             int test;
             return int.TryParse(a, out test);
         }
 
-        public bool checkNricExist(string nric)
+        public static bool checkNricExist(string nric)
         {
             Account a = new Account();
 
@@ -97,7 +97,7 @@ namespace TeamLLama.Controller
         }
 
 
-        public bool ImageCheck(String files)
+        public static bool ImageCheck(String files)
 
         {
 

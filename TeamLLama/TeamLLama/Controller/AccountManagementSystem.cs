@@ -11,7 +11,7 @@ namespace TeamLLama.Controller
 {
     public class AccountManagementSystem
     {
-        public int createAccount()
+        public static int createAccount()
         {
             int result = 0;
 
@@ -36,7 +36,7 @@ namespace TeamLLama.Controller
             return result;
         }
 
-        public int createAccount(Account a)
+        public static int createAccount(Account a)
         {
             int result = 0;
 
@@ -61,7 +61,7 @@ namespace TeamLLama.Controller
             return result;
         }
 
-        public int createDocAccount(Account a,int dept_id)
+        public static int createDocAccount(Account a,int dept_id)
         {
             int result = 0;
 
@@ -113,7 +113,7 @@ namespace TeamLLama.Controller
             return result;
         }
 
-        public Account GetAccount(int id)
+        public static Account GetAccount(int id)
         {
             Account a = new Account();
 
@@ -144,7 +144,7 @@ namespace TeamLLama.Controller
         }
 
 
-        public void UpdateAccount(String name, String password, String email, String address, String nric, String photo,int id)
+        public static void UpdateAccount(String name, String password, String email, String address, String nric, String photo,int id)
         {
            
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -166,7 +166,7 @@ namespace TeamLLama.Controller
             conn.Close();
         }
 
-        public void DeleteAccount(int id)
+        public static void DeleteAccount(int id)
         {
 
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
@@ -192,7 +192,7 @@ namespace TeamLLama.Controller
             conn.Close();
         }
 
-        public DataTable getAllDoctorAcc()
+        public static DataTable getAllDoctorAcc()
         {
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
@@ -234,7 +234,7 @@ namespace TeamLLama.Controller
         }
 
 
-        public void UpdateFacilityStaff(int account_id, int department_id)
+        public static void UpdateFacilityStaff(int account_id, int department_id)
         {
 
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;

@@ -33,16 +33,15 @@ namespace TeamLLama
             {
                 accountID = a.accountID;
             }
-            AppointmentManagementSystem ams = new AppointmentManagementSystem();
-           
+            
             if (c == 1)
             {
-                grdAppointmentHistory.DataSource = ams.getAppointmentHistory(accountID);
+                grdAppointmentHistory.DataSource = AppointmentManagementSystem.getAppointmentHistory(accountID);
                 grdAppointmentHistory.DataBind();
             }
             else
             {
-                grdUpcomingAppointment.DataSource = ams.getUpcomingAppointments(accountID);
+                grdUpcomingAppointment.DataSource = AppointmentManagementSystem.getUpcomingAppointments(accountID);
                 grdUpcomingAppointment.DataBind();
             }
             
@@ -63,8 +62,7 @@ namespace TeamLLama
         {
             string id = lbl_id.Text;
 
-            AppointmentManagementSystem ams = new AppointmentManagementSystem();
-            int result=ams.deleteAppointment(id);
+            int result= AppointmentManagementSystem.deleteAppointment(id);
             
 
             if (result == 1)

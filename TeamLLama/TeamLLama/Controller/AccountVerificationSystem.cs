@@ -10,7 +10,7 @@ namespace TeamLLama.Controller
 {
     public class AccountVerificationSystem
     {
-        public Account LoginAccount(string nric, string password)
+        public static Account LoginAccount(string nric, string password)
         {
             Account a = new Account();
 

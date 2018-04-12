@@ -25,57 +25,56 @@ namespace TeamLLama
 
         protected void create_Click(object sender, EventArgs e)
         {
-            Validation vc = new Validation();
             bool check = true;
 
             lblPassword.Text = lblAddress.Text = lblEmail.Text = lblName.Text = lblPassword.Text = lblConfirmPassword.Text = lblNric.Text = "";
-            if (vc.isEmpty(txtName.Text))
+            if (Validation.isEmpty(txtName.Text))
             {
                 lblName.Text = "Name cannot be empty";
                 check = false;
             }
-            if (vc.isEmpty(txtNric.Text))
+            if (Validation.isEmpty(txtNric.Text))
             {
                 lblNric.Text = "NRIC cannot be empty";
                 check = false;
             }
-            if (vc.isEmpty(txtPassword.Text))
+            if (Validation.isEmpty(txtPassword.Text))
             {
                 lblPassword.Text = "Password cannot be empty";
                 check = false;
             }
-            if (vc.isEmpty(txtConfirmPassword.Text))
+            if (Validation.isEmpty(txtConfirmPassword.Text))
             {
                 lblConfirmPassword.Text = "Password cannot be empty";
                 check = false;
             }
 
-            if (vc.isEmpty(txtEmail.Text))
+            if (Validation.isEmpty(txtEmail.Text))
             {
                 lblEmail.Text = "Email cannot be empty";
                 check = false;
             }
 
-            if (vc.isEmpty(txtAddress.Text))
+            if (Validation.isEmpty(txtAddress.Text))
             {
                 lblAddress.Text = "Address cannot be empty";
                 check = false;
             }
 
-            if (!vc.isEmpty(txtNric.Text) && vc.checkNricExist(txtNric.Text))
+            if (!Validation.isEmpty(txtNric.Text) && Validation.checkNricExist(txtNric.Text))
             {
                 lblNric.Text = "There is already an account with this nric number";
                 check = false;
             }
 
-            if (vc.ComparePassword(txtPassword.Text, txtConfirmPassword.Text) == false)
+            if (Validation.ComparePassword(txtPassword.Text, txtConfirmPassword.Text) == false)
 
             {
                 lblPassword.Text = "Confirmed password does not match";
                 check = false;
             }
 
-            if (vc.CheckEmail(txtEmail.Text) == false)
+            if (Validation.CheckEmail(txtEmail.Text) == false)
             {
                 lblEmail.Text = "Invalid Email Address format";
                 check = false;
@@ -98,7 +97,7 @@ namespace TeamLLama
                         height = img.Height;
                     }
                 }
-                if (!vc.ImageCheck(ext))
+                if (!Validation.ImageCheck(ext))
                 { 
                     check = false;
                     lblImage.Text = "This Picture format is not supported by the system";
@@ -126,10 +125,7 @@ namespace TeamLLama
                     ImageUpload.PostedFile.SaveAs(Server.MapPath("~/upload/user/") + a.photo);
                 }
             
-
-                AccountManagementSystem app = new AccountManagementSystem();
-
-                app.createAccount(a);
+                AccountManagementSystem.createAccount(a);
 
                 Response.Write("<script type=\"text/javascript\">alert('Account is created successfully!');location.href='LoginPage.aspx'</script>");
 

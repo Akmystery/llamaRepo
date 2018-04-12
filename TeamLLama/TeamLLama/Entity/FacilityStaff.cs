@@ -9,5 +9,7 @@ namespace TeamLLama.Entity
     {
         public int accountID { get; set; }
         public int departmentID { get; set; }
+        public Account account { get; set; }
+        public Department department { get; set; }
     }
 }

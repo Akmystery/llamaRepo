@@ -19,5 +19,7 @@ namespace TeamLLama.Entity
         public string image { get; set; }
         public decimal x { get; set; }
         public decimal y { get; set; }
+        public List<Review> reviews { get; set; }
+        public List<Department> departments { get; set; }
     }
 }

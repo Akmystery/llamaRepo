@@ -12,5 +12,7 @@ namespace TeamLLama.Entity
         public string comment { get; set; }
         public int accountId { get; set; }
         public int facilityId { get; set; }
+        public Facility facility { get; set; }
+        public Account account { get; set; }
     }
 }

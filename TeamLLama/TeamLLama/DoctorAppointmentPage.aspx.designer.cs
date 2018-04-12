@@ -85,6 +85,15 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.Panel CfmPanel;
         
         /// <summary>
+        /// lblMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMsg;
+        
+        /// <summary>
         /// lbl_id control.
         /// </summary>
         /// <remarks>
@@ -94,13 +103,22 @@ namespace TeamLLama {
         protected global::System.Web.UI.WebControls.Label lbl_id;
         
         /// <summary>
-        /// lblMsg control.
+        /// lbl_nric1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMsg;
+        protected global::System.Web.UI.WebControls.Label lbl_nric1;
+        
+        /// <summary>
+        /// lbl_nric control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_nric;
         
         /// <summary>
         /// btnYes control.
