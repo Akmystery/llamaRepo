@@ -142,7 +142,27 @@ namespace TeamLLama.Controller
             conn.Close();
             return a;
         }
+        public static Account getAccountViaNRIC(string nric)
+        {
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
 
+            Account a = new Account();
+
+            MySqlConnection conn = new MySqlConnection(dbConnectionString);
+            string NameQuery = "SELECT account_id, name from account where account_type = 'patient' and nric=@nric";
+            MySqlCommand NameCmd = new MySqlCommand(NameQuery, conn);
+            NameCmd.Parameters.AddWithValue("@nric", nric);
+            conn.Open();
+            var reader = NameCmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                a.accountID = Convert.ToInt32(reader["account_id"]);
+                a.name = reader["name"].ToString();
+            }
+            conn.Close();
+            return a;
+        }
 
         public static void UpdateAccount(String name, String password, String email, String address, String nric, String photo,int id)
         {

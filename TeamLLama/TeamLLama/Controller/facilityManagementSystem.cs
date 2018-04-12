@@ -341,6 +341,33 @@ namespace TeamLLama.Controller
             cmd.ExecuteNonQuery();
             conn.Close();
         }
+        public static Facility getOpeningHrs(string hospitalSelected)
+        {
+            string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
+
+            Facility f1 = new Facility();
+            using (MySqlConnection conn = new MySqlConnection(dbConnectionString))
+            {
+                string FacQuery = "SELECT TIME_FORMAT(openingHrs, '%H%i%p') openingHrs,TIME_FORMAT(closingHrs, '%H%i%p') closingHrs,TIME_FORMAT(openingHrs, '%h %i%p') opHrs,TIME_FORMAT(closingHrs, '%h %i%p') clHrs from facility where facility_id = @s";
+                MySqlCommand FacCmd = new MySqlCommand(FacQuery, conn);
+                FacCmd.Parameters.AddWithValue("@s", hospitalSelected);
+                conn.Open();
+
+                MySqlDataReader dr;
+                dr = FacCmd.ExecuteReader();
+                if (dr.Read())
+                {
+
+                    f1.openingHrs = dr["openingHrs"].ToString();
+                    f1.closingHrs = dr["closingHrs"].ToString();
+                    f1.generalInfo = dr["opHrs"].ToString();
+                    f1.region = dr["clHrs"].ToString();
+                }
+                conn.Close();
+
+            }
+            return f1;
+        }
         public static List<SearchResults> getAPIData(string query)
         {
             var url = "https://developers.onemap.sg/commonapi/search?searchVal=" +query +" &returnGeom=Y&getAddrDetails=Y&pageNum=1";

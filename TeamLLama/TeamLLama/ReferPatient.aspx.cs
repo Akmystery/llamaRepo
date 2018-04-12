@@ -38,12 +38,12 @@ namespace TeamLLama
                
                 string nric = Session["nric"].ToString();
 
-                a = AppointmentManagementSystem.getAccountViaNRIC(nric);
+                a = AccountManagementSystem.getAccountViaNRIC(nric);
                 lb_name.Text = a.name;
                 lb_id.Text = a.accountID.ToString();
 
                 //set hospitaldropdownlist
-                HospitalDropDownList.DataSource = AppointmentManagementSystem.getFacilities();
+                HospitalDropDownList.DataSource = FacilityManagementSystem.GetAllfacility();
                 HospitalDropDownList.DataTextField = "facilityName";
                 HospitalDropDownList.DataValueField = "facilityID";
                 HospitalDropDownList.DataBind();
@@ -69,7 +69,7 @@ namespace TeamLLama
                 lb_closingHrs.Visible = false;
             }
             
-            DepartmentDropDownList.DataSource = AppointmentManagementSystem.getDepartments(HospitalDropDownList.SelectedValue.ToString());
+            DepartmentDropDownList.DataSource = DepartmentManagementSystem.getDepartments(HospitalDropDownList.SelectedValue.ToString());
             DepartmentDropDownList.DataTextField = "departmentName";
             DepartmentDropDownList.DataValueField = "departmentID";
             DepartmentDropDownList.DataBind();
@@ -80,7 +80,7 @@ namespace TeamLLama
             //get opening hours and set it
             if (HospitalDropDownList.SelectedValue.ToString() != "-1")
             {
-                Facility f = AppointmentManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
+                Facility f = FacilityManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
                 HourChange("AM");
 
                 AMPMDropDownList.ClearSelection();
@@ -138,7 +138,7 @@ namespace TeamLLama
             //get account id
             string nric = Session["nric"].ToString();
             Account a = new Account();
-            a = AppointmentManagementSystem.getAccountViaNRIC(nric);
+            a = AccountManagementSystem.getAccountViaNRIC(nric);
 
             int accountID = 1;
 
@@ -212,7 +212,7 @@ namespace TeamLLama
 
         void MinChange(int hour)
         {
-            Facility f = AppointmentManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
+            Facility f = FacilityManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
             int openHours = Convert.ToInt32(f.openingHrs.Substring(0, 2));
             int closeHours = Convert.ToInt32(f.closingHrs.Substring(0, 2));
             int openMins = Convert.ToInt32(f.openingHrs.Substring(2, 2));
@@ -265,7 +265,7 @@ namespace TeamLLama
 
         void HourChange(string AMPM)
         {
-            Facility f = AppointmentManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
+            Facility f = FacilityManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
             int openHours = Convert.ToInt32(f.openingHrs.Substring(0, 2));
             int closeHours = Convert.ToInt32(f.closingHrs.Substring(0, 2));
 

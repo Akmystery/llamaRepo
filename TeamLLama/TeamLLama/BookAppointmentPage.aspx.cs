@@ -30,18 +30,10 @@ namespace TeamLLama
             {
                 //set namedropdownlist names
                 
-                int accountID = 1;
-
-                if (a != null)
-                {
-                    accountID = a.accountID;
-                }
-                a = AppointmentManagementSystem.getAccountViaID(accountID);
-
                 //set hospitaldropdownlist
-                HospitalDropDownList.DataSource = AppointmentManagementSystem.getFacilities();
-                HospitalDropDownList.DataTextField = "facilityName";
-                HospitalDropDownList.DataValueField = "facilityID";
+                HospitalDropDownList.DataSource = FacilityManagementSystem.GetAllfacility();
+                HospitalDropDownList.DataTextField = "facility_Name";
+                HospitalDropDownList.DataValueField = "facility_ID";
                 HospitalDropDownList.DataBind();
                 
                 HospitalDropDownList.Items.Insert(0, new ListItem("-Select a Hospital-", "-1"));//add blank space at top of droplist
@@ -71,7 +63,7 @@ namespace TeamLLama
             }
             lblTime.Text = "";
             
-            DepartmentDropDownList.DataSource = AppointmentManagementSystem.getDepartments(HospitalDropDownList.SelectedValue.ToString());
+            DepartmentDropDownList.DataSource = DepartmentManagementSystem.getDepartments(HospitalDropDownList.SelectedValue.ToString());
             DepartmentDropDownList.DataTextField = "departmentName";
             DepartmentDropDownList.DataValueField = "departmentID";
             DepartmentDropDownList.DataBind();
@@ -82,7 +74,7 @@ namespace TeamLLama
             //get opening hours and set it
             if (HospitalDropDownList.SelectedValue.ToString() != "-1")
             {
-                Facility f = AppointmentManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
+                Facility f = FacilityManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
                 HourChange("AM");
 
                 AMPMDropDownList.ClearSelection();
@@ -210,7 +202,7 @@ namespace TeamLLama
         void MinChange(int hour)
         {
 
-            Facility f = AppointmentManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
+            Facility f = FacilityManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
             int openHours = Convert.ToInt32(f.openingHrs.Substring(0, 2));
             int closeHours = Convert.ToInt32(f.closingHrs.Substring(0, 2));
             int openMins = Convert.ToInt32(f.openingHrs.Substring(2, 2));
@@ -263,7 +255,7 @@ namespace TeamLLama
 
         void HourChange(string AMPM)
         {
-            Facility f = AppointmentManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
+            Facility f = FacilityManagementSystem.getOpeningHrs(HospitalDropDownList.SelectedValue.ToString());
             int openHours = Convert.ToInt32(f.openingHrs.Substring(0, 2));
             int closeHours = Convert.ToInt32(f.closingHrs.Substring(0, 2));
 
