@@ -17,6 +17,17 @@ namespace TeamLLama
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Account a = new Account();
+            a = (Account)Session["Account"];
+
+            if (a == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
+            if (!a.accountType.Equals("Doctor"))
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
             txtFromDate.Attributes.Add("readonly", "readonly");
             txtToDate.Attributes.Add("readonly", "readonly");
             if (!Page.IsPostBack)

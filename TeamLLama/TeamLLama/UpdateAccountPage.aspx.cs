@@ -17,6 +17,10 @@ namespace TeamLLama
         {
             Account a = new Account();
             a = (Account)Session["Account"];
+            if (a == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
             txtNric.Attributes.Add("placeholder",a.nric);
             txtName.Attributes.Add("placeholder",a.name);
             txtPassword.Attributes.Add("placeholder", a.password);

@@ -23,6 +23,10 @@ namespace TeamLLama
                 lblAddress.Text = a.address;
                 profilePic.ImageUrl = "~/upload/user/" + a.photo;
             }
+            else
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
         }
 
         protected void UpDate_Click(object sender, EventArgs e)

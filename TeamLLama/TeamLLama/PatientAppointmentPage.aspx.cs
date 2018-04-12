@@ -16,6 +16,13 @@ namespace TeamLLama
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Account a = new Account();
+            a = (Account)Session["Account"];
+            
+            if (a == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
             if (!Page.IsPostBack)
             {
                 bindAppointments(0);

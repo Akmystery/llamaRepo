@@ -16,7 +16,17 @@ namespace TeamLLama
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Account a = new Account();
+            a = (Account)Session["Account"];
+
+            if (a == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
+            if (!a.accountType.Equals("Doctor"))
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
             if (Session["nric"]==null)
             {
                 Response.Redirect("DoctorAppointmentPage.aspx");
@@ -25,8 +35,7 @@ namespace TeamLLama
             if (!IsPostBack)
             {
                 //set namedropdownlist names
-                Account a = new Account();
-
+               
                 string nric = Session["nric"].ToString();
 
                 a = AppointmentManagementSystem.getAccountViaNRIC(nric);

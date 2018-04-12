@@ -17,14 +17,19 @@ namespace TeamLLama
         protected string facilityName;
         protected void Page_Load(object sender, EventArgs e)
         {
-            facilityName= Request.QueryString["q"];
+            Account a = new Account();
+            a = (Account)Session["Account"];
+
+            if (a == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
+            facilityName = Request.QueryString["q"];
             DateTextBox.Attributes.Add("readonly", "readonly");//prevents textbox from losing text after postback
             if (!IsPostBack)
             {
                 //set namedropdownlist names
-                Account a = new Account();
-                a = (Account)Session["Account"];
-
+                
                 int accountID = 1;
 
                 if (a != null)

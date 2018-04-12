@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TeamLLama.Entity;
 
 namespace TeamLLama
 {
@@ -11,7 +12,17 @@ namespace TeamLLama
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Account a = new Account();
+            a = (Account)Session["Account"];
 
+            if (a == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
+            if (!a.accountType.Equals("Doctor"))
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
         }
 
         protected void btnPick_Click(object sender, EventArgs e)

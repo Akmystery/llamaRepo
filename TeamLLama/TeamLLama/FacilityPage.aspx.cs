@@ -16,10 +16,13 @@ namespace TeamLLama
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*if (!int.TryParse(Request.QueryString["id"], out facilityId))
+            Account a = new Account();
+            a = (Account)Session["Account"];
+
+            if (a == null)
             {
-                return;
-            }*/
+                btnBookAppointment.Visible = false;
+            }
             facilityName = Request.QueryString["name"];
             Facility facility = FacilityManagementSystem.GetFacilityFromName(facilityName);
             if (facility == null) {

@@ -16,7 +16,18 @@ namespace TeamLLama
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            Account a = new Account();
+            a = (Account)Session["Account"];
+
+            if (a == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
+            if (!a.accountType.Equals("admin"))
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
+            if (!IsPostBack)
             {
                 FacilityDropDownList.DataSource = FacilityManagementSystem.GetAllfacility();
                 FacilityDropDownList.DataBind();
