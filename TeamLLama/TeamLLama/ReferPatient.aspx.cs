@@ -44,8 +44,8 @@ namespace TeamLLama
 
                 //set hospitaldropdownlist
                 HospitalDropDownList.DataSource = FacilityManagementSystem.GetAllfacility();
-                HospitalDropDownList.DataTextField = "facilityName";
-                HospitalDropDownList.DataValueField = "facilityID";
+                HospitalDropDownList.DataTextField = "facility_name";
+                HospitalDropDownList.DataValueField = "facility_id";
                 HospitalDropDownList.DataBind();
 
                 HospitalDropDownList.Items.Insert(0, new ListItem("-Select a Hospital-", "-1"));//add blank space at top of droplist
