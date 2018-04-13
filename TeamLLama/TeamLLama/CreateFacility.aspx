@@ -328,7 +328,7 @@
                 <td class="auto-style2 font_style_two">Facility Image</td>
                 <td>
                     <p class="font_style_two" style="font-size:12px">Maximum Profile Picture size is 720x480 pixels.</p>
-                    <img id="imgpreview" height="250" width="300" src="" style="border-width: 0px; margin-bottom: 10px; visibility: hidden;" />
+                    <img id="imgpreview" height="250" width="300" src="images/building.png" style="border-width: 0px; margin-bottom: 10px;" class="border" />
                     <asp:FileUpload ID="ImageUpload" runat="server" Width="280px" onchange="showpreview(this);" />
                 </td>
             </tr>

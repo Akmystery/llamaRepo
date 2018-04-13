@@ -26,6 +26,7 @@ namespace TeamLLama
             txtPassword.Attributes.Add("placeholder", a.password);
             txtEmail.Attributes.Add("placeholder",a.email);
             txtAddress.Attributes.Add("placeholder",a.address);
+            Session["Image"] = a.photo;
         }
 
         protected void UpDate_Click(object sender, EventArgs e)

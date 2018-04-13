@@ -36,10 +36,41 @@
     <div class="content-wrap mt-5 mb-4 " style="max-width:700px;  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);  background-color:white;">
         <h1 class="font_style_one mt-3 text-center">Create Doctor Account</h1>
 		<table style="width:100%;">
+            <tr>
+				<td class="auto-style2 font_style_two">Facility</td>
+				<td>
+					<asp:DropDownList ID="FacilityDropDownList" DataTextField = "facility_name" DataValueField = "facility_id" runat="server" AutoPostBack="true" onselectedindexchanged="FilterDept"  CssClass="form-control" Width="280px">
+						<Items>
+							  <asp:ListItem Selected = "True" Text = "select something" Value = "0"></asp:ListItem>
+						</Items>
+					</asp:DropDownList>
+				</td>
+			</tr>
+			<tr>
+				<td class="auto-style2"></td>
+				<td>
+					<asp:Label ID="lblFacility" runat="server" ForeColor="Red"></asp:Label>
+				</td>
+			</tr>
+			
+			<tr>
+				<td class="auto-style2 font_style_two">Department</td>
+				<td>
+					<asp:DropDownList ID="DepartmentDropDownList" DataTextField = "department_name" DataValueField = "department_id" runat="server" CssClass="form-control" Width="280px">
+
+					</asp:DropDownList>
+				</td>
+			</tr>
+			<tr>
+				<td class="auto-style2"></td>
+				<td>
+					<asp:Label ID="lblDepartment" runat="server" ForeColor="Red"></asp:Label>
+				</td>
+			</tr>
 			<tr>
 				<td class="auto-style2 font_style_two">Image</td>
 				<td>
-                    <img id="imgpreview" height="170" width="170" src="" style="border-width:0px; margin-bottom:10px; visibility: hidden;" />
+                    <img id="imgpreview" height="170" width="170" src="images/Default.jpg" style="border-width:0px; margin-bottom:10px;" class="border"/>
 					<asp:FileUpload ID="ImageUpload" runat="server" Width="280px" onchange="showpreview(this);"/>
 				</td>
 			</tr>
@@ -73,37 +104,7 @@
 					<asp:Label ID="lblNric" runat="server" ForeColor="Red"  Text=""></asp:Label>
 				</td>
 			</tr>
-            <tr>
-				<td class="auto-style2 font_style_two">Facility</td>
-				<td>
-					<asp:DropDownList ID="FacilityDropDownList" DataTextField = "facility_name" DataValueField = "facility_id" runat="server" AutoPostBack="true" onselectedindexchanged="FilterDept"  CssClass="form-control" Width="280px">
-						<Items>
-							  <asp:ListItem Selected = "True" Text = "select something" Value = "0"></asp:ListItem>
-						</Items>
-					</asp:DropDownList>
-				</td>
-			</tr>
-			<tr>
-				<td class="auto-style2"></td>
-				<td>
-					<asp:Label ID="lblFacility" runat="server" ForeColor="Red"></asp:Label>
-				</td>
-			</tr>
-			
-			<tr>
-				<td class="auto-style2 font_style_two">Department</td>
-				<td>
-					<asp:DropDownList ID="DepartmentDropDownList" DataTextField = "department_name" DataValueField = "department_id" runat="server" CssClass="form-control" Width="280px">
-
-					</asp:DropDownList>
-				</td>
-			</tr>
-			<tr>
-				<td class="auto-style2"></td>
-				<td>
-					<asp:Label ID="lblDepartment" runat="server" ForeColor="Red"></asp:Label>
-				</td>
-			</tr>
+            
 			<tr>
 				<td class="auto-style2 font_style_two">Password</td>
 				<td>

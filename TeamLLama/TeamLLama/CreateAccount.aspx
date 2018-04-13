@@ -40,7 +40,7 @@
 				<td class="auto-style2 font_style_two" style="padding-top:210px;">Image</td>
 				<td>
                     <p class="font_style_two" style="font-size:12px">Maximum Profile Picture size is 500x300 pixels.</p>
-                    <img id="imgpreview" height="170" width="170" src="" style="border-width:0px; margin-bottom:10px; visibility: hidden;" />
+                    <img id="imgpreview" height="170" width="170" src="images/Default.jpg" style="border-width:0px; margin-bottom:10px;" class="border" />
 					<asp:FileUpload ID="ImageUpload" runat="server" Width="280px" onchange="showpreview(this);" />
 				</td>
 			</tr>

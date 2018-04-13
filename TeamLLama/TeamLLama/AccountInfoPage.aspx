@@ -44,7 +44,7 @@
 		<table style="width:100%;">
              <tr>
 				<td>
-				    	<asp:Image ID="profilePic" runat="server" Height="170px" Width="170px"  CssClass="justify-content-center"/>
+				    	<asp:Image ID="profilePic" runat="server" Height="170px" Width="170px"  CssClass="justify-content-center border mr-4"/>
 				</td>
                  <td class="auto-style2 font_style_two">Name:</td>
 				<td>

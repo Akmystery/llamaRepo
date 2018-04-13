@@ -111,6 +111,8 @@
     <Content Include="images\ad_bg.jpg" />
     <Content Include="images\ap_bg.jpg" />
     <Content Include="images\bo_bg.jpg" />
+    <Content Include="images\building.png" />
+    <Content Include="images\Default.jpg" />
     <Content Include="images\doc_bg.jpg" />
     <Content Include="images\FilledStar.gif" />
     <Content Include="images\home_bg2.jpg" />
