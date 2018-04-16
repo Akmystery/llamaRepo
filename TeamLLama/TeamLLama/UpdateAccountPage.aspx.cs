@@ -23,7 +23,6 @@ namespace TeamLLama
             }
             txtNric.Attributes.Add("placeholder",a.nric);
             txtName.Attributes.Add("placeholder",a.name);
-            txtPassword.Attributes.Add("placeholder", a.password);
             txtEmail.Attributes.Add("placeholder",a.email);
             txtAddress.Attributes.Add("placeholder",a.address);
             Session["Image"] = a.photo;
