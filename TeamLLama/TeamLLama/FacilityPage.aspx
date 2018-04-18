@@ -70,7 +70,7 @@
 
             <div id="tab-information" class="tab">
                 <div class="row mt-3">
-                <div class="col"><asp:Image ID="imgFacility" runat="server" Width="500px" Height="400px" src="https://i1.wp.com/healthpointpk.com/wp-content/themes/medical-directory/framework/hospital-doctor-directory//assets/images/default-directory.jpg?w=1140&ssl=1"/></div>
+                <div class="col"><img id="imgFacility" style="width:500px; height:400px;" src="upload/facility/<%=(String)Session["F_image"]%>"/></div>
                 <div class="col">
                     <b style="font-size:24px; text-decoration:underline">General Information</b><br /> <asp:Literal ID="lblInformation" runat="server" /><br /><br />
                     <b>Contact Number:</b> <asp:Literal ID="lblContact" runat="server"/><br /><br />

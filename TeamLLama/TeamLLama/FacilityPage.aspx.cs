@@ -34,6 +34,7 @@ namespace TeamLLama
             lblContact.Text = facility.phoneNumber.ToString();
             lblAddress.Text = facility.address;
             lblOperatingHours.Text = string.Format("{0} to {1}", facility.openingHrs, facility.closingHrs);
+            Session["F_image"] = facility.image;
 
             if (!IsPostBack)
             {

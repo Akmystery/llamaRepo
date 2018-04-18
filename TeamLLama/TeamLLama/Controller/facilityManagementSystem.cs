@@ -103,7 +103,7 @@ namespace TeamLLama.Controller
             string dbConnectionString = ConfigurationManager.ConnectionStrings["Llama"].ConnectionString;
             var conn = new MySqlConnection(dbConnectionString);
 
-            string query = "SELECT facility_id,facility_name,facility_type,generalInfo,phoneNumber,TIME_FORMAT(openingHrs, '%h %i%p') openingHrs,TIME_FORMAT(closingHrs, '%h %i%p') closingHrs,address,region FROM facility WHERE facility_name=@name";
+            string query = "SELECT * FROM facility WHERE facility_name=@name";
 
             var cmd = new MySqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@name", name);
@@ -121,6 +121,7 @@ namespace TeamLLama.Controller
                 f.closingHrs = reader["closingHrs"].ToString();
                 f.address = reader["address"].ToString();
                 f.region = reader["region"].ToString();
+                f.image = reader["image"].ToString();
             }
             conn.Close();
             return f;
@@ -149,6 +150,7 @@ namespace TeamLLama.Controller
                 f.phoneNumber = Convert.ToInt32(reader["phoneNumber"]);
                 f.openingHrs = reader["openingHrs"].ToString();
                 f.closingHrs = reader["closingHrs"].ToString();
+                f.image = reader["image"].ToString();
                 f.address = reader["address"].ToString();
                 f.region = reader["region"].ToString();
                 searchResults.Add(f);
@@ -182,6 +184,7 @@ namespace TeamLLama.Controller
                 f.openingHrs = reader["openingHrs"].ToString();
                 f.closingHrs = reader["closingHrs"].ToString();
                 f.address = reader["address"].ToString();
+                f.image = reader["image"].ToString();
                 f.region = reader["region"].ToString();
                 f.x = (decimal)reader["x"];
                 f.y = (decimal)reader["y"];

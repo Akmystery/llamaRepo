@@ -17,6 +17,7 @@
              <div class="nav">
                  <img src="images/logo.png" alt="logo" class="ml-5" style="border-radius:50%; height:50px; width:50px" />
                   <span class="font_style_one black pt-2 pl-3">Doctor LLama</span>
+
                   <%if((String)Session["Type"] != "admin" && (String)Session["Type"] != "Doctor" ){%>
                  <a class="nav-link pt-3 ml-4 font_style_one black" style="font-size:18px" href="HomePage.aspx">Home</a>
                   <%}else if((String)Session["Type"] == "admin"){ %>

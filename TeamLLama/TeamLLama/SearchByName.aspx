@@ -54,7 +54,7 @@
                 </LayoutTemplate>
                 <ItemTemplate>
                     <a class="facilitySquare card" href="<%=Request.ApplicationPath == "/"?"": Request.ApplicationPath %>/FacilityPage.aspx?name=<%# Item.facilityName %>">
-                        <img class="facilityImage card-img" src="https://i1.wp.com/healthpointpk.com/wp-content/themes/medical-directory/framework/hospital-doctor-directory//assets/images/default-directory.jpg?w=1140&ssl=1" />
+                        <img class="facilityImage card-img" src="upload/facility/<%# Item.image %>" style="width:180px; height:150px;"/>
                         <div class="facilityTitle"><%# Item.facilityName %></div>
                         <div class="facilityRating">Rating: <%# TeamLLama.Controller.ReviewControlSystem.GetRatingString(Item.facilityID) %></div>
                     </a>
