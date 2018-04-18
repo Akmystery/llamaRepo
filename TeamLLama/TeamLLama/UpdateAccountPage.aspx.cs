@@ -121,6 +121,7 @@ namespace TeamLLama
             if (check == true)
             {
                 update.accountType = a.accountType;
+                update.accountID = a.accountID;
                 Session["Account"] = update;
                 AccountManagementSystem.UpdateAccount(txtName.Text, txtPassword.Text, txtEmail.Text, txtAddress.Text, txtNric.Text, update.photo, a.accountID);
                 Response.Write("<script type=\"text/javascript\">alert('Account Info is successfully updated!');location.href='AccountInfoPage.aspx'</script>");
