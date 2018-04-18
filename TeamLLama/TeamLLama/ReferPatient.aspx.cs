@@ -149,7 +149,7 @@ namespace TeamLLama
             int time;
             if (AMPMDropDownList.SelectedValue.ToString() == "PM")
             {
-                time = (Convert.ToInt32(HourDropDownList.SelectedValue) + 12) * 10000 + Convert.ToInt32(MinDropDownList.SelectedValue) * 100;
+                time = (Convert.ToInt32(HourDropDownList.SelectedValue)) * 10000 + Convert.ToInt32(MinDropDownList.SelectedValue) * 100;
             }
             else
             {
